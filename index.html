@@ -393,96 +393,96 @@
     </section>
 
     <!-- SECTION PAKET HARGA -->
-    <!-- Tambah padding x (px-8/12) untuk memperkecil lebar konten card sedikit di container -->
-    <section class="py-20 bg-white" id="paket-harga">
-        <div class="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20">
+    <section class="py-24 bg-white" id="paket-harga">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Pilih Paket Belajar Sesuai Kebutuhan Anak</h2>
                 <div class="w-24 h-1.5 bg-sainsyellow mx-auto rounded-full mb-6"></div>
                 <p class="text-gray-600">Investasi terbaik untuk masa depan pendidikan anak Anda tanpa biaya tersembunyi.</p>
             </div>
 
-            <!-- Dipersempit sedikit dengan membatasi max-w container card -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-center">
+            <!-- Grid container dengan gap diperbesar di mobile, item flex agar tinggi card sejajar -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 max-w-5xl mx-auto items-stretch">
                 
-                <!-- Paket Biasa (Warna Biru Muda) -->
-                <!-- Diubah padding dari p-8 ke p-6 (memperkecil card), tambah bg-blue-50 -->
-                <div class="bg-blue-50 border border-blue-100 rounded-3xl p-6 shadow-sm hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+                <!-- Paket Biasa -->
+                <!-- Penyesuaian: w-[88%] di mobile agar ada whitespace, rounded-[28px], soft shadow SaaS, flex-col -->
+                <div class="flex flex-col bg-gradient-to-b from-blue-50/80 to-white border border-blue-100/60 rounded-[28px] p-7 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 w-[88%] mx-auto md:w-full">
                     <h3 class="text-xl font-bold text-navy mb-2">Paket Biasa</h3>
-                    <p class="text-gray-600 text-sm mb-6">Cocok untuk pengenalan dasar.</p>
+                    <p class="text-gray-500 text-sm mb-6">Cocok untuk pengenalan dasar.</p>
                     <div class="mb-4">
-                        <span class="text-3xl font-extrabold text-navy">Rp.750.000</span>
-                        <span class="text-gray-600 text-sm">/Bulan</span>
+                        <span class="text-4xl font-extrabold text-navy tracking-tight">Rp.750.000</span>
+                        <span class="text-gray-500 text-sm">/Bln</span>
                     </div>
-                    <div class="bg-white border border-blue-200 text-blue-800 text-center py-2 rounded-lg font-bold mb-6 text-sm shadow-inner">
+                    <div class="bg-blue-100/50 text-blue-800 text-center py-2.5 rounded-xl font-bold mb-6 text-sm">
                         4x Pertemuan / Bulan
                     </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Guru datang ke rumah</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Modul belajar disediakan</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Evaluasi berkala</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Bonus mengaji</span></li>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-600 text-sm">Guru datang ke rumah</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-600 text-sm">Modul belajar disediakan</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-600 text-sm">Evaluasi berkala</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-600 text-sm">Bonus mengaji</span></li>
                     </ul>
-                    <a href="https://wa.me/628981677111?text=Saya%20ingin%20konsultasi%20Paket%20Biasa" class="block w-full text-center bg-navy hover:bg-navylight text-white font-bold py-3 rounded-xl transition duration-300 shadow-md text-sm">
-                        Konsultasi Paket Biasa
+                    <!-- mt-auto memastikan tombol selalu di bawah meskipun teks pendek, ditambahkan ikon WA -->
+                    <a href="https://wa.me/628981677111?text=Saya%20ingin%20konsultasi%20Paket%20Biasa" class="mt-auto flex items-center justify-center w-full bg-navy hover:bg-navylight text-white font-bold py-3.5 rounded-[14px] transition duration-300 shadow-md text-sm">
+                        <i class="fab fa-whatsapp text-xl mr-2 text-green-400"></i> Konsultasi Paket
                     </a>
                 </div>
 
-                <!-- Paket Favorit (Highlight - Warna Kuning/Emas) -->
-                <!-- Diubah padding dari p-8 ke p-6 (memperkecil card), tambah bg-yellow-50 -->
-                <div class="bg-gradient-to-b from-yellow-50 to-white rounded-3xl p-6 shadow-2xl transform md:scale-105 relative border-2 border-sainsyellow z-10 hover:-translate-y-2 transition-all duration-300">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg whitespace-nowrap">
+                <!-- Paket Favorit (Highlight) -->
+                <!-- Penyesuaian: w-[92%] di mobile, shadow kuning yang soft, skala lebih besar di desktop -->
+                <div class="flex flex-col bg-gradient-to-b from-yellow-50 to-white rounded-[28px] p-8 shadow-[0_12px_40px_rgba(250,204,21,0.15)] transform md:scale-105 relative border border-yellow-200 z-10 hover:-translate-y-2 hover:shadow-[0_16px_50px_rgba(250,204,21,0.25)] transition-all duration-300 w-[92%] mx-auto md:w-full">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-xs font-bold px-5 py-2 rounded-full shadow-lg whitespace-nowrap tracking-wide">
                         🔥 PALING DIREKOMENDASIKAN
                     </div>
                     <h3 class="text-xl font-bold text-navy mb-2 mt-2">Paket Favorit</h3>
-                    <p class="text-gray-600 text-sm mb-6">Rekomendasi terbaik agar cepat lancar.</p>
+                    <p class="text-gray-500 text-sm mb-6">Rekomendasi terbaik agar cepat lancar.</p>
                     <div class="mb-2">
-                        <span class="text-4xl font-extrabold text-navy">Rp.1.150.000</span>
-                        <span class="text-gray-600 text-sm">/Bulan</span>
+                        <span class="text-4xl lg:text-5xl font-extrabold text-navy tracking-tight">Rp.1.150.000</span>
+                        <span class="text-gray-500 text-sm">/Bln</span>
                     </div>
-                    <p class="text-xs text-gray-500 mb-4 font-medium">(Rp 140.625 / pertemuan)</p>
-                    <div class="bg-yellow-100 border border-yellow-300 text-yellow-800 text-center py-2 rounded-lg font-bold mb-6 text-sm shadow-inner">
+                    <p class="text-xs text-gray-500 mb-5 font-medium">(Hanya Rp 140.625 / pertemuan)</p>
+                    <div class="bg-yellow-100/70 border-yellow-200 text-yellow-800 text-center py-2.5 rounded-xl font-bold mb-6 text-sm">
                         8x Pertemuan / Bulan
                     </div>
-                    <ul class="space-y-3 mb-8 text-gray-700">
+                    <ul class="space-y-4 mb-8 flex-grow text-gray-700">
                         <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-sm">Guru datang ke rumah</span></li>
                         <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-sm">Modul belajar disediakan</span></li>
                         <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-sm">Evaluasi berkala</span></li>
                         <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-sm font-bold text-navy">Bonus mengaji</span></li>
                         <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-sm">Pendampingan lebih intensif</span></li>
                     </ul>
-                    <a href="https://wa.me/628981677111?text=Saya%20ingin%20konsultasi%20Paket%20Favorit" class="block w-full text-center bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-navy font-bold py-3.5 rounded-xl transition duration-300 shadow-lg text-sm">
-                        Konsultasi Paket Favorit
+                    <a href="https://wa.me/628981677111?text=Saya%20ingin%20konsultasi%20Paket%20Favorit" class="mt-auto flex items-center justify-center w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-navy font-bold py-4 rounded-[14px] transition duration-300 shadow-lg text-sm">
+                        <i class="fab fa-whatsapp text-2xl mr-2 text-green-800"></i> Konsultasi Paket
                     </a>
                 </div>
 
-                <!-- Paket Smart (Warna Hijau/Teal Muda) -->
-                <!-- Diubah padding dari p-8 ke p-6 (memperkecil card), tambah bg-teal-50 -->
-                <div class="bg-teal-50 border border-teal-100 rounded-3xl p-6 shadow-sm hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+                <!-- Paket Smart -->
+                <!-- Penyesuaian: w-[88%] di mobile, soft teal shadow -->
+                <div class="flex flex-col bg-gradient-to-b from-teal-50/80 to-white border border-teal-100/60 rounded-[28px] p-7 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 w-[88%] mx-auto md:w-full">
                     <h3 class="text-xl font-bold text-navy mb-2">Paket Smart</h3>
-                    <p class="text-gray-600 text-sm mb-6">Target lulus secepat mungkin.</p>
+                    <p class="text-gray-500 text-sm mb-6">Target lulus secepat mungkin.</p>
                     <div class="mb-4">
-                        <span class="text-3xl font-extrabold text-navy">Rp. 1.499.000</span>
-                        <span class="text-gray-600 text-sm">/Bulan</span>
+                        <span class="text-4xl font-extrabold text-navy tracking-tight">Rp.1.499.000</span>
+                        <span class="text-gray-500 text-sm">/Bln</span>
                     </div>
-                    <div class="bg-white border border-teal-200 text-teal-800 text-center py-2 rounded-lg font-bold mb-6 text-sm shadow-inner">
+                    <div class="bg-teal-100/50 text-teal-800 text-center py-2.5 rounded-xl font-bold mb-6 text-sm">
                         12x Pertemuan / Bulan
                     </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Guru datang ke rumah</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Modul belajar disediakan</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Evaluasi berkala</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Bonus mengaji</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm font-bold text-navy">Pendampingan maksimal</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Target lebih cepat</span></li>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-600 text-sm">Guru datang ke rumah</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-600 text-sm">Modul belajar disediakan</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-600 text-sm">Evaluasi berkala</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-600 text-sm">Bonus mengaji</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-600 text-sm font-bold text-navy">Pendampingan maksimal</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-600 text-sm">Target lebih cepat</span></li>
                     </ul>
-                    <a href="https://wa.me/628981677111?text=Saya%20ingin%20konsultasi%20Paket%20Smart" class="block w-full text-center bg-navy hover:bg-navylight text-white font-bold py-3 rounded-xl transition duration-300 shadow-md text-sm">
-                        Konsultasi Paket Smart
+                    <a href="https://wa.me/628981677111?text=Saya%20ingin%20konsultasi%20Paket%20Smart" class="mt-auto flex items-center justify-center w-full bg-navy hover:bg-navylight text-white font-bold py-3.5 rounded-[14px] transition duration-300 shadow-md text-sm">
+                        <i class="fab fa-whatsapp text-xl mr-2 text-green-400"></i> Konsultasi Paket
                     </a>
                 </div>
 
             </div>
-            <p class="text-center text-sm text-gray-400 mt-8">*Biaya pendaftaran dan transport dibicarakan saat konsultasi via WhatsApp.</p>
+            <p class="text-center text-sm text-gray-400 mt-10">*Biaya pendaftaran dan transport dibicarakan saat konsultasi via WhatsApp.</p>
         </div>
     </section>
 
