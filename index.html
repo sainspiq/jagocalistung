@@ -3,239 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transformasi Sehat - Wellness Coach & Mentoring</title>
+    <title>SainsPIQ - Les Privat Calistung ke Rumah</title>
     
-    <!-- Google Fonts: Poppins & Inter -->
+    <!-- Google Fonts: Poppins for modern, family-friendly look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome untuk Icon -->
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Poppins', 'sans-serif'],
-                    },
                     colors: {
-                        primary: '#10b981', // Emerald 500 (Hijau utama)
-                        primaryDark: '#047857', // Emerald 700
-                        secondary: '#fb923c', // Orange 400 (Soft Orange CTA)
-                        secondaryDark: '#f97316', // Orange 500
-                        beige: '#FDFBF7', // Beige/Off-white background
-                        dark: '#1f2937',
+                        navy: '#0A192F',      // Biru Navy
+                        navylight: '#112240', // Biru Navy Terang untuk section selang-seling
+                        sainsyellow: '#FACC15', // Kuning Cerah
+                        sainsyellowhover: '#EAB308' // Kuning saat dihover
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-
-    <!-- Supabase JS Client -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <style>
-        /* Custom Animations */
-        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-        
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
+        /* Custom Styles for minor tweaks */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         .accordion-content {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.3s ease-out;
-        }
-        .accordion-content > div {
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            max-height: 0;
             overflow: hidden;
         }
-        .accordion-active .accordion-content {
-            grid-template-rows: 1fr;
+
+        /* Notifikasi Animasi */
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
-        .accordion-active .accordion-icon {
-            transform: rotate(180deg);
+        @keyframes slideOutLeft {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(-100%); opacity: 0; }
+        }
+        .notification-popup {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 60;
+            display: none;
+            background-color: #f0fdf4; /* green-50 */
+            border-left: 4px solid #22c55e; /* green-500 */
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 12px 16px;
+            max-width: 300px;
+        }
+        .notification-popup.show {
+            display: flex;
+            animation: slideInLeft 0.5s ease-out forwards;
+        }
+        .notification-popup.hide {
+            animation: slideOutLeft 0.5s ease-in forwards;
         }
     </style>
 </head>
-<body class="bg-beige text-gray-800 font-sans antialiased overflow-x-hidden">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden">
 
-    <!-- ==============================================
-         KONFIGURASI PENGATURAN (GAMBAR & LINK WA)
-         Ganti link gambar dan nomor WA di sini!
-    =============================================== -->
-    <script>
-        const APP_CONFIG = {
-            content: {
-                headline: "Bentuk <span class='text-primary'>Tubuh Ideal</span> & Hidup Lebih Sehat Tanpa Tersiksa",
-                subheadline: "Stop siklus diet gagal! Dapatkan pendampingan harian, meal plan sederhana, dan komunitas suportif untuk mencapai target berat badan Anda secara permanen."
-            },
-            images: {
-                hero: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-                coach: "https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                community1: "https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                community2: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                testi1: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                testi2: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                beforeAfter: "https://images.unsplash.com/photo-1627483262112-039e9a0a0f16?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" // Gunakan foto asli Before After
-            },
-            whatsapp: {
-                number: "6281234567890", // GANTI DENGAN NOMOR WA ANDA (Gunakan kode negara tanpa +)
-                defaultMessage: "Halo Coach, saya ingin konsultasi mengenai program penurunan berat badan dan healthy lifestyle."
-            },
-            supabase: {
-                url: "YOUR_SUPABASE_URL", // GANTI DENGAN SUPABASE URL ANDA
-                anonKey: "YOUR_SUPABASE_ANON_KEY" // GANTI DENGAN SUPABASE ANON KEY ANDA
-            }
-        };
-    </script>
-
-    <!-- NAVBAR -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-leaf text-primary text-2xl"></i>
-                    <span class="font-heading font-bold text-2xl text-dark">Fit<span class="text-primary">Life</span></span>
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold text-navy">Sains<span class="text-sainsyellow">PIQ</span></span>
                 </div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#about" class="text-gray-600 hover:text-primary font-medium transition">Profil</a>
-                    <a href="#program" class="text-gray-600 hover:text-primary font-medium transition">Program</a>
-                    <a href="#testimoni" class="text-gray-600 hover:text-primary font-medium transition">Kisah Sukses</a>
-                    <a href="#konsultasi" class="bg-primary hover:bg-primaryDark text-white px-6 py-2.5 rounded-full font-medium transition shadow-lg shadow-primary/30">Mulai Sekarang</a>
-                    <button id="login-btn-desktop" onclick="openLoginModal()" class="flex items-center gap-2 text-gray-500 hover:text-primary border border-gray-200 hover:border-primary px-4 py-2 rounded-full transition text-sm font-medium">
-                        <i class="fa-solid fa-user-shield"></i> Admin
-                    </button>
-                </div>
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary focus:outline-none">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
+                <div class="hidden md:flex">
+                    <!-- Link diubah ke #paket-harga -->
+                    <a href="#paket-harga" class="bg-navy hover:bg-navylight text-white font-semibold px-6 py-2.5 rounded-full transition duration-300 shadow-md hover:shadow-lg flex items-center gap-2">
+                        <i class="fab fa-whatsapp text-lg text-green-400"></i> Konsultasi Gratis
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- SIDEBAR OVERLAY & MENU (PENGGANTI MENU LAMA) -->
-    <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden transition-opacity duration-300 opacity-0"></div>
-    <div id="sidebar-menu" class="fixed top-0 right-0 h-full w-64 bg-white z-[70] transform translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
-        <div class="flex justify-between items-center p-5 border-b border-gray-100">
-            <span class="font-heading font-bold text-xl text-dark">Menu</span>
-            <button id="close-sidebar-btn" class="text-gray-500 hover:text-red-500 transition focus:outline-none">
-                <i class="fa-solid fa-xmark text-2xl"></i>
-            </button>
+    <!-- HERO SECTION -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-navy overflow-hidden">
+        <!-- Background Decorations -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
+            <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-sainsyellow blur-3xl"></div>
+            <div class="absolute top-1/2 right-0 w-72 h-72 rounded-full bg-blue-500 blur-3xl"></div>
         </div>
-        <div class="flex flex-col p-5 space-y-4">
-            <a href="#about" class="text-gray-700 hover:text-primary font-medium text-lg">Profil</a>
-            <a href="#program" class="text-gray-700 hover:text-primary font-medium text-lg">Program</a>
-            <a href="#testimoni" class="text-gray-700 hover:text-primary font-medium text-lg">Kisah Sukses</a>
-            <div class="pt-4 mt-2 border-t border-gray-100">
-                <a href="#konsultasi" class="block w-full bg-primary hover:bg-primaryDark text-white px-4 py-3 text-center rounded-xl font-medium transition shadow-lg shadow-primary/30">Konsultasi Gratis</a>
-            </div>
-            <div class="pt-2">
-                <button onclick="openLoginModal()" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-3 text-center rounded-xl font-medium transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-user-shield text-primary"></i> Login Admin
-                </button>
-            </div>
-        </div>
-    </div>
 
-    <!-- 1. HERO SECTION -->
-    <section class="pt-32 pb-20 md:pt-40 md:pb-28 px-4 overflow-hidden">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div class="w-full md:w-1/2 z-10 fade-in-up">
-                <div class="inline-block bg-green-100 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
-                    <i class="fa-solid fa-star text-yellow-400 mr-1"></i> Premium Wellness Coaching
-                </div>
-                <h1 id="hero-headline" class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-dark mb-6">
-                    Bentuk <span class="text-primary">Tubuh Ideal</span> & Hidup Lebih Sehat Tanpa Tersiksa
-                </h1>
-                <p id="hero-subheadline" class="text-lg text-gray-600 mb-8 leading-relaxed">
-                    Stop siklus diet gagal! Dapatkan pendampingan harian, meal plan sederhana, dan komunitas suportif untuk mencapai target berat badan Anda secara permanen.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 mb-10">
-                    <button onclick="openWhatsApp()" class="bg-secondary hover:bg-secondaryDark text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-xl shadow-secondary/30 flex items-center justify-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-2xl"></i> Konsultasi Gratis
-                    </button>
-                    <a href="#bmi-calculator" class="bg-white border-2 border-gray-200 hover:border-primary hover:text-primary text-gray-700 px-8 py-4 rounded-full font-semibold text-lg transition flex items-center justify-center text-center">
-                        Cek BMI Anda
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-center lg:text-left">
+                    <div class="inline-block bg-white/10 text-sainsyellow font-medium px-4 py-1.5 rounded-full text-sm mb-6 border border-sainsyellow/30">
+                        ⭐ Pilihan Terbaik Orang Tua Jabodetabek
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                        Jago Calistung dalam <span class="text-sainsyellow">3 Bulan</span> Bersama Guru Privat ke Rumah
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">
+                        Bantu anak lebih percaya diri saat masuk TK atau SD dengan metode belajar menyenangkan, guru berpengalaman, dan pendampingan langsung di rumah.
+                    </p>
+                    
+                    <ul class="text-white space-y-3 mb-10 text-left w-fit mx-auto lg:mx-0 bg-white/5 p-6 rounded-2xl glass-effect">
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-sainsyellow text-xl"></i> <span>Guru datang ke rumah</span></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-sainsyellow text-xl"></i> <span>Bonus belajar mengaji</span></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-sainsyellow text-xl"></i> <span>Area Jabodetabek & Sekitarnya</span></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-sainsyellow text-xl"></i> <span>Jadwal fleksibel</span></li>
+                    </ul>
+
+                    <!-- Link diubah ke #paket-harga -->
+                    <a href="#paket-harga" class="inline-block w-full sm:w-auto text-center bg-sainsyellow hover:bg-sainsyellowhover text-navy font-bold text-lg px-8 py-4 rounded-full transition duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.4)]">
+                        <i class="fab fa-whatsapp text-2xl mr-2 align-middle"></i> Konsultasi Gratis via WhatsApp
                     </a>
                 </div>
-                <div class="flex flex-wrap gap-4 text-sm font-medium text-gray-600">
-                    <span class="flex items-center gap-1 bg-white px-3 py-1.5 rounded-full shadow-sm border border-gray-100"><i class="fa-solid fa-check-circle text-primary"></i> Coaching Online</span>
-                    <span class="flex items-center gap-1 bg-white px-3 py-1.5 rounded-full shadow-sm border border-gray-100"><i class="fa-solid fa-check-circle text-primary"></i> Senam Rutin</span>
-                    <span class="flex items-center gap-1 bg-white px-3 py-1.5 rounded-full shadow-sm border border-gray-100"><i class="fa-solid fa-check-circle text-primary"></i> Support Group</span>
-                </div>
-            </div>
-            
-            <div class="w-full md:w-1/2 relative fade-in-up delay-200">
-                <div class="absolute inset-0 bg-primary/10 rounded-[3rem] transform rotate-3 scale-105 -z-10"></div>
-                <img id="img-hero" src="" alt="Wellness Coach Lifestyle" class="rounded-[3rem] shadow-2xl object-cover h-[500px] w-full border-4 border-white">
                 
-                <!-- Floating Badge -->
-                <div class="absolute bottom-10 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4 animate-bounce" style="animation-duration: 3s;">
-                    <div class="w-12 h-12 bg-green-100 text-primary rounded-full flex items-center justify-center text-xl">
-                        <i class="fa-solid fa-fire-flame-curved"></i>
-                    </div>
-                    <div>
-                        <p class="text-xs text-gray-500 font-medium">Member Berhasil</p>
-                        <p class="font-bold text-dark text-xl">500+ Orang</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BMI CALCULATOR SECTION (Interactive Value First) -->
-    <section id="bmi-calculator" class="py-16 bg-white">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="bg-beige rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100 relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/3"></div>
-                
-                <div class="text-center mb-10 relative z-10">
-                    <h2 class="font-heading text-3xl font-bold text-dark mb-4">Cek Status Berat Badan Anda</h2>
-                    <p class="text-gray-600">Ketahui kondisi tubuh Anda saat ini sebelum memulai program transformasi.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10">
-                    <!-- Form Input -->
-                    <div class="space-y-5">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Berat Badan (kg)</label>
-                            <input type="number" id="bmi-weight" placeholder="Contoh: 65" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Tinggi Badan (cm)</label>
-                            <input type="number" id="bmi-height" placeholder="Contoh: 160" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition">
-                        </div>
-                        <button onclick="calculateBMI()" class="w-full bg-dark hover:bg-gray-800 text-white font-semibold py-3 rounded-xl transition shadow-md">
-                            Hitung BMI
-                        </button>
-                    </div>
-                    
-                    <!-- Result -->
-                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-center items-center text-center">
-                        <div id="bmi-result-container" class="hidden flex flex-col items-center w-full">
-                            <p class="text-sm text-gray-500 font-medium mb-2">Hasil Anda:</p>
-                            <h3 id="bmi-score" class="text-5xl font-heading font-bold text-dark mb-2">24.5</h3>
-                            <div id="bmi-status" class="px-4 py-1 rounded-full text-sm font-semibold mb-4 bg-green-100 text-green-700">Normal</div>
-                            <p id="bmi-message" class="text-sm text-gray-600 mb-4">Berat badan Anda ideal. Pertahankan dengan pola makan sehat!</p>
-                            <a href="#konsultasi" class="text-primary font-semibold text-sm hover:underline flex items-center gap-1">
-                                Konsultasi Program <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
-                        <div id="bmi-placeholder" class="text-gray-400 flex flex-col items-center">
-                            <i class="fa-solid fa-scale-balanced text-4xl mb-3 opacity-50"></i>
-                            <p>Masukkan data Anda untuk melihat hasil</p>
+                <!-- Hero Image Illustration (Placeholder icon/shapes for visual) -->
+                <div class="hidden lg:block relative">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-sainsyellow/20 to-transparent rounded-[3rem] transform rotate-3 scale-105"></div>
+                    <div class="relative bg-white p-8 rounded-[3rem] shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Guru mengajar anak" class="rounded-2xl w-full h-auto object-cover aspect-video mb-6">
+                        <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <div class="bg-green-100 p-3 rounded-full text-green-600">
+                                <i class="fas fa-chart-line text-2xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 font-medium">Perkembangan Terlihat</p>
+                                <p class="text-xl font-bold text-navy">Dalam 3 Bulan</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -243,1260 +151,531 @@
         </div>
     </section>
 
-    <!-- 2. ABOUT COACH SECTION -->
-    <section id="about" class="py-20 px-4">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div class="w-full md:w-5/12 relative">
-                <div class="absolute -inset-4 bg-gradient-to-tr from-primary to-emerald-200 rounded-[2rem] opacity-30 transform -rotate-2"></div>
-                <img id="img-coach" src="" alt="Profil Coach" class="rounded-[2rem] shadow-lg relative z-10 w-full object-cover h-[450px]">
+    <!-- SECTION MASALAH ORANG TUA -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Apakah Ayah Bunda Mengalami Hal Ini?</h2>
+                <div class="w-24 h-1.5 bg-sainsyellow mx-auto rounded-full mb-6"></div>
+                <p class="text-lg text-gray-600 font-medium">Jangan biarkan anak merasa tertinggal dari teman-temannya. <span class="text-orange-500">Masa emas belajar hanya datang sekali.</span></p>
             </div>
-            <div class="w-full md:w-7/12">
-                <h4 class="text-secondary font-bold tracking-wider uppercase text-sm mb-2">Kenali Pendamping Anda</h4>
-                <h2 class="font-heading text-3xl md:text-4xl font-bold text-dark mb-6">Bersama Mencapai Versi Terbaik Diri Anda</h2>
-                <div class="space-y-4 text-gray-600 text-lg">
-                    <p>
-                        Halo! Saya adalah Wellness Coach yang berdedikasi membantu Anda mencapai berat badan ideal dan gaya hidup sehat yang berkelanjutan. Bukan sekadar diet sesaat, tapi perubahan habit seumur hidup.
-                    </p>
-                    <p>
-                        Berbekal pengalaman dan dukungan nutrisi terbaik, saya telah memandu ratusan orang yang sebelumnya selalu gagal diet, kini berhasil menemukan kepercayaan diri dan energi baru mereka.
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 gap-6 mt-8">
-                    <div>
-                        <h4 class="font-bold text-3xl text-primary font-heading mb-1">5+</h4>
-                        <p class="text-sm text-gray-500 font-medium">Tahun Pengalaman</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-3xl text-primary font-heading mb-1">24/7</h4>
-                        <p class="text-sm text-gray-500 font-medium">Pendampingan Penuh</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- 3. PROBLEM SECTION -->
-    <section class="py-20 bg-white px-4">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="font-heading text-3xl md:text-4xl font-bold text-dark mb-4">Apakah Anda Merasakan Ini?</h2>
-                <p class="text-gray-600 text-lg">Perjalanan menurunkan berat badan memang tidak mudah jika dilakukan sendirian dengan cara yang salah.</p>
-            </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Card 1 -->
-                <div class="bg-beige p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition">
-                    <div class="w-14 h-14 bg-red-100 text-red-500 rounded-xl flex items-center justify-center text-2xl mb-6">
-                        <i class="fa-solid fa-arrow-down-up-across-line"></i>
+                <div class="bg-yellow-50 p-6 rounded-2xl border border-yellow-200 hover:shadow-lg transition duration-300 group">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-book-reader text-2xl text-yellow-600"></i>
                     </div>
-                    <h3 class="font-heading font-bold text-xl mb-3 text-dark">Diet Selalu Gagal (Yoyo)</h3>
-                    <p class="text-gray-600">Berat badan sempat turun, tapi naik lagi bahkan lebih parah dari sebelumnya karena diet ekstrem.</p>
+                    <p class="text-gray-700 font-medium leading-relaxed">Anak belum lancar membaca padahal sudah mau masuk SD.</p>
                 </div>
                 <!-- Card 2 -->
-                <div class="bg-beige p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition">
-                    <div class="w-14 h-14 bg-orange-100 text-orange-500 rounded-xl flex items-center justify-center text-2xl mb-6">
-                        <i class="fa-solid fa-burger"></i>
+                <div class="bg-yellow-50 p-6 rounded-2xl border border-yellow-200 hover:shadow-lg transition duration-300 group">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-brain text-2xl text-yellow-600"></i>
                     </div>
-                    <h3 class="font-heading font-bold text-xl mb-3 text-dark">Mudah Lapar Malam Hari</h3>
-                    <p class="text-gray-600">Sering merasa kelaparan di malam hari yang berujung pada ngemil tidak sehat dan merusak defisit kalori.</p>
+                    <p class="text-gray-700 font-medium leading-relaxed">Sulit fokus dan konsentrasi saat belajar di rumah.</p>
                 </div>
                 <!-- Card 3 -->
-                <div class="bg-beige p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition">
-                    <div class="w-14 h-14 bg-blue-100 text-blue-500 rounded-xl flex items-center justify-center text-2xl mb-6">
-                        <i class="fa-solid fa-user-xmark"></i>
+                <div class="bg-yellow-50 p-6 rounded-2xl border border-yellow-200 hover:shadow-lg transition duration-300 group">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-user-shield text-2xl text-yellow-600"></i>
                     </div>
-                    <h3 class="font-heading font-bold text-xl mb-3 text-dark">Berjuang Sendirian</h3>
-                    <p class="text-gray-600">Tidak konsisten karena tidak ada yang mengingatkan, memotivasi, dan mengawasi progress harian Anda.</p>
+                    <p class="text-gray-700 font-medium leading-relaxed">Tidak percaya diri saat diminta membaca atau menjawab soal.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-yellow-50 p-6 rounded-2xl border border-yellow-200 hover:shadow-lg transition duration-300 group">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-mobile-alt text-2xl text-yellow-600"></i>
+                    </div>
+                    <p class="text-gray-700 font-medium leading-relaxed">Lebih suka bermain gadget/HP daripada membuka buku belajar.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-yellow-50 p-6 rounded-2xl border border-yellow-200 hover:shadow-lg transition duration-300 group">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-briefcase text-2xl text-yellow-600"></i>
+                    </div>
+                    <p class="text-gray-700 font-medium leading-relaxed">Orang tua terlalu sibuk bekerja sehingga sulit konsisten mendampingi.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="bg-yellow-50 p-6 rounded-2xl border border-yellow-200 hover:shadow-lg transition duration-300 group">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-sort-numeric-down text-2xl text-yellow-600"></i>
+                    </div>
+                    <p class="text-gray-700 font-medium leading-relaxed">Nilai membaca dan berhitung masih jauh tertinggal dari teman sekelas.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. SOLUTION / PROGRAM SECTION -->
-    <section id="program" class="py-20 bg-dark text-white px-4 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-primary opacity-20 blur-[100px] rounded-full"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-secondary opacity-20 blur-[100px] rounded-full"></div>
-        
-        <div class="max-w-6xl mx-auto relative z-10">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h4 class="text-secondary font-bold tracking-wider uppercase text-sm mb-2">Solusi Tepat Untuk Anda</h4>
-                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Program Transformasi Premium 21 Hari</h2>
-                <p class="text-gray-300 text-lg">Bukan sekadar produk, tapi sistem menyeluruh yang dirancang untuk menjamin keberhasilan Anda.</p>
-            </div>
+    <!-- SECTION SOLUSI -->
+    <section class="py-20 bg-gray-50 border-y border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Image -->
+                <div class="order-2 lg:order-1 relative">
+                    <div class="absolute inset-0 bg-navy rounded-3xl transform -rotate-3 scale-100 opacity-10"></div>
+                    <img src="https://images.unsplash.com/photo-1543269664-56d93c1b41a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Anak belajar ceria" class="relative rounded-3xl shadow-xl w-full h-auto object-cover aspect-square md:aspect-video lg:aspect-square">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-sainsyellow p-3 rounded-full text-navy">
+                                <i class="fas fa-star text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-navy font-bold">Metode Teruji</p>
+                                <p class="text-xs text-gray-500">Menyenangkan & Efektif</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10">
-                    <i class="fa-solid fa-mobile-screen text-primary text-3xl mb-4"></i>
-                    <h3 class="font-bold text-lg mb-2">Coaching Online 1-on-1</h3>
-                    <p class="text-sm text-gray-300">Konsultasi dan pendampingan personal langsung melalui chat dan telepon secara harian.</p>
-                </div>
-                <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10">
-                    <i class="fa-solid fa-utensils text-primary text-3xl mb-4"></i>
-                    <h3 class="font-bold text-lg mb-2">Meal Plan Praktis</h3>
-                    <p class="text-sm text-gray-300">Panduan makan enak, terjangkau, dan mudah disiapkan tanpa merasa sedang diet ketat.</p>
-                </div>
-                <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10">
-                    <i class="fa-solid fa-users text-primary text-3xl mb-4"></i>
-                    <h3 class="font-bold text-lg mb-2">Support Group VIP</h3>
-                    <p class="text-sm text-gray-300">Bergabung dengan komunitas positif yang saling memotivasi dan berbagi resep sehat.</p>
-                </div>
-                <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10">
-                    <i class="fa-solid fa-chart-line text-primary text-3xl mb-4"></i>
-                    <h3 class="font-bold text-lg mb-2">Monitoring Progress</h3>
-                    <p class="text-sm text-gray-300">Evaluasi berat badan dan lingkar tubuh setiap minggu untuk memastikan hasil optimal.</p>
-                </div>
-            </div>
-            
-            <div class="mt-12 text-center">
-                <a href="#konsultasi" class="inline-block bg-primary hover:bg-emerald-400 text-dark font-bold px-8 py-4 rounded-full transition shadow-lg">
-                    Daftar Program Sekarang
-                </a>
-            </div>
-        </div>
-    </section>
+                <!-- Text -->
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Solusi Praktis untuk Orang Tua Sibuk</h2>
+                    <div class="w-16 h-1.5 bg-sainsyellow rounded-full mb-6"></div>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        <strong>SainsPIQ</strong> membantu anak menguasai membaca, menulis, dan berhitung dengan metode yang menyenangkan dan terstruktur. Ayah Bunda bisa tenang bekerja, biar kami yang urus belajarnya.
+                    </p>
 
-    <!-- 5. HOW IT WORKS -->
-    <section class="py-20 px-4">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="font-heading text-3xl md:text-4xl font-bold text-dark mb-4">Langkah Mudah Memulai</h2>
-            </div>
-            
-            <div class="relative border-l-4 border-primary/30 ml-4 md:ml-0 md:mx-auto">
-                <!-- Step 1 -->
-                <div class="mb-10 ml-8 md:ml-10 relative">
-                    <span class="absolute -left-[45px] md:-left-[47px] bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold font-heading shadow-md ring-4 ring-beige">1</span>
-                    <h3 class="font-bold text-xl text-dark mb-2">Konsultasi Awal</h3>
-                    <p class="text-gray-600">Kita berdiskusi tentang target, riwayat kesehatan, dan kebiasaan makan Anda saat ini.</p>
-                </div>
-                <!-- Step 2 -->
-                <div class="mb-10 ml-8 md:ml-10 relative">
-                    <span class="absolute -left-[45px] md:-left-[47px] bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold font-heading shadow-md ring-4 ring-beige">2</span>
-                    <h3 class="font-bold text-xl text-dark mb-2">Personalisasi Program</h3>
-                    <p class="text-gray-600">Anda akan mendapatkan panduan nutrisi dan meal plan yang disesuaikan dengan kebutuhan kalori Anda.</p>
-                </div>
-                <!-- Step 3 -->
-                <div class="mb-10 ml-8 md:ml-10 relative">
-                    <span class="absolute -left-[45px] md:-left-[47px] bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold font-heading shadow-md ring-4 ring-beige">3</span>
-                    <h3 class="font-bold text-xl text-dark mb-2">Mulai Perjalanan</h3>
-                    <p class="text-gray-600">Masuk ke dalam grup support, terapkan panduan harian, dan ikut sesi olahraga bersama.</p>
-                </div>
-                <!-- Step 4 -->
-                <div class="ml-8 md:ml-10 relative">
-                    <span class="absolute -left-[45px] md:-left-[47px] bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold font-heading shadow-md ring-4 ring-beige">4</span>
-                    <h3 class="font-bold text-xl text-dark mb-2">Evaluasi Berkala</h3>
-                    <p class="text-gray-600">Setiap akhir pekan kita akan cek progress dan menyesuaikan strategi agar target cepat tercapai.</p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 bg-green-100 rounded-full p-1"><i class="fas fa-check text-green-600"></i></div>
+                            <p class="text-gray-700"><strong class="text-navy">Guru Datang ke Rumah:</strong> Hemat waktu, tenaga, dan tidak perlu kena macet di jalan.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 bg-green-100 rounded-full p-1"><i class="fas fa-check text-green-600"></i></div>
+                            <p class="text-gray-700"><strong class="text-navy">Belajar 1-on-1:</strong> Guru fokus 100% hanya pada anak Anda, bukan terbagi dengan anak lain.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 bg-green-100 rounded-full p-1"><i class="fas fa-check text-green-600"></i></div>
+                            <p class="text-gray-700"><strong class="text-navy">Materi Custom:</strong> Disusun menyesuaikan kemampuan dan gaya belajar anak saat ini.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 bg-green-100 rounded-full p-1"><i class="fas fa-check text-green-600"></i></div>
+                            <p class="text-gray-700"><strong class="text-navy">Progress Report:</strong> Ayah bunda mendapat laporan perkembangan secara berkala.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 bg-green-100 rounded-full p-1"><i class="fas fa-check text-green-600"></i></div>
+                            <p class="text-gray-700"><strong class="text-navy">Jadwal Fleksibel:</strong> Bisa diatur sesuai kesepakatan dan waktu luang anak.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 bg-green-100 rounded-full p-1"><i class="fas fa-check text-green-600"></i></div>
+                            <p class="text-gray-700"><strong class="text-navy">Bonus Belajar Mengaji:</strong> Bekal agama dasar untuk anak dalam satu sesi kunjungan.</p>
+                        </div>
+                    </div>
+
+                    <!-- Link diubah ke #paket-harga -->
+                    <a href="#paket-harga" class="inline-flex items-center justify-center bg-navy hover:bg-navylight text-white font-bold px-8 py-3.5 rounded-full transition duration-300 shadow-lg">
+                        Jadwalkan Konsultasi Gratis <i class="fas fa-arrow-right ml-3"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 6. SENAM / COMMUNITY SECTION -->
-    <section class="py-20 bg-white px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center justify-between mb-12">
-                <div class="max-w-2xl">
-                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-dark mb-4">Bergerak Bersama Komunitas</h2>
-                    <p class="text-gray-600 text-lg">Olahraga terasa lebih ringan dan menyenangkan jika dilakukan bersama-sama. Ikuti sesi workout online & offline kami.</p>
-                </div>
-                <div class="mt-6 md:mt-0 flex items-center gap-3 bg-green-50 text-primary px-5 py-3 rounded-xl border border-green-100 font-semibold">
-                    <i class="fa-regular fa-calendar-check text-xl"></i> Rutin Setiap Akhir Pekan
-                </div>
+    <!-- SECTION KEUNGGULAN (PERBANDINGAN) -->
+    <section class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Kenapa Orang Tua Memilih <span class="text-sainsyellow">SainsPIQ</span>?</h2>
+                <div class="w-24 h-1.5 bg-sainsyellow mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600">Bandingkan sendiri perbedaannya dengan bimbingan belajar konvensional.</p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="group relative overflow-hidden rounded-2xl shadow-md h-80">
-                    <img id="img-community1" src="" alt="Senam Offline" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent flex flex-col justify-end p-6">
-                        <span class="bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full w-max mb-2">Offline Class</span>
-                        <h3 class="text-white font-bold text-xl">Senam Pagi Bersama</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- SainsPIQ Column -->
+                <div class="bg-white rounded-3xl p-8 shadow-xl relative border-t-8 border-sainsyellow transform md:-translate-y-4">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-sainsyellow text-navy font-bold px-6 py-2 rounded-full shadow-lg border-4 border-white whitespace-nowrap">
+                        Bersama SainsPIQ
+                    </div>
+                    <div class="mt-6 space-y-5">
+                        <div class="flex items-center gap-4"><i class="fas fa-check-circle text-green-500 text-xl"></i><span class="text-gray-800 font-medium">Guru datang ke rumah</span></div>
+                        <hr class="border-gray-100">
+                        <div class="flex items-center gap-4"><i class="fas fa-check-circle text-green-500 text-xl"></i><span class="text-gray-800 font-medium">Fokus 1 siswa 1 guru</span></div>
+                        <hr class="border-gray-100">
+                        <div class="flex items-center gap-4"><i class="fas fa-check-circle text-green-500 text-xl"></i><span class="text-gray-800 font-medium">Program percepatan 3 bulan</span></div>
+                        <hr class="border-gray-100">
+                        <div class="flex items-center gap-4"><i class="fas fa-check-circle text-green-500 text-xl"></i><span class="text-gray-800 font-medium">Jadwal sangat fleksibel</span></div>
+                        <hr class="border-gray-100">
+                        <div class="flex items-center gap-4"><i class="fas fa-check-circle text-green-500 text-xl"></i><span class="text-gray-800 font-medium text-sainsyellowhover font-bold">Bonus mengaji</span></div>
+                        <hr class="border-gray-100">
+                        <div class="flex items-center gap-4"><i class="fas fa-check-circle text-green-500 text-xl"></i><span class="text-gray-800 font-medium">Monitoring perkembangan berkala</span></div>
+                        <hr class="border-gray-100">
+                        <div class="flex items-center gap-4"><i class="fas fa-check-circle text-green-500 text-xl"></i><span class="text-gray-800 font-medium">Konsultasi orang tua gratis</span></div>
                     </div>
                 </div>
-                <div class="group relative overflow-hidden rounded-2xl shadow-md h-80">
-                    <img id="img-community2" src="" alt="Workout Online" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent flex flex-col justify-end p-6">
-                        <span class="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full w-max mb-2">Online Zoom</span>
-                        <h3 class="text-white font-bold text-xl">Home Workout Session</h3>
+
+                <!-- Tempat Lain Column -->
+                <div class="bg-gray-50 rounded-3xl p-8 shadow-sm border border-gray-200 relative border-t-8 border-gray-400 mt-12 md:mt-0">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-gray-500 text-white font-bold px-6 py-2 rounded-full shadow-md border-4 border-white whitespace-nowrap">
+                        Bimbel Konvensional
+                    </div>
+                    <div class="mt-6 space-y-5">
+                        <div class="flex items-center gap-4 text-gray-600"><i class="fas fa-times-circle text-red-400 text-xl"></i><span>Harus datang/antar jemput ke lokasi</span></div>
+                        <hr class="border-gray-200">
+                        <div class="flex items-center gap-4 text-gray-600"><i class="fas fa-times-circle text-red-400 text-xl"></i><span>Belajar berkelompok, anak malu bertanya</span></div>
+                        <hr class="border-gray-200">
+                        <div class="flex items-center gap-4 text-gray-600"><i class="fas fa-times-circle text-red-400 text-xl"></i><span>Perhatian guru terbagi-bagi</span></div>
+                        <hr class="border-gray-200">
+                        <div class="flex items-center gap-4 text-gray-600"><i class="fas fa-times-circle text-red-400 text-xl"></i><span>Jadwal kaku, sulit diganti jika anak sakit</span></div>
+                        <hr class="border-gray-200">
+                        <div class="flex items-center gap-4 text-gray-600"><i class="fas fa-times-circle text-red-400 text-xl"></i><span>Tidak ada pendampingan/bonus mengaji</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 7. TESTIMONIAL & BEFORE AFTER -->
-    <section id="testimoni" class="py-20 bg-beige px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="font-heading text-3xl md:text-4xl font-bold text-dark mb-4">Bukti Nyata, Bukan Janji</h2>
-                <p class="text-gray-600 text-lg">Mereka telah membuktikan bahwa mengubah gaya hidup jauh lebih efektif daripada diet ekstrem.</p>
+    <!-- SECTION TESTIMONI -->
+    <section class="pt-32 pb-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Apa Kata Orang Tua?</h2>
+                <div class="w-24 h-1.5 bg-sainsyellow mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600">Cerita nyata dari Ayah Bunda yang telah mempercayakan anak-anaknya di SainsPIQ.</p>
             </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-                <!-- Before After Image -->
-                <div class="lg:col-span-1">
-                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 relative">
-                        <span class="absolute -top-3 -right-3 bg-secondary text-white font-bold px-4 py-1 rounded-full shadow-md transform rotate-6">-12 KG dalam 3 Bulan!</span>
-                        <img id="img-before-after" src="" alt="Before After" class="w-full h-auto rounded-xl">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimoni 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 relative mt-6">
+                    <div class="absolute -top-6 left-8 bg-sainsyellow w-12 h-12 rounded-full flex items-center justify-center text-navy text-2xl shadow-md">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <div class="flex text-sainsyellow text-sm mb-4 mt-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-6 leading-relaxed">"Anak sebelumnya belum lancar membaca dan malu. Setelah 2 bulan les di SainsPIQ, alhamdulillah sekarang sudah bisa membaca buku cerita sederhana sendiri tanpa dieja."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-navy font-bold">B</div>
+                        <div>
+                            <p class="font-bold text-navy text-sm">Bunda Kiki</p>
+                            <p class="text-xs text-gray-500">Orang tua siswa TK B</p>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Testimoni 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 relative mt-6">
+                    <div class="absolute -top-6 left-8 bg-sainsyellow w-12 h-12 rounded-full flex items-center justify-center text-navy text-2xl shadow-md">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <div class="flex text-sainsyellow text-sm mb-4 mt-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-6 leading-relaxed">"Gurunya sangat sabar mengasuh anak saya yang aktif, dan selalu datang tepat waktu ke rumah. Anak jadi lebih semangat belajar dan nunggu-nunggu kakaknya datang."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center text-pink-700 font-bold">M</div>
+                        <div>
+                            <p class="font-bold text-navy text-sm">Mama Arkan</p>
+                            <p class="text-xs text-gray-500">Orang tua siswa SD Kelas 1</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimoni 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 relative mt-6">
+                    <div class="absolute -top-6 left-8 bg-sainsyellow w-12 h-12 rounded-full flex items-center justify-center text-navy text-2xl shadow-md">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <div class="flex text-sainsyellow text-sm mb-4 mt-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-6 leading-relaxed">"Bonus ngajinya itu yang bikin beda dan sangat membantu karena anak bisa belajar dua hal sekaligus. Hitung-hitung ngirit waktu dan biaya daripada panggil dua guru beda."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-700 font-bold">P</div>
+                        <div>
+                            <p class="font-bold text-navy text-sm">Papa Syifa</p>
+                            <p class="text-xs text-gray-500">Orang tua siswa TK A</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION PAKET HARGA -->
+    <!-- Tambah padding x (px-8/12) untuk memperkecil lebar konten card sedikit di container -->
+    <section class="py-20 bg-white" id="paket-harga">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Pilih Paket Belajar Sesuai Kebutuhan Anak</h2>
+                <div class="w-24 h-1.5 bg-sainsyellow mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600">Investasi terbaik untuk masa depan pendidikan anak Anda tanpa biaya tersembunyi.</p>
+            </div>
+
+            <!-- Dipersempit sedikit dengan membatasi max-w container card -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-center">
                 
-                <!-- Reviews -->
-                <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                        <div class="flex text-yellow-400 text-sm mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="text-gray-600 italic mb-6">"Akhirnya nemu program yang bikin BB turun tapi nggak nyiksa. Meal plannya enak, dan coachnya sangat sabar membimbing tiap hari. Baju lama muat lagi!"</p>
-                        <div class="flex items-center gap-4">
-                            <img id="img-testi1" src="" alt="Member" class="w-12 h-12 rounded-full object-cover">
-                            <div>
-                                <h4 class="font-bold text-dark text-sm">Siska, 32 Tahun</h4>
-                                <p class="text-xs text-gray-500">Ibu Rumah Tangga</p>
-                            </div>
-                        </div>
+                <!-- Paket Biasa (Warna Biru Muda) -->
+                <!-- Diubah padding dari p-8 ke p-6 (memperkecil card), tambah bg-blue-50 -->
+                <div class="bg-blue-50 border border-blue-100 rounded-3xl p-6 shadow-sm hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+                    <h3 class="text-xl font-bold text-navy mb-2">Paket Biasa</h3>
+                    <p class="text-gray-600 text-sm mb-6">Cocok untuk pengenalan dasar.</p>
+                    <div class="mb-4">
+                        <span class="text-3xl font-extrabold text-navy">Rp.750.000</span>
+                        <span class="text-gray-600 text-sm">/Bulan</span>
                     </div>
-                    
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                        <div class="flex text-yellow-400 text-sm mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="text-gray-600 italic mb-6">"Sebagai pekerja kantoran yang sibuk, program online ini sangat membantu. Nutrisinya praktis, badan jadi lebih segar, dan perut buncit hilang perlahan."</p>
-                        <div class="flex items-center gap-4">
-                            <img id="img-testi2" src="" alt="Member" class="w-12 h-12 rounded-full object-cover">
-                            <div>
-                                <h4 class="font-bold text-dark text-sm">Andi, 28 Tahun</h4>
-                                <p class="text-xs text-gray-500">Karyawan Swasta</p>
-                            </div>
-                        </div>
+                    <div class="bg-white border border-blue-200 text-blue-800 text-center py-2 rounded-lg font-bold mb-6 text-sm shadow-inner">
+                        4x Pertemuan / Bulan
                     </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Guru datang ke rumah</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Modul belajar disediakan</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Evaluasi berkala</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Bonus mengaji</span></li>
+                    </ul>
+                    <a href="https://wa.me/628981677111?text=Saya%20ingin%20konsultasi%20Paket%20Biasa" class="block w-full text-center bg-navy hover:bg-navylight text-white font-bold py-3 rounded-xl transition duration-300 shadow-md text-sm">
+                        Konsultasi Paket Biasa
+                    </a>
                 </div>
+
+                <!-- Paket Favorit (Highlight - Warna Kuning/Emas) -->
+                <!-- Diubah padding dari p-8 ke p-6 (memperkecil card), tambah bg-yellow-50 -->
+                <div class="bg-gradient-to-b from-yellow-50 to-white rounded-3xl p-6 shadow-2xl transform md:scale-105 relative border-2 border-sainsyellow z-10 hover:-translate-y-2 transition-all duration-300">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg whitespace-nowrap">
+                        🔥 PALING DIREKOMENDASIKAN
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-2 mt-2">Paket Favorit</h3>
+                    <p class="text-gray-600 text-sm mb-6">Rekomendasi terbaik agar cepat lancar.</p>
+                    <div class="mb-2">
+                        <span class="text-4xl font-extrabold text-navy">Rp.1.150.000</span>
+                        <span class="text-gray-600 text-sm">/Bulan</span>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-4 font-medium">(Rp 140.625 / pertemuan)</p>
+                    <div class="bg-yellow-100 border border-yellow-300 text-yellow-800 text-center py-2 rounded-lg font-bold mb-6 text-sm shadow-inner">
+                        8x Pertemuan / Bulan
+                    </div>
+                    <ul class="space-y-3 mb-8 text-gray-700">
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-sm">Guru datang ke rumah</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-sm">Modul belajar disediakan</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-sm">Evaluasi berkala</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-sm font-bold text-navy">Bonus mengaji</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-sm">Pendampingan lebih intensif</span></li>
+                    </ul>
+                    <a href="https://wa.me/628981677111?text=Saya%20ingin%20konsultasi%20Paket%20Favorit" class="block w-full text-center bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-navy font-bold py-3.5 rounded-xl transition duration-300 shadow-lg text-sm">
+                        Konsultasi Paket Favorit
+                    </a>
+                </div>
+
+                <!-- Paket Smart (Warna Hijau/Teal Muda) -->
+                <!-- Diubah padding dari p-8 ke p-6 (memperkecil card), tambah bg-teal-50 -->
+                <div class="bg-teal-50 border border-teal-100 rounded-3xl p-6 shadow-sm hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+                    <h3 class="text-xl font-bold text-navy mb-2">Paket Smart</h3>
+                    <p class="text-gray-600 text-sm mb-6">Target lulus secepat mungkin.</p>
+                    <div class="mb-4">
+                        <span class="text-3xl font-extrabold text-navy">Rp. 1.499.000</span>
+                        <span class="text-gray-600 text-sm">/Bulan</span>
+                    </div>
+                    <div class="bg-white border border-teal-200 text-teal-800 text-center py-2 rounded-lg font-bold mb-6 text-sm shadow-inner">
+                        12x Pertemuan / Bulan
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Guru datang ke rumah</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Modul belajar disediakan</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Evaluasi berkala</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Bonus mengaji</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm font-bold text-navy">Pendampingan maksimal</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-1"></i> <span class="text-gray-700 text-sm">Target lebih cepat</span></li>
+                    </ul>
+                    <a href="https://wa.me/628981677111?text=Saya%20ingin%20konsultasi%20Paket%20Smart" class="block w-full text-center bg-navy hover:bg-navylight text-white font-bold py-3 rounded-xl transition duration-300 shadow-md text-sm">
+                        Konsultasi Paket Smart
+                    </a>
+                </div>
+
             </div>
+            <p class="text-center text-sm text-gray-400 mt-8">*Biaya pendaftaran dan transport dibicarakan saat konsultasi via WhatsApp.</p>
         </div>
     </section>
 
-    <!-- 8. BENEFITS -->
-    <section class="py-20 px-4 bg-white">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="font-heading text-3xl font-bold text-center text-dark mb-12">Kenapa Anda Harus Bergabung?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition">
-                    <i class="fa-solid fa-check-circle text-primary text-2xl mt-1"></i>
-                    <div>
-                        <h4 class="font-bold text-lg text-dark mb-1">Tanpa Diet Ekstrem</h4>
-                        <p class="text-gray-600 text-sm">Anda tetap bisa makan makanan kesukaan dengan panduan porsi yang tepat.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition">
-                    <i class="fa-solid fa-check-circle text-primary text-2xl mt-1"></i>
-                    <div>
-                        <h4 class="font-bold text-lg text-dark mb-1">Bisa Dilakukan Dimana Saja</h4>
-                        <p class="text-gray-600 text-sm">Program 100% bisa dijalankan secara online, cocok untuk Anda yang sibuk.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition">
-                    <i class="fa-solid fa-check-circle text-primary text-2xl mt-1"></i>
-                    <div>
-                        <h4 class="font-bold text-lg text-dark mb-1">Hasil Jangka Panjang</h4>
-                        <p class="text-gray-600 text-sm">Fokus pada perbaikan kebiasaan (habit), bukan sekadar turun BB instan lalu naik lagi.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition">
-                    <i class="fa-solid fa-check-circle text-primary text-2xl mt-1"></i>
-                    <div>
-                        <h4 class="font-bold text-lg text-dark mb-1">Lingkungan Positif</h4>
-                        <p class="text-gray-600 text-sm">Dikelilingi oleh orang-orang dengan visi yang sama untuk saling mendukung.</p>
-                    </div>
-                </div>
+    <!-- SECTION FAQ -->
+    <section class="py-20 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Pertanyaan yang Sering Ditanyakan</h2>
+                <div class="w-24 h-1.5 bg-sainsyellow mx-auto rounded-full"></div>
             </div>
-        </div>
-    </section>
 
-    <!-- 9. FAQ SECTION -->
-    <section class="py-20 bg-beige px-4">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="font-heading text-3xl font-bold text-dark mb-4">Pertanyaan yang Sering Diajukan</h2>
-            </div>
-            
             <div class="space-y-4">
-                <!-- FAQ 1 -->
-                <div class="accordion-item bg-white border border-gray-200 rounded-xl shadow-sm">
-                    <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-dark">Apakah program ini menggunakan suplemen?</span>
-                        <i class="fa-solid fa-chevron-down accordion-icon text-gray-400 transition-transform duration-300"></i>
+                <!-- FAQ Items remain the same -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                    <button class="faq-button w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none">
+                        <span class="font-semibold text-gray-800">1. Apakah guru datang ke rumah?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 transform"></i>
                     </button>
-                    <div class="accordion-content bg-gray-50 text-gray-600 text-sm rounded-b-xl">
-                        <div>
-                            <p class="px-6 pb-4 pt-2">Ya, kami mengintegrasikan nutrisi seluler berkualitas tinggi (Herbalife) sebagai pengganti makan yang praktis dan rendah kalori, dipadukan dengan makanan utuh sehat (real food) untuk hasil yang optimal.</p>
-                        </div>
+                    <div class="accordion-content bg-gray-50 px-6 text-gray-600 text-sm">
+                        Ya, layanan kami adalah private in-home tutoring di mana guru kami akan datang langsung ke rumah siswa.
                     </div>
                 </div>
-                <!-- FAQ 2 -->
-                <div class="accordion-item bg-white border border-gray-200 rounded-xl shadow-sm">
-                    <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-dark">Apakah wajib olahraga berat?</span>
-                        <i class="fa-solid fa-chevron-down accordion-icon text-gray-400 transition-transform duration-300"></i>
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                    <button class="faq-button w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none">
+                        <span class="font-semibold text-gray-800">2. Area layanan dimana saja?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 transform"></i>
                     </button>
-                    <div class="accordion-content bg-gray-50 text-gray-600 text-sm rounded-b-xl">
-                        <div>
-                            <p class="px-6 pb-4 pt-2">Tidak wajib olahraga berat. 80% keberhasilan diet berasal dari nutrisi, 20% dari olahraga. Kami menyarankan olahraga ringan seperti jalan kaki atau senam bersama yang kami sediakan untuk kebugaran jantung.</p>
-                        </div>
+                    <div class="accordion-content bg-gray-50 px-6 text-gray-600 text-sm">
+                        Saat ini kami melayani wilayah Jabodetabek (Jakarta, Bogor, Depok, Tangerang, Bekasi) dan sekitarnya. Silakan chat admin untuk mengecek ketersediaan guru di kecamatan Anda.
                     </div>
                 </div>
-                <!-- FAQ 3 -->
-                <div class="accordion-item bg-white border border-gray-200 rounded-xl shadow-sm">
-                    <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-dark">Berapa lama hasilnya terlihat?</span>
-                        <i class="fa-solid fa-chevron-down accordion-icon text-gray-400 transition-transform duration-300"></i>
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                    <button class="faq-button w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none">
+                        <span class="font-semibold text-gray-800">3. Apakah bisa memilih jadwal?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 transform"></i>
                     </button>
-                    <div class="accordion-content bg-gray-50 text-gray-600 text-sm rounded-b-xl">
-                        <div>
-                            <p class="px-6 pb-4 pt-2">Hasil bervariasi setiap individu. Namun, dengan mengikuti panduan secara disiplin, rata-rata member kami merasakan perubahan positif (tubuh lebih ringan, lingkar mengecil) dalam 1-2 minggu pertama.</p>
-                        </div>
+                    <div class="accordion-content bg-gray-50 px-6 text-gray-600 text-sm">
+                        Ya, jadwal sangat fleksibel dan diatur berdasarkan kesepakatan antara orang tua siswa dan guru yang bertugas.
                     </div>
                 </div>
-                <!-- FAQ 4 -->
-                <div class="accordion-item bg-white border border-gray-200 rounded-xl shadow-sm">
-                    <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-dark">Apakah cocok untuk ibu menyusui / pemula?</span>
-                        <i class="fa-solid fa-chevron-down accordion-icon text-gray-400 transition-transform duration-300"></i>
+                 <!-- FAQ Item 4 -->
+                 <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                    <button class="faq-button w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none">
+                        <span class="font-semibold text-gray-800">4. Berapa lama sampai anak lancar?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 transform"></i>
                     </button>
-                    <div class="accordion-content bg-gray-50 text-gray-600 text-sm rounded-b-xl">
-                        <div>
-                            <p class="px-6 pb-4 pt-2">Sangat cocok! Program ini bersifat personalisasi. Kebutuhan kalori ibu menyusui tentu berbeda dan akan kami sesuaikan agar ASI tetap lancar. Pemula pun akan dibimbing dari nol.</p>
-                        </div>
+                    <div class="accordion-content bg-gray-50 px-6 text-gray-600 text-sm">
+                        Rata-rata perkembangan yang signifikan terlihat dalam 2-3 bulan, namun ini tergantung kemampuan awal, daya serap anak, dan konsistensi belajarnya.
                     </div>
                 </div>
-                <!-- FAQ 5 (Diabetes) -->
-                <div class="accordion-item bg-white border border-gray-200 rounded-xl shadow-sm">
-                    <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-dark">Apakah aman untuk penderita diabetes?</span>
-                        <i class="fa-solid fa-chevron-down accordion-icon text-gray-400 transition-transform duration-300"></i>
+                <!-- FAQ Item 5 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                    <button class="faq-button w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none">
+                        <span class="font-semibold text-gray-800">5. Bagaimana cara mendaftar?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 transform"></i>
                     </button>
-                    <div class="accordion-content bg-gray-50 text-gray-600 text-sm rounded-b-xl">
-                        <div>
-                            <p class="px-6 pb-4 pt-2">Ya, program diet sehat kami menggunakan asupan gizi seimbang dengan Indeks Glikemik rendah (Low GI) yang justru sangat baik untuk membantu menstabilkan gula darah. Meskipun demikian, kami selalu menyarankan Anda untuk berkonsultasi dengan dokter pribadi Anda sebelum memulai program nutrisi apapun.</p>
-                        </div>
+                    <div class="accordion-content bg-gray-50 px-6 pb-4 text-gray-600 text-sm">
+                        Sangat mudah! Anda cukup klik tombol WhatsApp yang ada di website ini, dan tim admin kami akan segera merespon dan memandu proses pendaftarannya.
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 10. FORM KONSULTASI & FINAL CTA (SUPABASE INTEGRATION) -->
-    <section id="konsultasi" class="py-20 px-4 bg-white relative">
-        <div class="max-w-5xl mx-auto bg-dark rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row relative z-10">
-            <!-- CTA Text -->
-            <div class="w-full md:w-1/2 p-10 md:p-14 bg-gradient-to-br from-primary to-emerald-800 text-white flex flex-col justify-center">
-                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Waktu Terbaik Memulai Adalah Sekarang!</h2>
-                <p class="text-green-100 text-lg mb-8">Jangan tunda kesehatan Anda. Isi form di samping untuk menjadwalkan sesi konsultasi gratis, atau langsung chat via WhatsApp.</p>
-                <button onclick="openWhatsApp()" class="bg-white text-primary hover:bg-gray-100 px-6 py-4 rounded-xl font-bold text-lg transition flex items-center justify-center gap-2 w-full shadow-lg">
-                    <i class="fa-brands fa-whatsapp text-2xl"></i> Konsultasi Gratis via WA
-                </button>
-            </div>
+    <!-- FINAL CTA SECTION -->
+    <section class="py-24 relative overflow-hidden bg-sainsyellow">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#0A192F 2px, transparent 2px); background-size: 30px 30px;"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-navy mb-6">Jangan Tunggu Anak Semakin Tertinggal</h2>
+            <p class="text-xl text-navy/80 font-medium mb-10 max-w-2xl mx-auto">
+                Mulai langkah terbaik untuk masa depan anak hari ini juga. Investasi pendidikan di usia dini akan berdampak besar di masa depan.
+            </p>
             
-            <!-- Database Form -->
-            <div class="w-full md:w-1/2 p-10 md:p-12 bg-white">
-                <h3 class="font-heading font-bold text-2xl text-dark mb-6">Form Konsultasi</h3>
-                
-                <!-- Pesan Sukses / Error -->
-                <div id="form-message" class="hidden px-4 py-3 rounded-lg mb-4 text-sm font-medium"></div>
+            <!-- Link diubah ke #paket-harga -->
+            <a href="#paket-harga" class="inline-flex items-center justify-center bg-navy hover:bg-navylight text-white font-bold text-xl px-10 py-5 rounded-full transition duration-300 shadow-[0_10px_30px_rgba(10,25,47,0.3)] transform hover:scale-105">
+                <i class="fab fa-whatsapp text-3xl mr-3 text-green-400"></i> Daftar & Konsultasi Gratis Sekarang
+            </a>
 
-                <form id="leadForm" class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-                        <input type="text" id="form-nama" required class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Nomor WhatsApp</label>
-                        <input type="tel" id="form-wa" required placeholder="0812..." class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Usia</label>
-                            <input type="number" id="form-usia" required class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Target</label>
-                            <select id="form-target" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
-                                <option value="Turun BB">Turun BB</option>
-                                <option value="Naik BB">Naik BB</option>
-                                <option value="Kesehatan">Gaya Hidup Sehat</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Keluhan Utama</label>
-                        <textarea id="form-keluhan" rows="2" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none"></textarea>
-                    </div>
-                    <button type="submit" id="submitBtn" class="w-full bg-dark hover:bg-gray-800 text-white font-bold py-3.5 rounded-lg transition mt-2">
-                        Kirim & Jadwalkan Konsultasi
-                    </button>
-                </form>
-                <p class="text-xs text-gray-400 mt-4 text-center"><i class="fa-solid fa-lock"></i> Data Anda dijamin kerahasiaannya.</p>
+            <div class="mt-8 inline-block bg-white/40 backdrop-blur-sm border border-navy/10 text-navy font-bold px-6 py-2 rounded-full animate-pulse">
+                <i class="fas fa-exclamation-circle text-red-600 mr-2"></i> Peringatan: Kuota guru terbatas setiap bulannya!
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-gray-900 text-gray-300 py-12 px-4 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-                <div class="flex items-center gap-2 mb-4">
-                    <i class="fa-solid fa-leaf text-primary text-2xl"></i>
-                    <span class="font-heading font-bold text-2xl text-white">Fit<span class="text-primary">Life</span></span>
-                </div>
-                <p class="text-sm text-gray-400 mb-4">Independent Herbalife Member & Wellness Coach. Berkomitmen menciptakan masyarakat yang lebih sehat dan bahagia.</p>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
-                </div>
-            </div>
-            <div>
-                <h4 class="font-bold text-white mb-4">Tautan Cepat</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="#about" class="hover:text-primary transition">Tentang Coach</a></li>
-                    <li><a href="#program" class="hover:text-primary transition">Detail Program</a></li>
-                    <li><a href="#testimoni" class="hover:text-primary transition">Testimoni Member</a></li>
-                    <li><a href="#konsultasi" class="hover:text-primary transition">Konsultasi</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold text-white mb-4">Disclaimer</h4>
-                <p class="text-xs text-gray-500 leading-relaxed">
-                    Produk Herbalife tidak ditujukan untuk mendiagnosa, merawat, menyembuhkan atau mencegah penyakit apapun. Hasil penurunan berat badan bervariasi pada setiap individu tergantung dari metabolisme, genetik, dan kedisiplinan menerapkan pola makan sehat serta olahraga.
-                </p>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
-            &copy; 2026 FitLife Wellness Coach. All rights reserved.
+    <footer class="bg-navy py-10 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-2xl font-bold text-white">Sains<span class="text-sainsyellow">PIQ</span></div>
+            <p class="text-gray-400 text-sm text-center md:text-left">
+                &copy; <script>document.write(new Date().getFullYear())</script> SainsPIQ. All rights reserved.
+            </p>
         </div>
     </footer>
 
-    <!-- ===================== LOGIN MODAL ===================== -->
-    <div id="login-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-8 relative animate-fadeIn">
-            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition">
-                <i class="fa-solid fa-xmark text-2xl"></i>
-            </button>
-            <div class="text-center mb-8">
-                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fa-solid fa-user-shield text-primary text-3xl"></i>
-                </div>
-                <h2 class="font-heading font-bold text-2xl text-dark">Admin Login</h2>
-                <p class="text-gray-500 text-sm mt-1">Masuk untuk mengelola konten halaman</p>
-            </div>
-            <div id="login-error" class="hidden bg-red-50 border border-red-200 text-red-600 text-sm px-4 py-3 rounded-xl mb-4 flex items-center gap-2">
-                <i class="fa-solid fa-circle-exclamation"></i> <span>Username atau password salah.</span>
-            </div>
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
-                    <input type="text" id="login-username" placeholder="admin" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                    <div class="relative">
-                        <input type="password" id="login-password" placeholder="••••••••" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition pr-12">
-                        <button type="button" onclick="togglePassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary">
-                            <i id="pass-eye" class="fa-solid fa-eye"></i>
-                        </button>
-                    </div>
-                </div>
-                <button onclick="doLogin()" class="w-full bg-primary hover:bg-primaryDark text-white font-bold py-3.5 rounded-xl transition mt-2 shadow-lg shadow-primary/30">
-                    <i class="fa-solid fa-right-to-bracket mr-2"></i> Masuk ke Dashboard
-                </button>
-            </div>
-            <p class="text-xs text-gray-400 text-center mt-6">
-                <i class="fa-solid fa-circle-info"></i> Demo: user <b>admin</b> / pass <b>fitlife123</b>
-            </p>
+    <!-- POPUP NOTIFIKASI PENDAFTARAN (Warna Hijau) -->
+    <div id="registration-notification" class="notification-popup flex items-center gap-3">
+        <div class="bg-green-100 text-green-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div>
+            <p id="notif-text" class="text-sm text-gray-800 font-medium">Bunda Linda baru saja mendaftar.</p>
+            <p id="notif-time" class="text-xs text-gray-500">2 hari yang lalu</p>
         </div>
     </div>
 
-    <!-- ===================== ADMIN PANEL ===================== -->
-    <div id="admin-panel" class="fixed inset-0 bg-gray-100 z-[200] hidden overflow-y-auto">
-        <!-- Admin Topbar -->
-        <div class="bg-white shadow-sm sticky top-0 z-10">
-            <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-                <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 bg-green-100 rounded-lg flex items-center justify-center">
-                        <i class="fa-solid fa-leaf text-primary"></i>
-                    </div>
-                    <div>
-                        <h1 class="font-heading font-bold text-dark text-lg leading-none">FitLife Admin</h1>
-                        <p class="text-xs text-gray-400">Dashboard Konfigurasi</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-3">
-                    <span class="hidden sm:flex items-center gap-2 bg-green-50 text-primary text-sm font-medium px-3 py-1.5 rounded-full border border-green-200">
-                        <i class="fa-solid fa-circle text-xs animate-pulse"></i> Logged in as admin
-                    </span>
-                    <button onclick="applyAdminChanges()" class="bg-primary hover:bg-primaryDark text-white px-4 py-2 rounded-xl font-bold text-sm transition shadow-md flex items-center gap-2">
-                        <i class="fa-solid fa-floppy-disk"></i> Simpan & Terapkan
-                    </button>
-                    <button onclick="logoutAdmin()" class="bg-red-50 hover:bg-red-100 text-red-500 px-4 py-2 rounded-xl font-medium text-sm transition flex items-center gap-2 border border-red-200">
-                        <i class="fa-solid fa-right-from-bracket"></i> Keluar
-                    </button>
-                </div>
-            </div>
-            <!-- Tab Navigation -->
-            <div class="max-w-7xl mx-auto px-4 flex gap-1 pb-3 overflow-x-auto">
-                <button onclick="switchAdminTab('tab-general')" class="admin-tab active-tab px-4 py-2 rounded-lg text-sm font-medium transition whitespace-nowrap" data-tab="tab-general">
-                    <i class="fa-solid fa-sliders mr-1"></i> Umum
-                </button>
-                <button onclick="switchAdminTab('tab-images')" class="admin-tab px-4 py-2 rounded-lg text-sm font-medium transition whitespace-nowrap" data-tab="tab-images">
-                    <i class="fa-solid fa-images mr-1"></i> Gambar
-                </button>
-                <button onclick="switchAdminTab('tab-program')" class="admin-tab px-4 py-2 rounded-lg text-sm font-medium transition whitespace-nowrap" data-tab="tab-program">
-                    <i class="fa-solid fa-tag mr-1"></i> Program & Harga
-                </button>
-                <button onclick="switchAdminTab('tab-testi')" class="admin-tab px-4 py-2 rounded-lg text-sm font-medium transition whitespace-nowrap" data-tab="tab-testi">
-                    <i class="fa-solid fa-star mr-1"></i> Testimoni
-                </button>
-                <button onclick="switchAdminTab('tab-contact')" class="admin-tab px-4 py-2 rounded-lg text-sm font-medium transition whitespace-nowrap" data-tab="tab-contact">
-                    <i class="fa-brands fa-whatsapp mr-1"></i> Kontak & WA
-                </button>
-            </div>
-        </div>
+    <!-- FLOATING WHATSAPP BUTTON (Diubah mengarah ke section harga) -->
+    <a href="#paket-harga" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-[0_4px_15px_rgba(37,211,102,0.4)] hover:bg-[#128C7E] transition duration-300 z-50 transform hover:scale-110" aria-label="Lihat Harga">
+        <i class="fab fa-whatsapp"></i>
+        <span class="absolute -top-2 -right-2 flex h-4 w-4">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-4 w-4 bg-red-500"></span>
+        </span>
+    </a>
 
-        <div class="max-w-7xl mx-auto px-4 py-8">
-            <!-- Save Success Banner -->
-            <div id="save-banner" class="hidden bg-green-50 border border-green-200 text-green-700 px-5 py-4 rounded-2xl mb-6 flex items-center gap-3 text-sm font-medium">
-                <i class="fa-solid fa-circle-check text-lg"></i>
-                <span>Perubahan berhasil diterapkan ke halaman landing!</span>
-            </div>
-
-            <!-- TAB: UMUM -->
-            <div id="tab-general" class="admin-tab-content">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <h3 class="font-bold text-dark text-lg mb-5 flex items-center gap-2">
-                            <i class="fa-solid fa-heading text-primary"></i> Teks Hero Section
-                        </h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Headline Utama</label>
-                                <textarea id="adm-headline" rows="3" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm resize-none"></textarea>
-                                <p class="text-xs text-gray-400 mt-1">Gunakan <code class="bg-gray-100 px-1 rounded">&lt;span class='text-primary'&gt;Teks Hijau&lt;/span&gt;</code> untuk highlight</p>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Sub-headline</label>
-                                <textarea id="adm-subheadline" rows="3" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm resize-none"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <h3 class="font-bold text-dark text-lg mb-5 flex items-center gap-2">
-                            <i class="fa-solid fa-user text-primary"></i> Profil Coach
-                        </h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Nama Coach</label>
-                                <input type="text" id="adm-coach-name" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Bio Singkat</label>
-                                <textarea id="adm-coach-bio" rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm resize-none"></textarea>
-                            </div>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Tahun Pengalaman</label>
-                                    <input type="text" id="adm-exp-years" placeholder="5+" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Total Member Berhasil</label>
-                                    <input type="text" id="adm-members" placeholder="500+" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <h3 class="font-bold text-dark text-lg mb-5 flex items-center gap-2">
-                            <i class="fa-solid fa-palette text-primary"></i> Branding & Identitas
-                        </h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Nama Brand</label>
-                                <input type="text" id="adm-brand-name" placeholder="FitLife" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Tagline Footer</label>
-                                <input type="text" id="adm-footer-tagline" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <h3 class="font-bold text-dark text-lg mb-5 flex items-center gap-2">
-                            <i class="fa-solid fa-database text-primary"></i> Supabase / Database
-                        </h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Supabase URL</label>
-                                <input type="text" id="adm-supabase-url" placeholder="https://xxxxx.supabase.co" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm font-mono">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Supabase Anon Key</label>
-                                <input type="text" id="adm-supabase-key" placeholder="eyJhbGci..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm font-mono">
-                            </div>
-                            <div class="bg-yellow-50 border border-yellow-200 rounded-xl px-4 py-3 text-xs text-yellow-700 flex gap-2">
-                                <i class="fa-solid fa-triangle-exclamation mt-0.5"></i>
-                                <span>Untuk mode demo, data form akan tampil sebagai notifikasi kuning (tidak terkirim ke database).</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB: GAMBAR -->
-            <div id="tab-images" class="admin-tab-content hidden">
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    <!-- Image card helper macro -->
-                    <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-                        <h4 class="font-bold text-sm text-dark mb-3 flex items-center gap-2"><i class="fa-solid fa-image text-primary"></i> Gambar Hero (Utama)</h4>
-                        <img id="prev-hero" class="w-full h-40 object-cover rounded-xl mb-3 border" src="">
-                        <input type="text" id="adm-img-hero" placeholder="URL gambar hero..." class="w-full px-3 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" oninput="previewImg(this, 'prev-hero')">
-                    </div>
-                    <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-                        <h4 class="font-bold text-sm text-dark mb-3 flex items-center gap-2"><i class="fa-solid fa-image text-primary"></i> Foto Coach</h4>
-                        <img id="prev-coach" class="w-full h-40 object-cover rounded-xl mb-3 border" src="">
-                        <input type="text" id="adm-img-coach" placeholder="URL foto coach..." class="w-full px-3 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" oninput="previewImg(this, 'prev-coach')">
-                    </div>
-                    <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-                        <h4 class="font-bold text-sm text-dark mb-3 flex items-center gap-2"><i class="fa-solid fa-image text-primary"></i> Foto Komunitas 1</h4>
-                        <img id="prev-com1" class="w-full h-40 object-cover rounded-xl mb-3 border" src="">
-                        <input type="text" id="adm-img-com1" placeholder="URL foto komunitas 1..." class="w-full px-3 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" oninput="previewImg(this, 'prev-com1')">
-                    </div>
-                    <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-                        <h4 class="font-bold text-sm text-dark mb-3 flex items-center gap-2"><i class="fa-solid fa-image text-primary"></i> Foto Komunitas 2</h4>
-                        <img id="prev-com2" class="w-full h-40 object-cover rounded-xl mb-3 border" src="">
-                        <input type="text" id="adm-img-com2" placeholder="URL foto komunitas 2..." class="w-full px-3 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" oninput="previewImg(this, 'prev-com2')">
-                    </div>
-                    <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-                        <h4 class="font-bold text-sm text-dark mb-3 flex items-center gap-2"><i class="fa-solid fa-image text-primary"></i> Foto Testimoni 1</h4>
-                        <img id="prev-testi1" class="w-full h-40 object-cover rounded-xl mb-3 border" src="">
-                        <input type="text" id="adm-img-testi1" placeholder="URL foto testi 1..." class="w-full px-3 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" oninput="previewImg(this, 'prev-testi1')">
-                    </div>
-                    <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-                        <h4 class="font-bold text-sm text-dark mb-3 flex items-center gap-2"><i class="fa-solid fa-image text-primary"></i> Foto Testimoni 2</h4>
-                        <img id="prev-testi2" class="w-full h-40 object-cover rounded-xl mb-3 border" src="">
-                        <input type="text" id="adm-img-testi2" placeholder="URL foto testi 2..." class="w-full px-3 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" oninput="previewImg(this, 'prev-testi2')">
-                    </div>
-                    <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-                        <h4 class="font-bold text-sm text-dark mb-3 flex items-center gap-2"><i class="fa-solid fa-image text-primary"></i> Foto Before/After</h4>
-                        <img id="prev-ba" class="w-full h-40 object-cover rounded-xl mb-3 border" src="">
-                        <input type="text" id="adm-img-ba" placeholder="URL foto before/after..." class="w-full px-3 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" oninput="previewImg(this, 'prev-ba')">
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB: PROGRAM & HARGA -->
-            <div id="tab-program" class="admin-tab-content hidden">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <h3 class="font-bold text-dark text-lg mb-5 flex items-center gap-2">
-                            <i class="fa-solid fa-trophy text-primary"></i> Program Utama
-                        </h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Nama Program</label>
-                                <input type="text" id="adm-prog-name" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" value="Program Transformasi Premium 21 Hari">
-                            </div>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Harga Normal</label>
-                                    <div class="relative">
-                                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-bold">Rp</span>
-                                        <input type="text" id="adm-price-normal" class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" value="500.000">
-                                    </div>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Harga Promo</label>
-                                    <div class="relative">
-                                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-bold">Rp</span>
-                                        <input type="text" id="adm-price-promo" class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" value="299.000">
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Durasi Program</label>
-                                <input type="text" id="adm-prog-duration" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" value="21 Hari">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <h3 class="font-bold text-dark text-lg mb-5 flex items-center gap-2">
-                            <i class="fa-solid fa-list-check text-primary"></i> Fitur Program (1 per baris)
-                        </h3>
-                        <textarea id="adm-prog-features" rows="9" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm resize-none font-mono">Coaching Online 1-on-1 Harian
-Meal Plan Praktis & Personal
-Akses Grup Support VIP
-Monitoring Progress Mingguan
-Resep Masakan Sehat
-Senam Bersama Online
-E-book Panduan Nutrisi
-Konsultasi Langsung via WA</textarea>
-                        <p class="text-xs text-gray-400 mt-2">Pisahkan setiap fitur dengan enter (1 baris = 1 fitur)</p>
-                    </div>
-                </div>
-                <!-- Live Preview Pricing Card -->
-                <div class="mt-6 bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                    <h3 class="font-bold text-dark text-lg mb-5 flex items-center gap-2">
-                        <i class="fa-solid fa-eye text-primary"></i> Preview Kartu Harga
-                    </h3>
-                    <div class="max-w-sm mx-auto bg-gradient-to-br from-dark to-gray-800 text-white rounded-2xl overflow-hidden shadow-xl">
-                        <div class="bg-primary px-6 py-3 text-center">
-                            <span class="text-sm font-bold text-dark uppercase tracking-widest">🔥 Penawaran Terbatas</span>
-                        </div>
-                        <div class="p-8 text-center">
-                            <h4 id="prev-prog-name" class="font-heading font-bold text-xl mb-4">Program Transformasi Premium 21 Hari</h4>
-                            <div class="mb-4">
-                                <p id="prev-price-normal" class="text-gray-400 text-sm line-through">Rp 500.000</p>
-                                <p id="prev-price-promo" class="text-4xl font-heading font-bold text-primary">Rp 299.000</p>
-                                <p id="prev-prog-duration" class="text-gray-400 text-sm mt-1">selama 21 Hari</p>
-                            </div>
-                            <div id="prev-features" class="text-left space-y-2 mb-6 text-sm">
-                                <!-- Features populated by JS -->
-                            </div>
-                            <button class="w-full bg-primary text-dark font-bold py-3 rounded-xl">Daftar Sekarang</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB: TESTIMONI -->
-            <div id="tab-testi" class="admin-tab-content hidden">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <!-- Testi 1 -->
-                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <h3 class="font-bold text-dark text-lg mb-5 flex items-center gap-2">
-                            <i class="fa-solid fa-comment text-primary"></i> Testimoni #1
-                        </h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Nama</label>
-                                <input type="text" id="adm-t1-name" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" value="Sari Dewi, 32 thn">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Keterangan (lokasi/pekerjaan)</label>
-                                <input type="text" id="adm-t1-sub" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" value="Ibu Rumah Tangga, Bandung">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Hasil (misal: -12 kg)</label>
-                                <input type="text" id="adm-t1-result" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" value="-12 kg dalam 45 hari">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Isi Testimoni</label>
-                                <textarea id="adm-t1-text" rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm resize-none">"Awalnya skeptis, tapi ternyata ini beneran work! Dalam 45 hari BB saya turun 12 kg. Yang paling saya suka, saya tidak pernah merasa kelaparan dan tidak tersiksa sama sekali. Coach-nya juga super sabar dan selalu ada."</textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testi 2 -->
-                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <h3 class="font-bold text-dark text-lg mb-5 flex items-center gap-2">
-                            <i class="fa-solid fa-comment text-secondary"></i> Testimoni #2
-                        </h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Nama</label>
-                                <input type="text" id="adm-t2-name" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" value="Budi Santoso, 28 thn">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Keterangan</label>
-                                <input type="text" id="adm-t2-sub" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" value="Karyawan Swasta, Jakarta">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Hasil</label>
-                                <input type="text" id="adm-t2-result" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" value="-8 kg dalam 30 hari">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Isi Testimoni</label>
-                                <textarea id="adm-t2-text" rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm resize-none">"Sudah 2 tahun gagal diet sendiri. Begitu gabung program ini, 1 bulan sudah turun 8 kg! Meal plan-nya beneran simpel, bisa diikutin meski kerja dan sibuk. Highly recommended!"</textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB: KONTAK -->
-            <div id="tab-contact" class="admin-tab-content hidden">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <h3 class="font-bold text-dark text-lg mb-5 flex items-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-green-500"></i> Konfigurasi WhatsApp
-                        </h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Nomor WhatsApp (dengan kode negara, tanpa +)</label>
-                                <div class="relative">
-                                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">📱</span>
-                                    <input type="tel" id="adm-wa-number" class="w-full pl-9 pr-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm font-mono" value="6281234567890">
-                                </div>
-                                <p class="text-xs text-gray-400 mt-1">Contoh: <code class="bg-gray-100 px-1 rounded">6281234567890</code> (untuk +62 812 3456 7890)</p>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Pesan Otomatis (Pre-filled Text)</label>
-                                <textarea id="adm-wa-message" rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm resize-none">Halo Coach, saya ingin konsultasi mengenai program penurunan berat badan dan healthy lifestyle.</textarea>
-                            </div>
-                            <div class="bg-green-50 border border-green-200 rounded-xl p-4">
-                                <p class="text-sm text-green-700 font-medium mb-2"><i class="fa-solid fa-eye mr-1"></i> Preview Link WA:</p>
-                                <p id="prev-wa-link" class="text-xs text-green-600 font-mono break-all">https://wa.me/6281234567890?text=Halo+Coach...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <h3 class="font-bold text-dark text-lg mb-5 flex items-center gap-2">
-                            <i class="fa-solid fa-share-nodes text-primary"></i> Sosial Media
-                        </h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1"><i class="fa-brands fa-instagram text-pink-500 mr-1"></i> Instagram URL</label>
-                                <input type="url" id="adm-ig" placeholder="https://instagram.com/username" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" value="https://instagram.com/fitlifecoach">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1"><i class="fa-brands fa-tiktok mr-1"></i> TikTok URL</label>
-                                <input type="url" id="adm-tiktok" placeholder="https://tiktok.com/@username" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" value="https://tiktok.com/@fitlifecoach">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1"><i class="fa-brands fa-facebook text-blue-600 mr-1"></i> Facebook URL</label>
-                                <input type="url" id="adm-fb" placeholder="https://facebook.com/page" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none text-sm" value="https://facebook.com/fitlifecoach">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div><!-- end max-w -->
-    </div><!-- end admin panel -->
-
-    <!-- FLOATING WA BUTTON -->
-    <button onclick="openWhatsApp()" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform z-50 animate-bounce" style="animation-duration: 2s;">
-        <i class="fa-brands fa-whatsapp"></i>
-    </button>
-
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- SCRIPTS -->
     <script>
-        // 1. INJEKSI CONFIG (Teks & Gambar)
-        document.addEventListener('DOMContentLoaded', () => {
-            // Inject Teks Headline & Subheadline
-            document.getElementById('hero-headline').innerHTML = APP_CONFIG.content.headline;
-            document.getElementById('hero-subheadline').innerHTML = APP_CONFIG.content.subheadline;
-
-            // Inject Gambar (Hero, Coach, Komunitas, Testimoni)
-            document.getElementById('img-hero').src = APP_CONFIG.images.hero;
-            document.getElementById('img-coach').src = APP_CONFIG.images.coach;
-            document.getElementById('img-community1').src = APP_CONFIG.images.community1;
-            document.getElementById('img-community2').src = APP_CONFIG.images.community2;
-            document.getElementById('img-testi1').src = APP_CONFIG.images.testi1;
-            document.getElementById('img-testi2').src = APP_CONFIG.images.testi2;
-            document.getElementById('img-before-after').src = APP_CONFIG.images.beforeAfter;
-        });
-
-        // 2. WHATSAPP REDIRECT LOGIC (global agar bisa dipanggil dari onclick di HTML)
-        function openWhatsApp() {
-            const num = APP_CONFIG.whatsapp.number;
-            const msg = encodeURIComponent(APP_CONFIG.whatsapp.defaultMessage);
-            window.open(`https://wa.me/${num}?text=${msg}`, '_blank');
-        }
-
-        // 3. NAVBAR STICKY & MOBILE MENU
-        document.addEventListener('DOMContentLoaded', () => {
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 20) {
-                    navbar.classList.add('shadow-md');
-                } else {
-                    navbar.classList.remove('shadow-md');
-                }
-            });
-
-            // LOGIKA SIDEBAR BARU
-            const btnMenu = document.getElementById('mobile-menu-btn');
-            const sidebarMenu = document.getElementById('sidebar-menu');
-            const sidebarOverlay = document.getElementById('sidebar-overlay');
-            const closeSidebarBtn = document.getElementById('close-sidebar-btn');
-
-            function openSidebar() {
-                sidebarOverlay.classList.remove('hidden');
-                // Timeout kecil agar animasi CSS terbaca dengan mulus
-                setTimeout(() => {
-                    sidebarOverlay.classList.remove('opacity-0');
-                    sidebarMenu.classList.remove('translate-x-full');
-                }, 10);
-            }
-
-            function closeSidebar() {
-                sidebarOverlay.classList.add('opacity-0');
-                sidebarMenu.classList.add('translate-x-full');
-                setTimeout(() => {
-                    sidebarOverlay.classList.add('hidden');
-                }, 300); // Sesuai durasi animasi
-            }
-
-            btnMenu.addEventListener('click', openSidebar);
-            closeSidebarBtn.addEventListener('click', closeSidebar);
-            sidebarOverlay.addEventListener('click', closeSidebar);
-
-            // Menutup sidebar ketika link diklik
-            const mobileLinks = sidebarMenu.querySelectorAll('a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', closeSidebar);
-            });
-
-            // 4. FAQ ACCORDION LOGIC
-            const accordionBtns = document.querySelectorAll('.accordion-btn');
-            accordionBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const item = this.parentElement;
+        // FAQ Accordion Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqButtons = document.querySelectorAll('.faq-button');
+            
+            faqButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('i');
                     
-                    // Tutup yang lain
-                    document.querySelectorAll('.accordion-item').forEach(otherItem => {
-                        if (otherItem !== item) {
-                            otherItem.classList.remove('accordion-active');
-                        }
-                    });
-                    
-                    // Toggle current
-                    item.classList.toggle('accordion-active');
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        content.style.paddingBottom = "0px";
+                        content.style.paddingTop = "0px";
+                        icon.classList.remove('rotate-180');
+                    } else {
+                        document.querySelectorAll('.accordion-content').forEach(el => {
+                            el.style.maxHeight = null;
+                            el.style.paddingBottom = "0px";
+                            el.style.paddingTop = "0px";
+                        });
+                        document.querySelectorAll('.faq-button i').forEach(el => {
+                            el.classList.remove('rotate-180');
+                        });
+
+                        content.style.maxHeight = content.scrollHeight + 30 + "px"; 
+                        content.style.paddingBottom = "1rem";
+                        icon.classList.add('rotate-180');
+                    }
                 });
             });
 
-        }); // END DOMContentLoaded #2 (Navbar + Sidebar + Accordion)
+            // LOGIKA NOTIFIKASI POPUP RIWAYAT PENDAFTARAN
+            const notifications = [
+                { name: "Bunda Linda (Depok)", time: "1 jam yang lalu" },
+                { name: "Papa Rayyan (Jakarta Selatan)", time: "3 jam yang lalu" },
+                { name: "Mama Siska (Bogor)", time: "5 jam yang lalu" },
+                { name: "Bunda Tari (Tangerang)", time: "Kemarin" },
+                { name: "Ibu Maya (Bekasi)", time: "2 hari yang lalu" }
+            ];
 
-        // 5. BMI CALCULATOR LOGIC (global agar bisa dipanggil dari onclick HTML)
-        let lastBmiResult = ""; // Untuk disimpan ke database
-        function calculateBMI() {
-            const weight = parseFloat(document.getElementById('bmi-weight').value);
-            const heightCm = parseFloat(document.getElementById('bmi-height').value);
-            
-            if (!weight || !heightCm) return;
-            
-            const heightM = heightCm / 100;
-            const bmi = (weight / (heightM * heightM)).toFixed(1);
-            
-            document.getElementById('bmi-placeholder').classList.add('hidden');
-            const resultContainer = document.getElementById('bmi-result-container');
-            resultContainer.classList.remove('hidden');
-            
-            const scoreEl = document.getElementById('bmi-score');
-            const statusEl = document.getElementById('bmi-status');
-            const msgEl = document.getElementById('bmi-message');
-            
-            scoreEl.innerText = bmi;
-            
-            let status = "";
-            let colorClass = "";
-            let msg = "";
-            
-            if (bmi < 18.5) {
-                status = "Kurus (Underweight)";
-                colorClass = "bg-blue-100 text-blue-700";
-                msg = "Anda perlu menambah berat badan untuk mencapai bentuk ideal. Kami punya program untuk Naik BB!";
-            } else if (bmi >= 18.5 && bmi < 24.9) {
-                status = "Normal (Ideal)";
-                colorClass = "bg-green-100 text-green-700";
-                msg = "Luar biasa! Pertahankan bentuk tubuh Anda dengan nutrisi seimbang.";
-            } else if (bmi >= 25 && bmi < 29.9) {
-                status = "Kelebihan Berat (Overweight)";
-                colorClass = "bg-yellow-100 text-yellow-700";
-                msg = "Waktunya mulai beraksi! Program kami sangat cocok untuk mengembalikan berat badan ideal Anda.";
-            } else {
-                status = "Obesitas";
-                colorClass = "bg-red-100 text-red-700";
-                msg = "Kesehatan Anda adalah prioritas. Mari konsultasi sekarang untuk memulai transformasi menyeluruh.";
-            }
-            
-            statusEl.className = `px-4 py-1 rounded-full text-sm font-semibold mb-4 ${colorClass}`;
-            statusEl.innerText = status;
-            msgEl.innerText = msg;
+            const notifElement = document.getElementById('registration-notification');
+            const notifText = document.getElementById('notif-text');
+            const notifTime = document.getElementById('notif-time');
+            let currentIndex = 0;
 
-            lastBmiResult = `BMI: ${bmi} (${status})`;
-        }
+            function showNotification() {
+                // Update teks
+                notifText.innerText = `${notifications[currentIndex].name} baru saja mendaftar.`;
+                notifTime.innerText = notifications[currentIndex].time;
 
-        // 6. SUPABASE INTEGRATION (FORM SUBMIT) - DENGAN PROTEKSI ERROR
-        document.addEventListener('DOMContentLoaded', () => {
-        let supabase = null;
-        try {
-            // Hanya jalankan Supabase jika URL sudah diganti (mencegah crash)
-            if (APP_CONFIG.supabase.url && APP_CONFIG.supabase.url !== "YOUR_SUPABASE_URL") {
-                supabase = window.supabase.createClient(APP_CONFIG.supabase.url, APP_CONFIG.supabase.anonKey);
-            }
-        } catch (error) {
-            console.error("Supabase config belum diatur:", error);
-        }
+                // Tampilkan popup
+                notifElement.classList.remove('hide');
+                notifElement.classList.add('show');
 
-        document.getElementById('leadForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const btn = document.getElementById('submitBtn');
-            const msgBox = document.getElementById('form-message');
-            const originalBtnText = btn.innerText;
-            
-            // Cek apakah Supabase berhasil terhubung
-            if(!supabase) {
-                msgBox.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'bg-red-100', 'text-red-700');
-                msgBox.classList.add('bg-yellow-100', 'text-yellow-700');
-                msgBox.innerHTML = "<b>Mode Demo:</b> Harap hubungkan dengan database Supabase Anda terlebih dahulu di bagian script CONFIG.";
-                return;
+                // Sembunyikan setelah 4 detik
+                setTimeout(() => {
+                    notifElement.classList.remove('show');
+                    notifElement.classList.add('hide');
+                    
+                    // Siapkan index berikutnya
+                    currentIndex = (currentIndex + 1) % notifications.length;
+                }, 4000);
             }
 
-            btn.innerText = "Mengirim Data...";
-            btn.disabled = true;
-
-            const formData = {
-                nama_lengkap: document.getElementById('form-nama').value,
-                nomor_whatsapp: document.getElementById('form-wa').value,
-                usia: parseInt(document.getElementById('form-usia').value),
-                target: document.getElementById('form-target').value,
-                keluhan_utama: document.getElementById('form-keluhan').value,
-                hasil_bmi_terakhir: lastBmiResult || "Belum cek"
-            };
-
-            try {
-                // Pastikan nama tabel di Supabase adalah 'leads_konsultasi'
-                const { data, error } = await supabase
-                    .from('leads_konsultasi')
-                    .insert([formData]);
-
-                if (error) throw error;
-
-                // Success
-                msgBox.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-yellow-100', 'text-yellow-700');
-                msgBox.classList.add('bg-green-100', 'text-green-700');
-                msgBox.innerHTML = '<i class="fa-solid fa-circle-check"></i> <b>Berhasil!</b> Data Anda telah terkirim. Coach kami akan segera menghubungi Anda.';
-                
-                document.getElementById('leadForm').reset();
-            } catch (error) {
-                // Error
-                console.error(error);
-                msgBox.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'bg-yellow-100', 'text-yellow-700');
-                msgBox.classList.add('bg-red-100', 'text-red-700');
-                msgBox.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> <b>Gagal!</b> Terjadi kesalahan sistem. Silakan hubungi via WhatsApp.';
-            } finally {
-                btn.innerText = originalBtnText;
-                btn.disabled = false;
-            }
+            // Mulai notifikasi pertama setelah 3 detik halaman dimuat
+            setTimeout(() => {
+                showNotification();
+                // Atur interval berulang setiap 15 detik (4 dtk muncul + 11 dtk jeda)
+                setInterval(showNotification, 15000);
+            }, 3000);
+            
         });
-        }); // END DOMContentLoaded #3 (Supabase + Form)
-
-        // ===================== ADMIN / LOGIN LOGIC =====================
-        // Password disimpan sebagai SHA-256 hash (bukan plaintext)
-        const ADMIN_CREDENTIALS = {
-            usernameHash: '11999edb4dbe7e9eb8cceda516fa92c9bcdd8a44822a36de3b5a095f9dac5d24',
-            passwordHash: '6db8bc87c9973764b13030670c84bd6f65da91faed63e01a625ab9187e9ff19a'
-        };
-        let isLoggedIn = false;
-
-        async function hashString(str) {
-            const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-        }
-
-        function openLoginModal() {
-            document.getElementById('login-modal').classList.remove('hidden');
-            document.getElementById('login-modal').classList.add('flex');
-            document.getElementById('login-username').value = '';
-            document.getElementById('login-password').value = '';
-            document.getElementById('login-error').classList.add('hidden');
-            setTimeout(() => document.getElementById('login-username').focus(), 100);
-        }
-
-        function closeLoginModal() {
-            document.getElementById('login-modal').classList.add('hidden');
-            document.getElementById('login-modal').classList.remove('flex');
-        }
-
-        function togglePassword() {
-            const input = document.getElementById('login-password');
-            const icon = document.getElementById('pass-eye');
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.className = 'fa-solid fa-eye-slash';
-            } else {
-                input.type = 'password';
-                icon.className = 'fa-solid fa-eye';
-            }
-        }
-
-        async function doLogin() {
-            const user = document.getElementById('login-username').value.trim();
-            const pass = document.getElementById('login-password').value;
-            const userHash = await hashString(user);
-            const passHash = await hashString(pass);
-            if (userHash === ADMIN_CREDENTIALS.usernameHash && passHash === ADMIN_CREDENTIALS.passwordHash) {
-                isLoggedIn = true;
-                closeLoginModal();
-                openAdminPanel();
-            } else {
-                document.getElementById('login-error').classList.remove('hidden');
-                document.getElementById('login-password').value = '';
-            }
-        }
-
-        // Allow Enter key on login form
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && !document.getElementById('login-modal').classList.contains('hidden')) {
-                doLogin();
-            }
-        });
-
-
-
-        function openAdminPanel() {
-            document.getElementById('admin-panel').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            populateAdminFields();
-        }
-
-        function logoutAdmin() {
-            isLoggedIn = false;
-            document.getElementById('admin-panel').classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
-        function switchAdminTab(tabId) {
-            document.querySelectorAll('.admin-tab-content').forEach(el => el.classList.add('hidden'));
-            document.getElementById(tabId).classList.remove('hidden');
-            document.querySelectorAll('.admin-tab').forEach(btn => {
-                btn.classList.remove('active-tab');
-                if (btn.dataset.tab === tabId) btn.classList.add('active-tab');
-            });
-        }
-
-        function previewImg(input, previewId) {
-            const prev = document.getElementById(previewId);
-            if (prev) prev.src = input.value;
-        }
-
-        function populateAdminFields() {
-            // General
-            document.getElementById('adm-headline').value = APP_CONFIG.content.headline.replace(/<[^>]+>/g, '').trim() + " (edit bebas)";
-            document.getElementById('adm-headline').value = "Bentuk Tubuh Ideal & Hidup Lebih Sehat Tanpa Tersiksa";
-            document.getElementById('adm-subheadline').value = APP_CONFIG.content.subheadline;
-            document.getElementById('adm-coach-name').value = "Coach Rina Wijaya";
-            document.getElementById('adm-coach-bio').value = "Halo! Saya adalah Wellness Coach yang berdedikasi membantu Anda mencapai berat badan ideal dan gaya hidup sehat yang berkelanjutan. Bukan sekadar diet sesaat, tapi perubahan habit seumur hidup.";
-            document.getElementById('adm-exp-years').value = "5+";
-            document.getElementById('adm-members').value = "500+";
-            document.getElementById('adm-brand-name').value = "FitLife";
-            document.getElementById('adm-footer-tagline').value = "Independent Herbalife Member & Wellness Coach. Berkomitmen menciptakan masyarakat yang lebih sehat dan bahagia.";
-            document.getElementById('adm-supabase-url').value = APP_CONFIG.supabase.url !== "YOUR_SUPABASE_URL" ? APP_CONFIG.supabase.url : "";
-            document.getElementById('adm-supabase-key').value = APP_CONFIG.supabase.anonKey !== "YOUR_SUPABASE_ANON_KEY" ? APP_CONFIG.supabase.anonKey : "";
-
-            // Images
-            const imgMap = {
-                'adm-img-hero': ['prev-hero', APP_CONFIG.images.hero],
-                'adm-img-coach': ['prev-coach', APP_CONFIG.images.coach],
-                'adm-img-com1': ['prev-com1', APP_CONFIG.images.community1],
-                'adm-img-com2': ['prev-com2', APP_CONFIG.images.community2],
-                'adm-img-testi1': ['prev-testi1', APP_CONFIG.images.testi1],
-                'adm-img-testi2': ['prev-testi2', APP_CONFIG.images.testi2],
-                'adm-img-ba': ['prev-ba', APP_CONFIG.images.beforeAfter],
-            };
-            Object.entries(imgMap).forEach(([inputId, [prevId, url]]) => {
-                document.getElementById(inputId).value = url;
-                document.getElementById(prevId).src = url;
-            });
-
-            // Contact
-            document.getElementById('adm-wa-number').value = APP_CONFIG.whatsapp.number;
-            document.getElementById('adm-wa-message').value = APP_CONFIG.whatsapp.defaultMessage;
-            updateWaPreview();
-
-            // Program preview
-            updatePricingPreview();
-
-            // Bind live preview for pricing tab
-            ['adm-prog-name','adm-price-normal','adm-price-promo','adm-prog-duration','adm-prog-features'].forEach(id => {
-                document.getElementById(id).addEventListener('input', updatePricingPreview);
-            });
-            ['adm-wa-number','adm-wa-message'].forEach(id => {
-                document.getElementById(id).addEventListener('input', updateWaPreview);
-            });
-        }
-
-        function updatePricingPreview() {
-            const name = document.getElementById('adm-prog-name').value;
-            const normal = document.getElementById('adm-price-normal').value;
-            const promo = document.getElementById('adm-price-promo').value;
-            const dur = document.getElementById('adm-prog-duration').value;
-            const features = document.getElementById('adm-prog-features').value.split('\n').filter(f => f.trim());
-
-            document.getElementById('prev-prog-name').textContent = name;
-            document.getElementById('prev-price-normal').textContent = 'Rp ' + normal;
-            document.getElementById('prev-price-promo').textContent = 'Rp ' + promo;
-            document.getElementById('prev-prog-duration').textContent = 'selama ' + dur;
-
-            const featEl = document.getElementById('prev-features');
-            featEl.innerHTML = features.map(f =>
-                `<div class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-primary mt-0.5 flex-shrink-0"></i><span>${f}</span></div>`
-            ).join('');
-        }
-
-        function updateWaPreview() {
-            const num = document.getElementById('adm-wa-number').value;
-            const msg = document.getElementById('adm-wa-message').value;
-            const preview = `https://wa.me/${num}?text=${encodeURIComponent(msg).substring(0, 60)}...`;
-            document.getElementById('prev-wa-link').textContent = preview;
-        }
-
-        function applyAdminChanges() {
-            // Update APP_CONFIG with admin values
-            APP_CONFIG.content.headline = document.getElementById('adm-headline').value;
-            APP_CONFIG.content.subheadline = document.getElementById('adm-subheadline').value;
-            APP_CONFIG.images.hero = document.getElementById('adm-img-hero').value;
-            APP_CONFIG.images.coach = document.getElementById('adm-img-coach').value;
-            APP_CONFIG.images.community1 = document.getElementById('adm-img-com1').value;
-            APP_CONFIG.images.community2 = document.getElementById('adm-img-com2').value;
-            APP_CONFIG.images.testi1 = document.getElementById('adm-img-testi1').value;
-            APP_CONFIG.images.testi2 = document.getElementById('adm-img-testi2').value;
-            APP_CONFIG.images.beforeAfter = document.getElementById('adm-img-ba').value;
-            APP_CONFIG.whatsapp.number = document.getElementById('adm-wa-number').value;
-            APP_CONFIG.whatsapp.defaultMessage = document.getElementById('adm-wa-message').value;
-
-            // Apply to live page
-            document.getElementById('hero-headline').innerHTML = APP_CONFIG.content.headline;
-            document.getElementById('hero-subheadline').innerHTML = APP_CONFIG.content.subheadline;
-            document.getElementById('img-hero').src = APP_CONFIG.images.hero;
-            document.getElementById('img-coach').src = APP_CONFIG.images.coach;
-            if (document.getElementById('img-community1')) document.getElementById('img-community1').src = APP_CONFIG.images.community1;
-            if (document.getElementById('img-community2')) document.getElementById('img-community2').src = APP_CONFIG.images.community2;
-            if (document.getElementById('img-testi1')) document.getElementById('img-testi1').src = APP_CONFIG.images.testi1;
-            if (document.getElementById('img-testi2')) document.getElementById('img-testi2').src = APP_CONFIG.images.testi2;
-            if (document.getElementById('img-before-after')) document.getElementById('img-before-after').src = APP_CONFIG.images.beforeAfter;
-
-            // Apply testimonial text changes
-            const t1Name = document.getElementById('adm-t1-name').value;
-            const t1Sub = document.getElementById('adm-t1-sub').value;
-            const t1Result = document.getElementById('adm-t1-result').value;
-            const t1Text = document.getElementById('adm-t1-text').value;
-            const t2Name = document.getElementById('adm-t2-name').value;
-            const t2Sub = document.getElementById('adm-t2-sub').value;
-            const t2Result = document.getElementById('adm-t2-result').value;
-            const t2Text = document.getElementById('adm-t2-text').value;
-
-            if (document.getElementById('live-t1-name')) document.getElementById('live-t1-name').textContent = t1Name;
-            if (document.getElementById('live-t1-sub')) document.getElementById('live-t1-sub').textContent = t1Sub;
-            if (document.getElementById('live-t1-result')) document.getElementById('live-t1-result').textContent = t1Result;
-            if (document.getElementById('live-t1-text')) document.getElementById('live-t1-text').textContent = t1Text;
-            if (document.getElementById('live-t2-name')) document.getElementById('live-t2-name').textContent = t2Name;
-            if (document.getElementById('live-t2-sub')) document.getElementById('live-t2-sub').textContent = t2Sub;
-            if (document.getElementById('live-t2-result')) document.getElementById('live-t2-result').textContent = t2Result;
-            if (document.getElementById('live-t2-text')) document.getElementById('live-t2-text').textContent = t2Text;
-
-            // Brand name
-            const brand = document.getElementById('adm-brand-name').value;
-            document.querySelectorAll('.brand-name').forEach(el => el.textContent = brand);
-
-            // Show save success
-            const banner = document.getElementById('save-banner');
-            banner.classList.remove('hidden');
-            setTimeout(() => banner.classList.add('hidden'), 4000);
-        }
     </script>
 
-    <!-- ADMIN STYLES -->
-    <style>
-        .admin-tab { background: transparent; color: #6b7280; }
-        .admin-tab:hover { background: #f3f4f6; color: #1f2937; }
-        .active-tab { background: #d1fae5 !important; color: #047857 !important; font-weight: 600; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
-        .animate-fadeIn { animation: fadeIn 0.25s ease-out; }
-    </style>
 </body>
 </html>
