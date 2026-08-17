@@ -319,6 +319,27 @@
             animation-delay: 1s;
         }
 
+        @keyframes marqueeLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes marqueeRight {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+        .marquee-track {
+            display: flex;
+            width: max-content;
+        }
+        .marquee-left { animation: marqueeLeft 28s linear infinite; }
+        .marquee-right { animation: marqueeRight 28s linear infinite; }
+        .marquee-row:hover .marquee-track { animation-play-state: paused; }
+        .marquee-row {
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+        }
+
         @keyframes badgePulse {
             0%, 100% { transform: translateX(-50%) scale(1); }
             50% { transform: translateX(-50%) scale(1.08); }
@@ -485,7 +506,7 @@
                 <button type="button" onclick="openWaModal('')" class="md:hidden active:scale-90 bg-gradient-to-r from-bubblegumDeep to-grapeDeep text-white w-11 h-11 rounded-full shadow-md flex items-center justify-center transition duration-200" aria-label="Konsultasi Gratis via WhatsApp">
                     <i class="fab fa-whatsapp text-xl"></i>
                 </button>
-                <button type="button" onclick="toggleMobileMenu()" id="mobile-menu-btn" class="lg:hidden ml-4 active:scale-90 bg-white/10 border border-white/20 text-white w-11 h-11 rounded-full shadow-md flex items-center justify-center transition duration-200" aria-label="Buka menu navigasi" aria-expanded="false">
+                <button type="button" onclick="toggleMobileMenu()" id="mobile-menu-btn" class="lg:hidden ml-1 active:scale-90 bg-white/10 border border-white/20 text-white w-11 h-11 rounded-full shadow-md flex items-center justify-center transition duration-200" aria-label="Buka menu navigasi" aria-expanded="false">
                     <i class="fas fa-bars text-lg" id="mobile-menu-icon"></i>
                 </button>
             </div>
@@ -765,13 +786,43 @@
         <div class="absolute -bottom-10 -right-10 w-72 h-72 rounded-full bg-bubblegum blur-3xl opacity-20 pointer-events-none"></div>
         <span class="doodle text-3xl top-6 right-[10%] float-slow opacity-80">💬</span>
         <span class="doodle text-2xl bottom-8 left-[6%] twinkle opacity-70">✨</span>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-10 reveal">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="space-y-3 mb-10 reveal">
+                <div class="marquee-row">
+                    <div class="marquee-track marquee-left">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 1" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1543269664-56d93c1b41a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 2" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 3" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 4" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 5" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 1" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1543269664-56d93c1b41a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 2" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 3" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 4" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 5" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                    </div>
+                </div>
+                <div class="marquee-row">
+                    <div class="marquee-track marquee-right">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 6" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 7" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 8" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1543269664-56d93c1b41a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 9" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 10" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 6" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 7" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 8" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1543269664-56d93c1b41a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 9" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70" alt="Momen belajar bersama guru privat Sainspiq Kidz 10" loading="lazy" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-2xl mx-2 shadow-lg border-2 border-white/20 flex-shrink-0">
+                    </div>
+                </div>
+            </div>
+            <div class="text-center max-w-3xl mx-auto mb-10 reveal px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-3">Apa Kata Orang Tua?</h2>
                 <div class="w-24 h-1.5 bg-sainsyellow mx-auto rounded-full mb-4"></div>
                 <p class="text-white/80">Cerita nyata dari Ayah Bunda yang telah mempercayakan anak-anaknya di SAINSPIQ KIDZ.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-stagger reveal">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-stagger reveal px-4 sm:px-6 lg:px-8">
                 <div class="speech-bubble tilt-hover bg-white p-6 rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 relative mt-5">
                     <div class="absolute -top-5 left-8 bg-sainsyellow w-10 h-10 rounded-full flex items-center justify-center text-navy text-xl shadow-md">
                         <i class="fas fa-quote-left"></i>
