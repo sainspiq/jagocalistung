@@ -289,12 +289,12 @@
 <body class="bg-cream text-gray-800 font-sans antialiased overflow-x-hidden">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 top-0 pt-3 px-3">
-        <div class="max-w-5xl mx-auto bg-white/90 backdrop-blur-md shadow-[0_6px_20px_rgba(35,58,102,0.12)] rounded-full border border-white">
-            <div class="flex justify-between items-center h-16 px-5">
+    <nav class="fixed w-full z-50 top-0 bg-[#241338]/95 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.25)]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center h-16 px-4 sm:px-6 lg:px-8">
                 <div class="flex-shrink-0 flex items-center gap-1.5">
                     <span class="text-2xl">⭐</span>
-                    <span class="text-2xl font-display font-semibold text-navy">Sains<span class="text-sunshineDeep">PIQ</span></span>
+                    <span class="text-2xl font-display font-semibold text-white">Sains<span class="text-sainsyellow">PIQ</span></span>
                 </div>
                 <button type="button" onclick="openWaModal('')" class="hidden md:flex wiggle-hover bg-gradient-to-r from-bubblegumDeep to-grapeDeep text-white font-display font-semibold px-6 py-2.5 rounded-full transition duration-300 shadow-md hover:shadow-lg hover:scale-105 items-center gap-2 active:scale-90">
                     <i class="fab fa-whatsapp text-lg"></i> Konsultasi Gratis
@@ -307,7 +307,7 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="relative pt-32 pb-10 lg:pt-40 lg:pb-16 bg-gradient-to-br from-[#4C2A8C] via-[#26418C] to-[#0B6FA8] gradient-animate overflow-hidden">
+    <section class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gradient-to-br from-[#2B1746] via-[#3B2270] to-[#5B3AA0] gradient-animate overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
             <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-sainsyellow blur-3xl opacity-30"></div>
             <div class="absolute top-1/2 right-0 w-72 h-72 rounded-full bg-bubblegum blur-3xl opacity-30"></div>
@@ -361,7 +361,7 @@
                 </div>
             </div>
         </div>
-        <div class="wave-divider relative -mb-1">
+        <div class="wave-divider absolute bottom-0 left-0 w-full leading-none z-10">
             <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path fill="#FFFBF0" d="M0,32 C240,60 480,0 720,16 C960,32 1200,54 1440,24 L1440,60 L0,60 Z"></path></svg>
         </div>
     </section>
@@ -551,13 +551,16 @@
     </section>
 
     <!-- SECTION TESTIMONI -->
-    <section class="py-14 bg-white relative overflow-hidden border-t-2 border-dashed border-gray-200">
-        <span class="doodle text-3xl top-6 right-[10%] float-slow opacity-70">💬</span>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-14 bg-gradient-to-br from-[#2B1746] via-[#3B2270] to-[#5B3AA0] gradient-animate relative overflow-hidden border-t-2 border-dashed border-white/15">
+        <div class="absolute -top-10 -left-16 w-64 h-64 rounded-full bg-grape blur-3xl opacity-25 pointer-events-none"></div>
+        <div class="absolute -bottom-10 -right-10 w-72 h-72 rounded-full bg-bubblegum blur-3xl opacity-20 pointer-events-none"></div>
+        <span class="doodle text-3xl top-6 right-[10%] float-slow opacity-80">💬</span>
+        <span class="doodle text-2xl bottom-8 left-[6%] twinkle opacity-70">✨</span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-10 reveal">
-                <h2 class="text-3xl md:text-4xl font-display font-semibold text-navy mb-3">Apa Kata Orang Tua?</h2>
+                <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-3">Apa Kata Orang Tua?</h2>
                 <div class="w-24 h-1.5 bg-sainsyellow mx-auto rounded-full mb-4"></div>
-                <p class="text-gray-600">Cerita nyata dari Ayah Bunda yang telah mempercayakan anak-anaknya di SAINSPIQ.</p>
+                <p class="text-white/80">Cerita nyata dari Ayah Bunda yang telah mempercayakan anak-anaknya di SAINSPIQ.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-stagger reveal">
                 <div class="speech-bubble tilt-hover bg-white p-6 rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 relative mt-5">
@@ -828,7 +831,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-navy py-8 border-t border-navylight relative overflow-hidden">
+    <footer class="bg-[#241338] py-8 border-t border-white/10 relative overflow-hidden">
         <span class="doodle text-xl top-3 left-[15%] twinkle opacity-60">✨</span>
         <span class="doodle text-xl bottom-3 right-[15%] twinkle opacity-60">⭐</span>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 relative z-10">
