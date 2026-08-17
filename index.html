@@ -3,40 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAINSPIQ - Les Privat Calistung ke Rumah</title>
+    <title>Les Privat Calistung & Mengaji ke Rumah | SAINSPIQ</title>
+    <meta name="description" content="Les privat calistung (baca, tulis, hitung) dan mengaji ke rumah untuk anak TK & SD. Guru berpengalaman, metode menyenangkan, jadwal fleksibel, hasil terlihat dalam 3 bulan. Konsultasi gratis via WhatsApp.">
+    <meta name="keywords" content="les privat calistung, les calistung ke rumah, guru les privat anak, les privat TK SD, les baca tulis hitung, les mengaji privat, les privat calistung terdekat, guru mengaji privat ke rumah, les privat anak TK, kursus calistung anak">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://lesprivatcalistung.id/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Les Privat Calistung & Mengaji ke Rumah | SAINSPIQ">
+    <meta property="og:description" content="Bantu anak jago membaca, menulis, berhitung, dan mengaji dengan guru privat yang datang ke rumah. Metode menyenangkan, jadwal fleksibel, hasil terlihat dalam 3 bulan.">
+    <meta property="og:url" content="https://lesprivatcalistung.id/">
+    <meta property="og:site_name" content="SAINSPIQ">
+    <meta property="og:locale" content="id_ID">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Les Privat Calistung & Mengaji ke Rumah | SAINSPIQ">
+    <meta name="twitter:description" content="Guru privat calistung & mengaji datang ke rumah. Konsultasi gratis via WhatsApp.">
+    <meta name="theme-color" content="#233A66">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "SAINSPIQ - Les Privat Calistung & Mengaji",
+      "url": "https://lesprivatcalistung.id/",
+      "description": "Layanan les privat calistung (baca, tulis, hitung) dan mengaji ke rumah untuk anak TK dan SD di seluruh Indonesia.",
+      "areaServed": "ID",
+      "priceRange": "Rp750.000 - Rp1.499.000"
+    }
+    </script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        navy: '#0A192F',
-                        navylight: '#112240',
-                        sainsyellow: '#FACC15',
-                        sainsyellowhover: '#EAB308'
+                        navy: '#233A66',
+                        navylight: '#2F4C82',
+                        sainsyellow: '#FFCB3D',
+                        sainsyellowhover: '#FFB800',
+                        skyblue: '#38B6F1',
+                        skyblueDeep: '#0369A1',
+                        bubblegum: '#FF6FA5',
+                        bubblegumDeep: '#BE185D',
+                        leafy: '#4CD787',
+                        leafyDeep: '#15803D',
+                        grape: '#9B6BFF',
+                        grapeDeep: '#7E22CE',
+                        sunshineDeep: '#B45309',
+                        cream: '#FFFBF0'
                     },
                     fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
+                        display: ['Fredoka', 'sans-serif'],
+                        sans: ['Nunito', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
     <style>
+        body { background-color: #FFFBF0; }
+
         .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.14);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
         }
+
         .accordion-content {
             transition: max-height 0.3s ease-out, padding 0.3s ease;
             max-height: 0;
             overflow: hidden;
+        }
+
+        /* ---------- Playful motion ---------- */
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+            50% { transform: translateY(-14px) rotate(var(--r, 0deg)); }
+        }
+        @keyframes floatX {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: .35; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.15); }
+        }
+        @keyframes bobbing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes popIn {
+            from { opacity: 0; transform: translateY(26px) scale(.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes confettiDrift {
+            0% { background-position: 0 0; }
+            100% { background-position: 60px 60px; }
         }
         @keyframes slideInLeft {
             from { transform: translateX(-100%); opacity: 0; }
@@ -46,6 +116,154 @@
             from { transform: translateX(0); opacity: 1; }
             to { transform: translateX(-100%); opacity: 0; }
         }
+
+        .doodle { position: absolute; pointer-events: none; will-change: transform; }
+        .float-slow { animation: floatY 6s ease-in-out infinite; }
+        .float-med { animation: floatY 4.5s ease-in-out infinite; }
+        .float-fast { animation: floatY 3.2s ease-in-out infinite; }
+        .drift { animation: floatX 7s ease-in-out infinite; }
+        .twinkle { animation: twinkle 2.4s ease-in-out infinite; }
+        .bob { animation: bobbing 3.5s ease-in-out infinite; }
+        .wiggle-hover:hover { animation: wiggle 0.5s ease-in-out; }
+
+        /* ---------- Extra playful animations ---------- */
+        @keyframes shimmerSweep {
+            0% { transform: translateX(-120%) skewX(-15deg); }
+            100% { transform: translateX(220%) skewX(-15deg); }
+        }
+        .shimmer-btn { position: relative; overflow: hidden; }
+        .shimmer-btn::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 40%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.55), transparent);
+            animation: shimmerSweep 3.2s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.08); }
+        }
+        .badge-pulse { animation: badgePulse 1.8s ease-in-out infinite; }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.18); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.12); }
+            60% { transform: scale(1); }
+        }
+        .heartbeat-icon { animation: heartbeat 2.6s ease-in-out infinite; display: inline-block; }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+        .breathe { animation: breathe 2.4s ease-in-out infinite; display: inline-block; }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .gradient-animate {
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        @keyframes tiltIn {
+            0% { opacity: 0; transform: translateY(24px) rotate(-4deg) scale(.95); }
+            100% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
+        }
+        .tilt-hover { transition: transform .35s cubic-bezier(.22,1,.36,1); }
+        .tilt-hover:hover { transform: rotate(-1.5deg) translateY(-6px) scale(1.02); }
+        .tilt-hover:active { transform: rotate(-1deg) translateY(-2px) scale(.99); }
+
+        @keyframes modalPop {
+            0% { opacity: 0; transform: scale(.85) translateY(20px); }
+            60% { opacity: 1; transform: scale(1.03) translateY(-2px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .modal-pop { animation: modalPop .45s cubic-bezier(.22,1,.36,1) both; }
+
+        @keyframes checkPop {
+            0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+            60% { transform: scale(1.25) rotate(8deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        .check-pop { animation: checkPop .55s cubic-bezier(.22,1,.36,1) both; }
+
+        @keyframes ringExpand {
+            0% { transform: scale(.6); opacity: .6; }
+            100% { transform: scale(1.9); opacity: 0; }
+        }
+        .ring-expand { animation: ringExpand 1.4s ease-out infinite; }
+
+        .input-glow:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(255,203,61,0.35);
+            border-color: #FFCB3D;
+        }
+
+        @keyframes iconBounceHover {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            30% { transform: translateY(-5px) rotate(-8deg); }
+            60% { transform: translateY(0) rotate(6deg); }
+        }
+        .icon-bounce-hover:hover .bounce-target,
+        .icon-bounce-hover:active .bounce-target { animation: iconBounceHover .5s ease-in-out; }
+
+        .reveal { opacity: 0; transform: translateY(28px) scale(.97); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+        .reveal.revealed { opacity: 1; transform: none; }
+        .reveal-stagger.revealed > * { animation: popIn .6s cubic-bezier(.22,1,.36,1) both; }
+        .reveal-stagger.revealed > *:nth-child(1) { animation-delay: .02s; }
+        .reveal-stagger.revealed > *:nth-child(2) { animation-delay: .09s; }
+        .reveal-stagger.revealed > *:nth-child(3) { animation-delay: .16s; }
+        .reveal-stagger.revealed > *:nth-child(4) { animation-delay: .23s; }
+        .reveal-stagger.revealed > *:nth-child(5) { animation-delay: .30s; }
+        .reveal-stagger.revealed > *:nth-child(6) { animation-delay: .37s; }
+
+        .confetti-bg {
+            background-image: radial-gradient(rgba(35,58,102,0.14) 2.5px, transparent 2.5px);
+            background-size: 26px 26px;
+            animation: confettiDrift 6s linear infinite;
+        }
+
+        .crayon-border { border-width: 2.5px; border-style: dashed; }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,203,61,0.45), 0 20px 50px rgba(126,34,206,0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(255,203,61,0), 0 20px 50px rgba(126,34,206,0.4); }
+        }
+        .favorit-card { animation: glowPulse 2.6s ease-out infinite; }
+        @media (prefers-reduced-motion: reduce) {
+            .favorit-card { animation: none; }
+        }
+
+        .wave-divider { display: block; width: 100%; line-height: 0; }
+        .wave-divider svg { width: 100%; height: 60px; display: block; }
+
+        .speech-bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -14px;
+            left: 40px;
+            border-width: 14px 14px 0 0;
+            border-style: solid;
+            border-color: white transparent transparent transparent;
+            filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.03));
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .doodle, .float-slow, .float-med, .float-fast, .drift, .twinkle, .bob, .confetti-bg,
+            .shimmer-btn::after, .badge-pulse, .heartbeat-icon, .breathe, .gradient-animate,
+            .modal-pop, .check-pop, .ring-expand {
+                animation: none !important;
+            }
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
         .notification-popup {
             position: fixed;
             bottom: 24px;
@@ -53,8 +271,8 @@
             z-index: 60;
             display: none;
             background-color: #f0fdf4;
-            border-left: 4px solid #22c55e;
-            border-radius: 0.5rem;
+            border-left: 4px solid #4CD787;
+            border-radius: 1rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             padding: 12px 16px;
             max-width: 300px;
@@ -68,113 +286,130 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden">
+<body class="bg-cream text-gray-800 font-sans antialiased overflow-x-hidden">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold text-navy">Sains<span class="text-sainsyellow">PIQ</span></span>
+    <nav class="fixed w-full z-50 top-0 pt-3 px-3">
+        <div class="max-w-5xl mx-auto bg-white/90 backdrop-blur-md shadow-[0_6px_20px_rgba(35,58,102,0.12)] rounded-full border border-white">
+            <div class="flex justify-between items-center h-16 px-5">
+                <div class="flex-shrink-0 flex items-center gap-1.5">
+                    <span class="text-2xl">⭐</span>
+                    <span class="text-2xl font-display font-semibold text-navy">Sains<span class="text-sunshineDeep">PIQ</span></span>
                 </div>
-                <div class="hidden md:flex">
-                    <a href="#paket-harga" class="bg-navy hover:bg-navylight text-white font-semibold px-6 py-2.5 rounded-full transition duration-300 shadow-md hover:shadow-lg flex items-center gap-2">
-                        <i class="fab fa-whatsapp text-lg text-green-400"></i> Konsultasi Gratis
-                    </a>
-                </div>
+                <button type="button" onclick="openWaModal('')" class="hidden md:flex wiggle-hover bg-gradient-to-r from-bubblegumDeep to-grapeDeep text-white font-display font-semibold px-6 py-2.5 rounded-full transition duration-300 shadow-md hover:shadow-lg hover:scale-105 items-center gap-2 active:scale-90">
+                    <i class="fab fa-whatsapp text-lg"></i> Konsultasi Gratis
+                </button>
+                <button type="button" onclick="openWaModal('')" class="md:hidden active:scale-90 bg-gradient-to-r from-bubblegumDeep to-grapeDeep text-white w-11 h-11 rounded-full shadow-md flex items-center justify-center transition duration-200" aria-label="Konsultasi Gratis via WhatsApp">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="relative pt-28 pb-16 lg:pt-36 lg:pb-20 bg-navy overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
-            <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-sainsyellow blur-3xl"></div>
-            <div class="absolute top-1/2 right-0 w-72 h-72 rounded-full bg-blue-500 blur-3xl"></div>
+    <section class="relative pt-32 pb-10 lg:pt-40 lg:pb-16 bg-gradient-to-br from-[#4C2A8C] via-[#26418C] to-[#0B6FA8] gradient-animate overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-sainsyellow blur-3xl opacity-30"></div>
+            <div class="absolute top-1/2 right-0 w-72 h-72 rounded-full bg-bubblegum blur-3xl opacity-30"></div>
+
+            <!-- doodles -->
+            <span class="doodle text-4xl text-sainsyellow twinkle top-[14%] left-[8%]">✨</span>
+            <span class="doodle text-3xl float-slow top-[22%] right-[10%]">☁️</span>
+            <span class="doodle text-3xl float-med top-[64%] left-[6%]">⭐</span>
+            <span class="doodle text-2xl drift top-[8%] right-[28%]">☁️</span>
+            <span class="doodle text-3xl bob bottom-[10%] right-[6%]">🌈</span>
+            <span class="doodle text-2xl float-fast bottom-[18%] left-[20%]">✏️</span>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                <div class="text-center lg:text-left">
-                    <div class="inline-block bg-white/10 text-sainsyellow font-medium px-4 py-1.5 rounded-full text-sm mb-5 border border-sainsyellow/30">
-                        ⭐ Pilihan Terbaik Orang Tua Jabodetabek
+                <div class="text-center lg:text-left reveal">
+                    <div class="inline-flex items-center gap-2 bg-white/15 text-sainsyellow font-display font-medium px-4 py-1.5 rounded-full text-sm mb-5 border border-sainsyellow/40">
+                        ⭐ Dipercaya Orang Tua di Seluruh Indonesia
                     </div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-semibold text-white leading-tight mb-5">
                         Jago Calistung dalam <span class="text-sainsyellow">3 Bulan</span> Bersama Guru Privat ke Rumah
                     </h1>
-                    <p class="text-lg md:text-xl text-gray-300 mb-6 max-w-2xl mx-auto lg:mx-0">
+                    <p class="text-lg md:text-xl text-white/85 mb-6 max-w-2xl mx-auto lg:mx-0">
                         Bantu anak lebih percaya diri saat masuk TK atau SD dengan metode belajar menyenangkan, guru berpengalaman, dan pendampingan langsung di rumah.
                     </p>
-                    <ul class="text-white space-y-2 mb-8 text-left w-fit mx-auto lg:mx-0 bg-white/5 px-6 py-4 rounded-2xl glass-effect">
+                    <ul class="text-white space-y-2 mb-8 text-left w-fit mx-auto lg:mx-0 bg-white/10 px-6 py-4 rounded-3xl glass-effect">
                         <li class="flex items-center gap-3"><i class="fas fa-check-circle text-sainsyellow text-lg"></i> <span>Guru datang ke rumah</span></li>
                         <li class="flex items-center gap-3"><i class="fas fa-check-circle text-sainsyellow text-lg"></i> <span>Bonus belajar mengaji</span></li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-sainsyellow text-lg"></i> <span>Area Jabodetabek & Sekitarnya</span></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-sainsyellow text-lg"></i> <span>Tersedia di Berbagai Kota</span></li>
                         <li class="flex items-center gap-3"><i class="fas fa-check-circle text-sainsyellow text-lg"></i> <span>Jadwal fleksibel</span></li>
                     </ul>
-                    <a href="#paket-harga" class="inline-block w-full sm:w-auto text-center bg-sainsyellow hover:bg-sainsyellowhover text-navy font-bold text-lg px-8 py-4 rounded-full transition duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.4)]">
-                        <i class="fab fa-whatsapp text-2xl mr-2 align-middle"></i> Konsultasi Gratis via WhatsApp
-                    </a>
+                    <button type="button" onclick="openWaModal('')" class="wiggle-hover shimmer-btn inline-block w-full sm:w-auto text-center bg-sainsyellow hover:bg-sainsyellowhover text-navy font-display font-semibold text-lg px-8 py-4 rounded-full transition duration-300 transform hover:scale-105 shadow-[0_10px_25px_rgba(255,203,61,0.5)] active:scale-95">
+                        <i class="fab fa-whatsapp text-2xl mr-2 align-middle heartbeat-icon"></i> Konsultasi Gratis via WhatsApp
+                    </button>
                 </div>
-                <div class="hidden lg:block relative">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-sainsyellow/20 to-transparent rounded-[3rem] transform rotate-3 scale-105"></div>
-                    <div class="relative bg-white p-6 rounded-[3rem] shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Guru mengajar anak" class="rounded-2xl w-full h-auto object-cover aspect-video mb-4">
-                        <div class="flex items-center gap-4 bg-gray-50 p-3 rounded-xl border border-gray-100">
-                            <div class="bg-green-100 p-3 rounded-full text-green-600">
+                <div class="hidden lg:block relative reveal">
+                    <div class="absolute -inset-2 bg-gradient-to-tr from-sainsyellow/40 to-transparent rounded-[3rem] transform rotate-6 scale-105"></div>
+                    <div class="relative bg-white p-6 rounded-[3rem] shadow-2xl transform -rotate-2">
+                        <span class="absolute -top-4 left-10 text-3xl rotate-[-12deg] drop-shadow">🩹</span>
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Guru les privat calistung mengajar anak membaca di rumah" class="rounded-2xl w-full h-auto object-cover aspect-video mb-4">
+                        <div class="flex items-center gap-4 bg-cream p-3 rounded-2xl border border-gray-100">
+                            <div class="bg-leafy/20 p-3 rounded-full text-leafyDeep">
                                 <i class="fas fa-chart-line text-2xl"></i>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-500 font-medium">Perkembangan Terlihat</p>
-                                <p class="text-xl font-bold text-navy">Dalam 3 Bulan</p>
+                                <p class="text-xl font-display font-semibold text-navy">Dalam 3 Bulan</p>
                             </div>
                         </div>
                     </div>
+                    <span class="doodle text-4xl -bottom-6 -right-4 float-med">⭐</span>
                 </div>
             </div>
+        </div>
+        <div class="wave-divider relative -mb-1">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path fill="#FFFBF0" d="M0,32 C240,60 480,0 720,16 C960,32 1200,54 1440,24 L1440,60 L0,60 Z"></path></svg>
         </div>
     </section>
 
     <!-- SECTION MASALAH ORANG TUA -->
-    <section class="py-10 bg-white">
+    <section class="py-14 bg-cream relative overflow-hidden">
+        <span class="doodle text-3xl top-4 right-[8%] float-slow opacity-70">✏️</span>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-8">
-                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-3">Apakah Ayah Bunda Mengalami Hal Ini?</h2>
+            <div class="text-center max-w-3xl mx-auto mb-10 reveal">
+                <div class="inline-block bg-white text-navy font-display font-medium px-4 py-1 rounded-full text-sm mb-3 shadow-sm">🤔 Curhat Orang Tua</div>
+                <h2 class="text-3xl md:text-4xl font-display font-semibold text-navy mb-3">Apakah Ayah Bunda Mengalami Hal Ini?</h2>
                 <div class="w-24 h-1.5 bg-sainsyellow mx-auto rounded-full mb-4"></div>
-                <p class="text-lg text-gray-600 font-medium">Jangan biarkan anak merasa tertinggal dari teman-temannya. <span class="text-orange-500">Masa emas belajar hanya datang sekali.</span></p>
+                <p class="text-lg text-gray-600 font-medium">Jangan biarkan anak merasa tertinggal dari teman-temannya. <span class="text-bubblegumDeep font-semibold">Masa emas belajar hanya datang sekali.</span></p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div class="bg-yellow-50 p-5 rounded-2xl border border-yellow-200 hover:shadow-lg transition duration-300 group">
-                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mb-3 group-hover:scale-110 transition duration-300">
-                        <i class="fas fa-book-reader text-xl text-yellow-600"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 reveal-stagger reveal">
+                <div class="bg-white p-5 rounded-[26px] crayon-border border-skyblue/40 hover:shadow-xl hover:-translate-y-1.5 transition duration-300 group">
+                    <div class="w-12 h-12 bg-skyblue/15 rounded-2xl flex items-center justify-center shadow-sm mb-3 group-hover:rotate-6 group-hover:scale-110 group-active:rotate-6 group-active:scale-110 transition duration-300">
+                        <i class="fas fa-book-reader text-xl text-skyblue"></i>
                     </div>
                     <p class="text-gray-700 font-medium leading-relaxed">Anak belum lancar membaca padahal sudah mau masuk SD.</p>
                 </div>
-                <div class="bg-yellow-50 p-5 rounded-2xl border border-yellow-200 hover:shadow-lg transition duration-300 group">
-                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mb-3 group-hover:scale-110 transition duration-300">
-                        <i class="fas fa-brain text-xl text-yellow-600"></i>
+                <div class="bg-white p-5 rounded-[26px] crayon-border border-bubblegum/40 hover:shadow-xl hover:-translate-y-1.5 transition duration-300 group">
+                    <div class="w-12 h-12 bg-bubblegum/15 rounded-2xl flex items-center justify-center shadow-sm mb-3 group-hover:rotate-6 group-hover:scale-110 group-active:rotate-6 group-active:scale-110 transition duration-300">
+                        <i class="fas fa-brain text-xl text-bubblegum"></i>
                     </div>
                     <p class="text-gray-700 font-medium leading-relaxed">Sulit fokus dan konsentrasi saat belajar di rumah.</p>
                 </div>
-                <div class="bg-yellow-50 p-5 rounded-2xl border border-yellow-200 hover:shadow-lg transition duration-300 group">
-                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mb-3 group-hover:scale-110 transition duration-300">
-                        <i class="fas fa-user-shield text-xl text-yellow-600"></i>
+                <div class="bg-white p-5 rounded-[26px] crayon-border border-grape/40 hover:shadow-xl hover:-translate-y-1.5 transition duration-300 group">
+                    <div class="w-12 h-12 bg-grape/15 rounded-2xl flex items-center justify-center shadow-sm mb-3 group-hover:rotate-6 group-hover:scale-110 group-active:rotate-6 group-active:scale-110 transition duration-300">
+                        <i class="fas fa-user-shield text-xl text-grape"></i>
                     </div>
                     <p class="text-gray-700 font-medium leading-relaxed">Tidak percaya diri saat diminta membaca atau menjawab soal.</p>
                 </div>
-                <div class="bg-yellow-50 p-5 rounded-2xl border border-yellow-200 hover:shadow-lg transition duration-300 group">
-                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mb-3 group-hover:scale-110 transition duration-300">
-                        <i class="fas fa-mobile-alt text-xl text-yellow-600"></i>
+                <div class="bg-white p-5 rounded-[26px] crayon-border border-leafy/40 hover:shadow-xl hover:-translate-y-1.5 transition duration-300 group">
+                    <div class="w-12 h-12 bg-leafy/15 rounded-2xl flex items-center justify-center shadow-sm mb-3 group-hover:rotate-6 group-hover:scale-110 group-active:rotate-6 group-active:scale-110 transition duration-300">
+                        <i class="fas fa-mobile-alt text-xl text-leafy"></i>
                     </div>
                     <p class="text-gray-700 font-medium leading-relaxed">Lebih suka bermain gadget/HP daripada membuka buku belajar.</p>
                 </div>
-                <div class="bg-yellow-50 p-5 rounded-2xl border border-yellow-200 hover:shadow-lg transition duration-300 group">
-                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mb-3 group-hover:scale-110 transition duration-300">
-                        <i class="fas fa-briefcase text-xl text-yellow-600"></i>
+                <div class="bg-white p-5 rounded-[26px] crayon-border border-sainsyellowhover/40 hover:shadow-xl hover:-translate-y-1.5 transition duration-300 group">
+                    <div class="w-12 h-12 bg-sainsyellow/25 rounded-2xl flex items-center justify-center shadow-sm mb-3 group-hover:rotate-6 group-hover:scale-110 group-active:rotate-6 group-active:scale-110 transition duration-300">
+                        <i class="fas fa-briefcase text-xl text-sainsyellowhover"></i>
                     </div>
                     <p class="text-gray-700 font-medium leading-relaxed">Orang tua terlalu sibuk bekerja sehingga sulit konsisten mendampingi.</p>
                 </div>
-                <div class="bg-yellow-50 p-5 rounded-2xl border border-yellow-200 hover:shadow-lg transition duration-300 group">
-                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mb-3 group-hover:scale-110 transition duration-300">
-                        <i class="fas fa-sort-numeric-down text-xl text-yellow-600"></i>
+                <div class="bg-white p-5 rounded-[26px] crayon-border border-skyblue/40 hover:shadow-xl hover:-translate-y-1.5 transition duration-300 group">
+                    <div class="w-12 h-12 bg-skyblue/15 rounded-2xl flex items-center justify-center shadow-sm mb-3 group-hover:rotate-6 group-hover:scale-110 group-active:rotate-6 group-active:scale-110 transition duration-300">
+                        <i class="fas fa-sort-numeric-down text-xl text-skyblue"></i>
                     </div>
                     <p class="text-gray-700 font-medium leading-relaxed">Nilai membaca dan berhitung masih jauh tertinggal dari teman sekelas.</p>
                 </div>
@@ -183,57 +418,55 @@
     </section>
 
     <!-- SECTION SOLUSI -->
-    <section class="py-10 bg-gray-50 border-y border-gray-200">
+    <section class="py-14 bg-white border-y-2 border-dashed border-gray-200 relative overflow-hidden">
+        <span class="doodle text-3xl bottom-8 left-[4%] float-med opacity-70">🌈</span>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                <div class="order-2 lg:order-1 relative">
-                    <div class="absolute inset-0 bg-navy rounded-3xl transform -rotate-3 scale-100 opacity-10"></div>
-                    <img src="https://images.unsplash.com/photo-1543269664-56d93c1b41a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Anak belajar ceria" class="relative rounded-3xl shadow-xl w-full h-auto object-cover aspect-square md:aspect-video lg:aspect-square">
-                    <div class="absolute -bottom-5 -right-5 bg-white p-3 rounded-2xl shadow-xl border border-gray-100">
+                <div class="order-2 lg:order-1 relative reveal">
+                    <div class="absolute inset-0 bg-grape rounded-[2.5rem] transform -rotate-3 scale-100 opacity-15"></div>
+                    <img src="https://images.unsplash.com/photo-1543269664-56d93c1b41a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Anak belajar calistung dengan ceria bersama guru privat" loading="lazy" class="relative rounded-[2.5rem] shadow-xl w-full h-auto object-cover aspect-square md:aspect-video lg:aspect-square border-4 border-white transform rotate-1">
+                    <div class="absolute -bottom-5 -right-5 bg-white p-3 rounded-2xl shadow-xl border border-gray-100 bob">
                         <div class="flex items-center gap-3">
                             <div class="bg-sainsyellow p-2.5 rounded-full text-navy">
                                 <i class="fas fa-star text-lg"></i>
                             </div>
                             <div>
-                                <p class="text-navy font-bold text-sm">Metode Teruji</p>
+                                <p class="text-navy font-display font-semibold text-sm">Metode Teruji</p>
                                 <p class="text-xs text-gray-500">Menyenangkan & Efektif</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="order-1 lg:order-2">
-                    <h2 class="text-3xl md:text-4xl font-bold text-navy mb-3">Solusi Praktis untuk Orang Tua Sibuk</h2>
+                <div class="order-1 lg:order-2 reveal">
+                    <div class="inline-block bg-leafy/15 text-leafyDeep font-display font-medium px-4 py-1 rounded-full text-sm mb-3">💡 Solusinya</div>
+                    <h2 class="text-3xl md:text-4xl font-display font-semibold text-navy mb-3">Solusi Praktis untuk Orang Tua Sibuk</h2>
                     <div class="w-16 h-1.5 bg-sainsyellow rounded-full mb-4"></div>
                     <p class="text-lg text-gray-600 mb-6 leading-relaxed">
                         <strong>SAINSPIQ</strong> membantu anak menguasai membaca, menulis, dan berhitung dengan metode yang menyenangkan dan terstruktur. Ayah Bunda bisa tenang bekerja, biar kami yang urus belajarnya.
                     </p>
                     <div class="space-y-3 mb-6">
                         <div class="flex items-start gap-3">
-                            <div class="mt-1 bg-green-100 rounded-full p-1 flex-shrink-0"><i class="fas fa-check text-green-600 text-xs"></i></div>
+                            <div class="mt-1 bg-leafy/20 rounded-full p-1.5 flex-shrink-0"><i class="fas fa-check text-leafy text-xs"></i></div>
                             <p class="text-gray-700 text-sm"><strong class="text-navy">Guru Datang ke Rumah:</strong> Hemat waktu, tenaga, dan tidak perlu kena macet di jalan.</p>
                         </div>
                         <div class="flex items-start gap-3">
-                            <div class="mt-1 bg-green-100 rounded-full p-1 flex-shrink-0"><i class="fas fa-check text-green-600 text-xs"></i></div>
+                            <div class="mt-1 bg-leafy/20 rounded-full p-1.5 flex-shrink-0"><i class="fas fa-check text-leafy text-xs"></i></div>
                             <p class="text-gray-700 text-sm"><strong class="text-navy">Belajar 1-on-1:</strong> Guru fokus 100% hanya pada anak Anda, bukan terbagi dengan anak lain.</p>
                         </div>
                         <div class="flex items-start gap-3">
-                            <div class="mt-1 bg-green-100 rounded-full p-1 flex-shrink-0"><i class="fas fa-check text-green-600 text-xs"></i></div>
+                            <div class="mt-1 bg-leafy/20 rounded-full p-1.5 flex-shrink-0"><i class="fas fa-check text-leafy text-xs"></i></div>
                             <p class="text-gray-700 text-sm"><strong class="text-navy">Materi Custom:</strong> Disusun menyesuaikan kemampuan dan gaya belajar anak saat ini.</p>
                         </div>
                         <div class="flex items-start gap-3">
-                            <div class="mt-1 bg-green-100 rounded-full p-1 flex-shrink-0"><i class="fas fa-check text-green-600 text-xs"></i></div>
+                            <div class="mt-1 bg-leafy/20 rounded-full p-1.5 flex-shrink-0"><i class="fas fa-check text-leafy text-xs"></i></div>
                             <p class="text-gray-700 text-sm"><strong class="text-navy">Progress Report:</strong> Ayah bunda mendapat laporan perkembangan secara berkala.</p>
                         </div>
                         <div class="flex items-start gap-3">
-                            <div class="mt-1 bg-green-100 rounded-full p-1 flex-shrink-0"><i class="fas fa-check text-green-600 text-xs"></i></div>
-                            <p class="text-gray-700 text-sm"><strong class="text-navy">Jadwal Fleksibel:</strong> Bisa diatur sesuai kesepakatan dan waktu luang anak.</p>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="mt-1 bg-green-100 rounded-full p-1 flex-shrink-0"><i class="fas fa-check text-green-600 text-xs"></i></div>
+                            <div class="mt-1 bg-leafy/20 rounded-full p-1.5 flex-shrink-0"><i class="fas fa-check text-leafy text-xs"></i></div>
                             <p class="text-gray-700 text-sm"><strong class="text-navy">Bonus Belajar Mengaji:</strong> Bekal agama dasar untuk anak dalam satu sesi kunjungan.</p>
                         </div>
                     </div>
-                    <a href="#paket-harga" class="inline-flex items-center justify-center bg-navy hover:bg-navylight text-white font-bold px-8 py-3 rounded-full transition duration-300 shadow-lg">
+                    <a href="#paket-harga" class="wiggle-hover inline-flex items-center justify-center bg-navy hover:bg-navylight text-white font-display font-semibold px-8 py-3 rounded-full transition duration-300 shadow-lg active:scale-95">
                         Jadwalkan Konsultasi Gratis <i class="fas fa-arrow-right ml-3"></i>
                     </a>
                 </div>
@@ -241,81 +474,76 @@
         </div>
     </section>
 
-    <!-- SECTION KEUNGGULAN (PERBANDINGAN DIHAPUS, DIGANTI KEUNGGULAN KAMI) -->
-    <section class="py-10 bg-white relative">
+    <!-- SECTION KEUNGGULAN -->
+    <section class="py-14 bg-cream relative overflow-hidden">
+        <span class="doodle text-3xl top-10 left-[6%] twinkle">✨</span>
+        <span class="doodle text-2xl bottom-10 right-[8%] float-fast">☁️</span>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10">
-                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-3">Kenapa Memilih <span class="text-blue-600">SAINSPIQ</span>?</h2>
-                <div class="w-20 h-1.5 bg-blue-600 mx-auto rounded-full mb-4"></div>
+            <div class="text-center max-w-3xl mx-auto mb-10 reveal">
+                <h2 class="text-3xl md:text-4xl font-display font-semibold text-navy mb-3">Kenapa Memilih <span class="text-skyblueDeep">SAINSPIQ</span>?</h2>
+                <div class="w-20 h-1.5 bg-skyblue mx-auto rounded-full mb-4"></div>
                 <p class="text-gray-600">Komitmen kami memberikan kualitas belajar terbaik dengan fasilitas unggulan.</p>
             </div>
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-white rounded-3xl p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-gray-100 relative">
-                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white font-bold px-8 py-3 rounded-full shadow-lg border-4 border-white whitespace-nowrap tracking-wide text-sm">
+            <div class="max-w-4xl mx-auto reveal">
+                <div class="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border-2 border-dashed border-gray-200 relative">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-skyblue to-grape text-white font-display font-semibold px-8 py-3 rounded-full shadow-lg border-4 border-white whitespace-nowrap tracking-wide text-sm">
                         KEUNGGULAN KAMI
                     </div>
-                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
-                        
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-blue-50/60 hover:bg-blue-50 transition duration-300 border border-transparent hover:border-blue-100">
-                            <div class="bg-white text-blue-600 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm border border-blue-100">
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5 reveal-stagger reveal">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-skyblue/10 hover:bg-skyblue/15 transition duration-300 border border-transparent hover:border-skyblue/30 hover:-translate-y-1">
+                            <div class="bg-white text-skyblue w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm border border-skyblue/20">
                                 <i class="fas fa-home text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="text-navy font-bold mb-1">Guru ke Rumah</h4>
+                                <h4 class="text-navy font-display font-semibold mb-1">Guru ke Rumah</h4>
                                 <p class="text-sm text-gray-600 leading-relaxed">Belajar nyaman di rumah tanpa perlu memikirkan antar-jemput anak.</p>
                             </div>
                         </div>
-
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-blue-50/60 hover:bg-blue-50 transition duration-300 border border-transparent hover:border-blue-100">
-                            <div class="bg-white text-blue-600 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm border border-blue-100">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-bubblegum/10 hover:bg-bubblegum/15 transition duration-300 border border-transparent hover:border-bubblegum/30 hover:-translate-y-1">
+                            <div class="bg-white text-bubblegum w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm border border-bubblegum/20">
                                 <i class="fas fa-user-graduate text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="text-navy font-bold mb-1">Fokus 1 on 1</h4>
+                                <h4 class="text-navy font-display font-semibold mb-1">Fokus 1 on 1</h4>
                                 <p class="text-sm text-gray-600 leading-relaxed">Perhatian guru 100% untuk anak Anda agar lebih mudah menyerap materi.</p>
                             </div>
                         </div>
-
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-blue-50/60 hover:bg-blue-50 transition duration-300 border border-transparent hover:border-blue-100">
-                            <div class="bg-white text-blue-600 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm border border-blue-100">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-grape/10 hover:bg-grape/15 transition duration-300 border border-transparent hover:border-grape/30 hover:-translate-y-1">
+                            <div class="bg-white text-grape w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm border border-grape/20">
                                 <i class="fas fa-rocket text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="text-navy font-bold mb-1">Program 3 Bulan</h4>
+                                <h4 class="text-navy font-display font-semibold mb-1">Program 3 Bulan</h4>
                                 <p class="text-sm text-gray-600 leading-relaxed">Metode terstruktur untuk melihat perkembangan nyata dalam waktu singkat.</p>
                             </div>
                         </div>
-
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-blue-50/60 hover:bg-blue-50 transition duration-300 border border-transparent hover:border-blue-100">
-                            <div class="bg-white text-blue-600 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm border border-blue-100">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-leafy/10 hover:bg-leafy/15 transition duration-300 border border-transparent hover:border-leafy/30 hover:-translate-y-1">
+                            <div class="bg-white text-leafy w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm border border-leafy/20">
                                 <i class="fas fa-calendar-check text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="text-navy font-bold mb-1">Jadwal Fleksibel</h4>
+                                <h4 class="text-navy font-display font-semibold mb-1">Jadwal Fleksibel</h4>
                                 <p class="text-sm text-gray-600 leading-relaxed">Waktu belajar disesuaikan dengan rutinitas dan kesediaan anak.</p>
                             </div>
                         </div>
-
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-blue-600 text-white shadow-lg transform hover:-translate-y-1 transition duration-300 border border-blue-500">
-                            <div class="bg-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-gradient-to-br from-sainsyellow to-sainsyellowhover text-navy shadow-lg transform hover:-translate-y-1 transition duration-300 border border-sainsyellowhover/40">
+                            <div class="bg-white/40 text-navy w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-quran text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold mb-1">Bonus Mengaji</h4>
-                                <p class="text-sm text-blue-100 leading-relaxed">Termasuk pendampingan mengaji Iqra/Al-Quran tanpa biaya tambahan.</p>
+                                <h4 class="font-display font-semibold mb-1">Bonus Mengaji</h4>
+                                <p class="text-sm text-navy/80 leading-relaxed">Termasuk pendampingan mengaji Iqra/Al-Quran tanpa biaya tambahan.</p>
                             </div>
                         </div>
-
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-blue-50/60 hover:bg-blue-50 transition duration-300 border border-transparent hover:border-blue-100">
-                            <div class="bg-white text-blue-600 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm border border-blue-100">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-skyblue/10 hover:bg-skyblue/15 transition duration-300 border border-transparent hover:border-skyblue/30 hover:-translate-y-1">
+                            <div class="bg-white text-skyblue w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm border border-skyblue/20">
                                 <i class="fas fa-chart-line text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="text-navy font-bold mb-1">Monitoring Berkala</h4>
+                                <h4 class="text-navy font-display font-semibold mb-1">Monitoring Berkala</h4>
                                 <p class="text-sm text-gray-600 leading-relaxed">Laporan perkembangan rutin agar orang tua mengetahui progress anak.</p>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -323,15 +551,16 @@
     </section>
 
     <!-- SECTION TESTIMONI -->
-    <section class="py-10 bg-gray-50">
+    <section class="py-14 bg-white relative overflow-hidden border-t-2 border-dashed border-gray-200">
+        <span class="doodle text-3xl top-6 right-[10%] float-slow opacity-70">💬</span>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-8">
-                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-3">Apa Kata Orang Tua?</h2>
+            <div class="text-center max-w-3xl mx-auto mb-10 reveal">
+                <h2 class="text-3xl md:text-4xl font-display font-semibold text-navy mb-3">Apa Kata Orang Tua?</h2>
                 <div class="w-24 h-1.5 bg-sainsyellow mx-auto rounded-full mb-4"></div>
                 <p class="text-gray-600">Cerita nyata dari Ayah Bunda yang telah mempercayakan anak-anaknya di SAINSPIQ.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 relative mt-5">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-stagger reveal">
+                <div class="speech-bubble tilt-hover bg-white p-6 rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 relative mt-5">
                     <div class="absolute -top-5 left-8 bg-sainsyellow w-10 h-10 rounded-full flex items-center justify-center text-navy text-xl shadow-md">
                         <i class="fas fa-quote-left"></i>
                     </div>
@@ -340,14 +569,14 @@
                     </div>
                     <p class="text-gray-700 italic mb-4 leading-relaxed text-sm">"Anak sebelumnya belum lancar membaca dan malu. Setelah 2 bulan les di SAINSPIQ, alhamdulillah sekarang sudah bisa membaca buku cerita sederhana sendiri tanpa dieja."</p>
                     <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 bg-blue-100 rounded-full flex items-center justify-center text-navy font-bold text-sm">B</div>
+                        <div class="w-9 h-9 bg-skyblue/20 rounded-full flex items-center justify-center text-navy font-display font-semibold text-sm">B</div>
                         <div>
-                            <p class="font-bold text-navy text-sm">Bunda Kiki</p>
+                            <p class="font-display font-semibold text-navy text-sm">Bunda Kiki</p>
                             <p class="text-xs text-gray-500">Orang tua siswa TK B</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 relative mt-5">
+                <div class="speech-bubble tilt-hover bg-white p-6 rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 relative mt-5">
                     <div class="absolute -top-5 left-8 bg-sainsyellow w-10 h-10 rounded-full flex items-center justify-center text-navy text-xl shadow-md">
                         <i class="fas fa-quote-left"></i>
                     </div>
@@ -356,14 +585,14 @@
                     </div>
                     <p class="text-gray-700 italic mb-4 leading-relaxed text-sm">"Gurunya sangat sabar mengasuh anak saya yang aktif, dan selalu datang tepat waktu ke rumah. Anak jadi lebih semangat belajar dan nunggu-nunggu kakaknya datang."</p>
                     <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 bg-pink-100 rounded-full flex items-center justify-center text-pink-700 font-bold text-sm">M</div>
+                        <div class="w-9 h-9 bg-bubblegum/20 rounded-full flex items-center justify-center text-bubblegumDeep font-display font-semibold text-sm">M</div>
                         <div>
-                            <p class="font-bold text-navy text-sm">Mama Arkan</p>
+                            <p class="font-display font-semibold text-navy text-sm">Mama Arkan</p>
                             <p class="text-xs text-gray-500">Orang tua siswa SD Kelas 1</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 relative mt-5">
+                <div class="speech-bubble tilt-hover bg-white p-6 rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 relative mt-5">
                     <div class="absolute -top-5 left-8 bg-sainsyellow w-10 h-10 rounded-full flex items-center justify-center text-navy text-xl shadow-md">
                         <i class="fas fa-quote-left"></i>
                     </div>
@@ -372,9 +601,9 @@
                     </div>
                     <p class="text-gray-700 italic mb-4 leading-relaxed text-sm">"Bonus ngajinya itu yang bikin beda dan sangat membantu karena anak bisa belajar dua hal sekaligus. Hitung-hitung ngirit waktu dan biaya daripada panggil dua guru beda."</p>
                     <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 bg-green-100 rounded-full flex items-center justify-center text-green-700 font-bold text-sm">P</div>
+                        <div class="w-9 h-9 bg-leafy/20 rounded-full flex items-center justify-center text-leafyDeep font-display font-semibold text-sm">P</div>
                         <div>
-                            <p class="font-bold text-navy text-sm">Papa Syifa</p>
+                            <p class="font-display font-semibold text-navy text-sm">Papa Syifa</p>
                             <p class="text-xs text-gray-500">Orang tua siswa TK A</p>
                         </div>
                     </div>
@@ -384,83 +613,91 @@
     </section>
 
     <!-- SECTION PAKET HARGA -->
-    <section class="py-10 bg-white" id="paket-harga">
+    <section class="py-14 bg-cream relative overflow-hidden" id="paket-harga">
+        <span class="doodle text-3xl top-8 left-[8%] twinkle">✨</span>
+        <span class="doodle text-2xl bottom-6 right-[6%] float-slow">🎈</span>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-8">
-                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-3">Pilih Paket Belajar Sesuai Kebutuhan Anak</h2>
+            <div class="text-center max-w-3xl mx-auto mb-10 reveal">
+                <h2 class="text-3xl md:text-4xl font-display font-semibold text-navy mb-3">Pilih Paket Belajar Sesuai Kebutuhan Anak</h2>
                 <div class="w-24 h-1.5 bg-sainsyellow mx-auto rounded-full mb-4"></div>
                 <p class="text-gray-600">Investasi terbaik untuk masa depan pendidikan anak Anda tanpa biaya tersembunyi.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 max-w-5xl mx-auto items-stretch">
-                
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 max-w-5xl mx-auto items-stretch reveal-stagger reveal">
+
                 <!-- Paket Biasa -->
-                <div class="flex flex-col bg-gradient-to-b from-blue-50/80 to-white border border-blue-100/60 rounded-[28px] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 w-[88%] mx-auto md:w-full">
-                    <h3 class="text-xl font-bold text-navy mb-1">Paket Biasa</h3>
+                <div class="flex flex-col bg-gradient-to-b from-skyblue/10 to-white border-2 border-skyblue/30 rounded-[28px] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 w-[88%] mx-auto md:w-full">
+                    <h3 class="text-xl font-display font-semibold text-navy mb-1">Paket Biasa</h3>
                     <p class="text-gray-500 text-sm mb-4">Cocok untuk pengenalan dasar.</p>
                     <div class="mb-3">
-                        <span class="text-4xl font-extrabold text-navy tracking-tight">Rp.750.000</span>
+                        <span class="text-4xl font-display font-semibold text-navy tracking-tight">Rp.750.000</span>
                         <span class="text-gray-500 text-sm">/Bln</span>
                     </div>
-                    <div class="bg-blue-100/50 text-blue-800 text-center py-2 rounded-xl font-bold mb-4 text-sm">
+                    <div class="bg-skyblue/15 text-skyblueDeep text-center py-2 rounded-xl font-display font-semibold mb-4 text-sm">
                         4x Pertemuan / Bulan
                     </div>
                     <ul class="space-y-2.5 mb-6 flex-grow">
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-0.5"></i> <span class="text-gray-600 text-sm">Guru datang ke rumah</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-0.5"></i> <span class="text-gray-600 text-sm">Evaluasi berkala</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-0.5"></i> <span class="text-gray-600 text-sm">Bonus mengaji</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-leafy mt-0.5"></i> <span class="text-gray-600 text-sm">Guru datang ke rumah</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-leafy mt-0.5"></i> <span class="text-gray-600 text-sm">Evaluasi berkala</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-leafy mt-0.5"></i> <span class="text-gray-600 text-sm">Bonus mengaji</span></li>
                     </ul>
-                    <a href="https://wa.me/628981677111?text=Saya%20ingin%20konsultasi%20Paket%20Biasa" class="mt-auto flex items-center justify-center w-full bg-navy hover:bg-navylight text-white font-bold py-3 rounded-[14px] transition duration-300 shadow-md text-sm">
+                    <button type="button" onclick="openWaModal('Paket Biasa')" class="wiggle-hover mt-auto flex items-center justify-center w-full bg-navy hover:bg-navylight text-white font-display font-semibold py-3 rounded-[14px] transition duration-300 shadow-md text-sm active:scale-95">
                         <i class="fab fa-whatsapp text-xl mr-2 text-green-400"></i> Konsultasi Paket
-                    </a>
+                    </button>
                 </div>
 
                 <!-- Paket Favorit (Highlight) -->
-                <div class="flex flex-col bg-gradient-to-b from-yellow-50 to-white rounded-[28px] p-7 shadow-[0_12px_40px_rgba(250,204,21,0.15)] transform md:scale-105 relative border border-yellow-200 z-10 hover:-translate-y-2 hover:shadow-[0_16px_50px_rgba(250,204,21,0.25)] transition-all duration-300 w-[92%] mx-auto md:w-full">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-xs font-bold px-5 py-1.5 rounded-full shadow-lg whitespace-nowrap tracking-wide">
-                        🔥 PALING DIREKOMENDASIKAN
+                <div class="favorit-card flex flex-col bg-gradient-to-b from-[#2B1B5E] to-[#432B8C] rounded-[28px] p-7 pt-9 shadow-[0_20px_50px_rgba(126,34,206,0.4)] transform md:scale-110 relative z-10 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(126,34,206,0.5)] transition-all duration-300 w-[94%] mx-auto md:w-full">
+                    <div class="absolute inset-0 rounded-[28px] overflow-hidden pointer-events-none">
+                        <div class="absolute inset-0 confetti-bg opacity-10" style="background-image: radial-gradient(#FFCB3D 2px, transparent 2px); background-size: 22px 22px;"></div>
+                        <span class="doodle text-xl top-3 left-4 twinkle">✨</span>
+                        <span class="doodle text-xl top-8 right-5 twinkle" style="animation-delay:.6s">✨</span>
                     </div>
-                    <h3 class="text-xl font-bold text-navy mb-1 mt-2">Paket Favorit</h3>
-                    <p class="text-gray-500 text-sm mb-4">Rekomendasi terbaik agar cepat lancar.</p>
-                    <div class="mb-1">
-                        <span class="text-4xl lg:text-5xl font-extrabold text-navy tracking-tight">Rp.1.150.000</span>
-                        <span class="text-gray-500 text-sm">/Bln</span>
+                    <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-bubblegumDeep text-white text-xs font-display font-semibold px-6 py-2 rounded-full shadow-lg whitespace-nowrap tracking-wide badge-pulse border-2 border-white z-10">
+                        👑 PALING DIREKOMENDASIKAN
                     </div>
-                    <p class="text-xs text-gray-500 mb-4 font-medium">(Hanya Rp 140.625 / pertemuan)</p>
-                    <div class="bg-yellow-100/70 border-yellow-200 text-yellow-800 text-center py-2 rounded-xl font-bold mb-4 text-sm">
-                        8x Pertemuan / Bulan
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-display font-semibold text-white mb-1 mt-3">Paket Favorit</h3>
+                        <p class="text-white/70 text-sm mb-4">Rekomendasi terbaik agar cepat lancar.</p>
+                        <div class="mb-4">
+                            <span class="text-4xl lg:text-5xl font-display font-semibold text-sainsyellow tracking-tight breathe">Rp.1.150.000</span>
+                            <span class="text-white/70 text-sm">/Bln</span>
+                        </div>
+                        <div class="bg-white/15 border border-white/25 text-white text-center py-2 rounded-xl font-display font-semibold mb-4 text-sm">
+                            8x Pertemuan / Bulan
+                        </div>
+                        <ul class="space-y-2.5 mb-6 flex-grow text-white/90">
+                            <li class="flex items-start gap-3"><i class="fas fa-check text-sainsyellow mt-0.5"></i> <span class="text-sm">Guru datang ke rumah</span></li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check text-sainsyellow mt-0.5"></i> <span class="text-sm">Evaluasi berkala</span></li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check text-sainsyellow mt-0.5"></i> <span class="text-sm font-bold text-white">Bonus mengaji</span></li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check text-sainsyellow mt-0.5"></i> <span class="text-sm">Pendampingan lebih intensif</span></li>
+                        </ul>
+                        <button type="button" onclick="openWaModal('Paket Favorit')" class="wiggle-hover mt-auto flex items-center justify-center w-full bg-gradient-to-r from-sainsyellow to-sainsyellowhover text-navy font-display font-semibold py-3.5 rounded-[14px] transition duration-300 shadow-[0_8px_20px_rgba(255,203,61,0.5)] text-sm active:scale-95">
+                            <i class="fab fa-whatsapp text-2xl mr-2 text-navy/70"></i> Konsultasi Paket
+                        </button>
                     </div>
-                    <ul class="space-y-2.5 mb-6 flex-grow text-gray-700">
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-0.5"></i> <span class="text-sm">Guru datang ke rumah</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-0.5"></i> <span class="text-sm">Evaluasi berkala</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-0.5"></i> <span class="text-sm font-bold text-navy">Bonus mengaji</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-0.5"></i> <span class="text-sm">Pendampingan lebih intensif</span></li>
-                    </ul>
-                    <a href="https://wa.me/628981677111?text=Saya%20ingin%20konsultasi%20Paket%20Favorit" class="mt-auto flex items-center justify-center w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-navy font-bold py-3.5 rounded-[14px] transition duration-300 shadow-lg text-sm">
-                        <i class="fab fa-whatsapp text-2xl mr-2 text-green-800"></i> Konsultasi Paket
-                    </a>
                 </div>
 
                 <!-- Paket Smart -->
-                <div class="flex flex-col bg-gradient-to-b from-teal-50/80 to-white border border-teal-100/60 rounded-[28px] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 w-[88%] mx-auto md:w-full">
-                    <h3 class="text-xl font-bold text-navy mb-1">Paket Smart</h3>
+                <div class="flex flex-col bg-gradient-to-b from-leafy/10 to-white border-2 border-leafy/30 rounded-[28px] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 w-[88%] mx-auto md:w-full">
+                    <h3 class="text-xl font-display font-semibold text-navy mb-1">Paket Smart</h3>
                     <p class="text-gray-500 text-sm mb-4">Target lulus secepat mungkin.</p>
                     <div class="mb-3">
-                        <span class="text-4xl font-extrabold text-navy tracking-tight">Rp.1.499.000</span>
+                        <span class="text-4xl font-display font-semibold text-navy tracking-tight">Rp.1.499.000</span>
                         <span class="text-gray-500 text-sm">/Bln</span>
                     </div>
-                    <div class="bg-teal-100/50 text-teal-800 text-center py-2 rounded-xl font-bold mb-4 text-sm">
+                    <div class="bg-leafy/15 text-leafyDeep text-center py-2 rounded-xl font-display font-semibold mb-4 text-sm">
                         12x Pertemuan / Bulan
                     </div>
                     <ul class="space-y-2.5 mb-6 flex-grow">
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-0.5"></i> <span class="text-gray-600 text-sm">Guru datang ke rumah</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-0.5"></i> <span class="text-gray-600 text-sm">Evaluasi berkala</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-0.5"></i> <span class="text-gray-600 text-sm">Bonus mengaji</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-0.5"></i> <span class="text-gray-600 text-sm font-bold text-navy">Pendampingan maksimal</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-500 mt-0.5"></i> <span class="text-gray-600 text-sm">Target lebih cepat</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-leafy mt-0.5"></i> <span class="text-gray-600 text-sm">Guru datang ke rumah</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-leafy mt-0.5"></i> <span class="text-gray-600 text-sm">Evaluasi berkala</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-leafy mt-0.5"></i> <span class="text-gray-600 text-sm">Bonus mengaji</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-leafy mt-0.5"></i> <span class="text-gray-600 text-sm font-bold text-navy">Pendampingan maksimal</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-leafy mt-0.5"></i> <span class="text-gray-600 text-sm">Target lebih cepat</span></li>
                     </ul>
-                    <a href="https://wa.me/628981677111?text=Saya%20ingin%20konsultasi%20Paket%20Smart" class="mt-auto flex items-center justify-center w-full bg-navy hover:bg-navylight text-white font-bold py-3 rounded-[14px] transition duration-300 shadow-md text-sm">
+                    <button type="button" onclick="openWaModal('Paket Smart')" class="wiggle-hover mt-auto flex items-center justify-center w-full bg-navy hover:bg-navylight text-white font-display font-semibold py-3 rounded-[14px] transition duration-300 shadow-md text-sm active:scale-95">
                         <i class="fab fa-whatsapp text-xl mr-2 text-green-400"></i> Konsultasi Paket
-                    </a>
+                    </button>
                 </div>
 
             </div>
@@ -469,100 +706,100 @@
     </section>
 
     <!-- SECTION FAQ -->
-    <section class="py-10 bg-gray-50 border-t border-gray-200">
+    <section class="py-14 bg-white border-t-2 border-dashed border-gray-200">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-3">Pertanyaan yang Sering Ditanyakan</h2>
+            <div class="text-center mb-10 reveal">
+                <h2 class="text-3xl md:text-4xl font-display font-semibold text-navy mb-3">Pertanyaan yang Sering Ditanyakan</h2>
                 <div class="w-24 h-1.5 bg-sainsyellow mx-auto rounded-full"></div>
             </div>
-            <div class="space-y-2">
-                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+            <div class="space-y-2.5 reveal">
+                <div class="bg-cream rounded-2xl border-2 border-gray-100 overflow-hidden">
                     <button class="faq-button w-full text-left px-5 py-3.5 flex justify-between items-center focus:outline-none">
-                        <span class="font-semibold text-gray-800 text-sm">1. Apakah guru datang ke rumah?</span>
-                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 transform text-sm"></i>
+                        <span class="font-display font-medium text-navy text-sm">1. Apakah guru datang ke rumah?</span>
+                        <i class="fas fa-chevron-down text-sainsyellowhover transition-transform duration-300 transform text-sm"></i>
                     </button>
-                    <div class="accordion-content bg-gray-50 px-5 text-gray-600 text-sm">
+                    <div class="accordion-content bg-white px-5 text-gray-600 text-sm">
                         Ya, layanan kami adalah private in-home tutoring di mana guru kami akan datang langsung ke rumah siswa.
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                <div class="bg-cream rounded-2xl border-2 border-gray-100 overflow-hidden">
                     <button class="faq-button w-full text-left px-5 py-3.5 flex justify-between items-center focus:outline-none">
-                        <span class="font-semibold text-gray-800 text-sm">2. Area layanan dimana saja?</span>
-                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 transform text-sm"></i>
+                        <span class="font-display font-medium text-navy text-sm">2. Area layanan dimana saja?</span>
+                        <i class="fas fa-chevron-down text-sainsyellowhover transition-transform duration-300 transform text-sm"></i>
                     </button>
-                    <div class="accordion-content bg-gray-50 px-5 text-gray-600 text-sm">
-                        Saat ini kami melayani wilayah Jabodetabek (Jakarta, Bogor, Depok, Tangerang, Bekasi) dan sekitarnya. Silakan chat admin untuk mengecek ketersediaan guru di kecamatan Anda.
+                    <div class="accordion-content bg-white px-5 text-gray-600 text-sm">
+                        Kami melayani penjemputan guru privat ke rumah di berbagai kota di Indonesia. Silakan chat admin untuk mengecek ketersediaan guru di wilayah tempat tinggal Anda.
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                <div class="bg-cream rounded-2xl border-2 border-gray-100 overflow-hidden">
                     <button class="faq-button w-full text-left px-5 py-3.5 flex justify-between items-center focus:outline-none">
-                        <span class="font-semibold text-gray-800 text-sm">3. Apakah bisa memilih jadwal?</span>
-                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 transform text-sm"></i>
+                        <span class="font-display font-medium text-navy text-sm">3. Apakah bisa memilih jadwal?</span>
+                        <i class="fas fa-chevron-down text-sainsyellowhover transition-transform duration-300 transform text-sm"></i>
                     </button>
-                    <div class="accordion-content bg-gray-50 px-5 text-gray-600 text-sm">
+                    <div class="accordion-content bg-white px-5 text-gray-600 text-sm">
                         Ya, jadwal sangat fleksibel dan diatur berdasarkan kesepakatan antara orang tua siswa dan guru yang bertugas.
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                <div class="bg-cream rounded-2xl border-2 border-gray-100 overflow-hidden">
                     <button class="faq-button w-full text-left px-5 py-3.5 flex justify-between items-center focus:outline-none">
-                        <span class="font-semibold text-gray-800 text-sm">4. Apakah ada trial?</span>
-                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 transform text-sm"></i>
+                        <span class="font-display font-medium text-navy text-sm">4. Apakah ada trial?</span>
+                        <i class="fas fa-chevron-down text-sainsyellowhover transition-transform duration-300 transform text-sm"></i>
                     </button>
-                    <div class="accordion-content bg-gray-50 px-5 text-gray-600 text-sm">
+                    <div class="accordion-content bg-white px-5 text-gray-600 text-sm">
                         Terkait kelas percobaan (trial), silakan konsultasikan langsung dengan tim admin kami melalui WhatsApp.
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                <div class="bg-cream rounded-2xl border-2 border-gray-100 overflow-hidden">
                     <button class="faq-button w-full text-left px-5 py-3.5 flex justify-between items-center focus:outline-none">
-                        <span class="font-semibold text-gray-800 text-sm">5. Anak saya belum bisa membaca sama sekali, apakah bisa?</span>
-                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 transform text-sm"></i>
+                        <span class="font-display font-medium text-navy text-sm">5. Anak saya belum bisa membaca sama sekali, apakah bisa?</span>
+                        <i class="fas fa-chevron-down text-sainsyellowhover transition-transform duration-300 transform text-sm"></i>
                     </button>
-                    <div class="accordion-content bg-gray-50 px-5 text-gray-600 text-sm">
+                    <div class="accordion-content bg-white px-5 text-gray-600 text-sm">
                         Tentu bisa. Program kami memang dirancang untuk mendampingi dari nol (0), dimulai dari kemampuan dasar anak mengenal huruf dan angka.
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                <div class="bg-cream rounded-2xl border-2 border-gray-100 overflow-hidden">
                     <button class="faq-button w-full text-left px-5 py-3.5 flex justify-between items-center focus:outline-none">
-                        <span class="font-semibold text-gray-800 text-sm">6. Apakah ada laporan perkembangan?</span>
-                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 transform text-sm"></i>
+                        <span class="font-display font-medium text-navy text-sm">6. Apakah ada laporan perkembangan?</span>
+                        <i class="fas fa-chevron-down text-sainsyellowhover transition-transform duration-300 transform text-sm"></i>
                     </button>
-                    <div class="accordion-content bg-gray-50 px-5 text-gray-600 text-sm">
+                    <div class="accordion-content bg-white px-5 text-gray-600 text-sm">
                         Ya, orang tua akan mendapatkan evaluasi dan progress report secara berkala (umumnya setiap bulan) agar terpantau dengan jelas.
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                <div class="bg-cream rounded-2xl border-2 border-gray-100 overflow-hidden">
                     <button class="faq-button w-full text-left px-5 py-3.5 flex justify-between items-center focus:outline-none">
-                        <span class="font-semibold text-gray-800 text-sm">7. Apakah bisa belajar mengaji juga?</span>
-                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 transform text-sm"></i>
+                        <span class="font-display font-medium text-navy text-sm">7. Apakah bisa belajar mengaji juga?</span>
+                        <i class="fas fa-chevron-down text-sainsyellowhover transition-transform duration-300 transform text-sm"></i>
                     </button>
-                    <div class="accordion-content bg-gray-50 px-5 text-gray-600 text-sm">
+                    <div class="accordion-content bg-white px-5 text-gray-600 text-sm">
                         Ya, tersedia sesi sisipan bonus belajar mengaji (Iqra/Al-Quran) di akhir/awal sesi belajar utamanya jika orang tua menginginkan.
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                <div class="bg-cream rounded-2xl border-2 border-gray-100 overflow-hidden">
                     <button class="faq-button w-full text-left px-5 py-3.5 flex justify-between items-center focus:outline-none">
-                        <span class="font-semibold text-gray-800 text-sm">8. Berapa lama sampai anak lancar?</span>
-                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 transform text-sm"></i>
+                        <span class="font-display font-medium text-navy text-sm">8. Berapa lama sampai anak lancar?</span>
+                        <i class="fas fa-chevron-down text-sainsyellowhover transition-transform duration-300 transform text-sm"></i>
                     </button>
-                    <div class="accordion-content bg-gray-50 px-5 text-gray-600 text-sm">
+                    <div class="accordion-content bg-white px-5 text-gray-600 text-sm">
                         Rata-rata perkembangan yang signifikan terlihat dalam 2-3 bulan, namun ini tergantung kemampuan awal, daya serap anak, dan konsistensi belajarnya.
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                <div class="bg-cream rounded-2xl border-2 border-gray-100 overflow-hidden">
                     <button class="faq-button w-full text-left px-5 py-3.5 flex justify-between items-center focus:outline-none">
-                        <span class="font-semibold text-gray-800 text-sm">9. Apakah les dilakukan secara privat?</span>
-                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 transform text-sm"></i>
+                        <span class="font-display font-medium text-navy text-sm">9. Apakah les dilakukan secara privat?</span>
+                        <i class="fas fa-chevron-down text-sainsyellowhover transition-transform duration-300 transform text-sm"></i>
                     </button>
-                    <div class="accordion-content bg-gray-50 px-5 text-gray-600 text-sm">
+                    <div class="accordion-content bg-white px-5 text-gray-600 text-sm">
                         Ya, format utamanya adalah 1 on 1 (satu guru fokus untuk satu siswa) agar lebih efektif.
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                <div class="bg-cream rounded-2xl border-2 border-gray-100 overflow-hidden">
                     <button class="faq-button w-full text-left px-5 py-3.5 flex justify-between items-center focus:outline-none">
-                        <span class="font-semibold text-gray-800 text-sm">10. Bagaimana cara mendaftar?</span>
-                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 transform text-sm"></i>
+                        <span class="font-display font-medium text-navy text-sm">10. Bagaimana cara mendaftar?</span>
+                        <i class="fas fa-chevron-down text-sainsyellowhover transition-transform duration-300 transform text-sm"></i>
                     </button>
-                    <div class="accordion-content bg-gray-50 px-5 pb-4 text-gray-600 text-sm">
+                    <div class="accordion-content bg-white px-5 pb-4 text-gray-600 text-sm">
                         Sangat mudah! Anda cukup klik tombol WhatsApp yang ada di website ini, dan tim admin kami akan segera merespon dan memandu proses pendaftarannya.
                     </div>
                 </div>
@@ -571,35 +808,40 @@
     </section>
 
     <!-- FINAL CTA SECTION -->
-    <section class="py-14 relative overflow-hidden bg-sainsyellow">
-        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#0A192F 2px, transparent 2px); background-size: 30px 30px;"></div>
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-navy mb-4">Jangan Tunggu Anak Semakin Tertinggal</h2>
-            <p class="text-xl text-navy/80 font-medium mb-8 max-w-2xl mx-auto">
+    <section class="py-16 relative overflow-hidden bg-gradient-to-br from-bubblegum via-sainsyellow to-skyblue">
+        <div class="absolute inset-0 opacity-20 confetti-bg" style="background-image: radial-gradient(#233A66 2.5px, transparent 2.5px); background-size: 30px 30px;"></div>
+        <span class="doodle text-3xl top-8 left-[10%] float-slow">⭐</span>
+        <span class="doodle text-3xl bottom-10 right-[10%] float-med">🎈</span>
+        <span class="doodle text-2xl top-12 right-[16%] twinkle">✨</span>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-display font-semibold text-navy mb-4">Jangan Tunggu Anak Semakin Tertinggal</h2>
+            <p class="text-xl text-navy font-medium mb-8 max-w-2xl mx-auto">
                 Mulai langkah terbaik untuk masa depan anak hari ini juga. Investasi pendidikan di usia dini akan berdampak besar di masa depan.
             </p>
-            <a href="#paket-harga" class="inline-flex items-center justify-center bg-navy hover:bg-navylight text-white font-bold text-xl px-10 py-5 rounded-full transition duration-300 shadow-[0_10px_30px_rgba(10,25,47,0.3)] transform hover:scale-105">
-                <i class="fab fa-whatsapp text-3xl mr-3 text-green-400"></i> Daftar & Konsultasi Gratis Sekarang
-            </a>
-            <div class="mt-6 inline-block bg-white/40 backdrop-blur-sm border border-navy/10 text-navy font-bold px-6 py-2 rounded-full animate-pulse">
+            <button type="button" onclick="openWaModal('')" class="wiggle-hover shimmer-btn inline-flex items-center justify-center bg-navy hover:bg-navylight text-white font-display font-semibold text-xl px-10 py-5 rounded-full transition duration-300 shadow-[0_10px_30px_rgba(35,58,102,0.35)] transform hover:scale-105 active:scale-95">
+                <i class="fab fa-whatsapp text-3xl mr-3 text-green-400 heartbeat-icon"></i> Daftar & Konsultasi Gratis Sekarang
+            </button>
+            <div class="mt-6 inline-block bg-white/60 backdrop-blur-sm border border-navy/10 text-navy font-display font-semibold px-6 py-2 rounded-full animate-pulse">
                 <i class="fas fa-exclamation-circle text-red-600 mr-2"></i> Peringatan: Kuota guru terbatas setiap bulannya!
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-navy py-8 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-2xl font-bold text-white">Sains<span class="text-sainsyellow">PIQ</span></div>
+    <footer class="bg-navy py-8 border-t border-navylight relative overflow-hidden">
+        <span class="doodle text-xl top-3 left-[15%] twinkle opacity-60">✨</span>
+        <span class="doodle text-xl bottom-3 right-[15%] twinkle opacity-60">⭐</span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 relative z-10">
+            <div class="text-2xl font-display font-semibold text-white">Sains<span class="text-sainsyellow">PIQ</span></div>
             <p class="text-gray-400 text-sm text-center md:text-left">
-                &copy; <script>document.write(new Date().getFullYear())</script> SAINSPIQ. All rights reserved.
+                &copy; <span id="footer-year"></span> SAINSPIQ. All rights reserved.
             </p>
         </div>
     </footer>
 
     <!-- POPUP NOTIFIKASI -->
     <div id="registration-notification" class="notification-popup flex items-center gap-3">
-        <div class="bg-green-100 text-green-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
+        <div class="bg-leafy/20 text-leafy rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
             <i class="fas fa-check-circle"></i>
         </div>
         <div>
@@ -608,17 +850,73 @@
         </div>
     </div>
 
+    <!-- WHATSAPP CONSULTATION MODAL -->
+    <div id="wa-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <div id="wa-modal-backdrop" class="absolute inset-0 bg-navy/70 backdrop-blur-sm"></div>
+        <div id="wa-modal-panel" class="modal-pop relative bg-cream w-full max-w-md rounded-[28px] shadow-2xl border-4 border-white overflow-hidden max-h-[90vh] overflow-y-auto">
+            <div class="relative bg-gradient-to-br from-[#4C2A8C] via-[#26418C] to-[#0B6FA8] px-6 pt-6 pb-8 text-center">
+                <span class="doodle text-2xl top-3 left-6 twinkle">✨</span>
+                <span class="doodle text-2xl top-4 right-8 float-fast">⭐</span>
+                <button type="button" onclick="closeWaModal()" aria-label="Tutup" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 active:scale-90 text-white flex items-center justify-center transition">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="w-14 h-14 mx-auto bg-white rounded-full flex items-center justify-center text-3xl text-[#25D366] shadow-lg mb-3 heartbeat-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3 class="font-display font-semibold text-white text-xl">Konsultasi Gratis Sekarang</h3>
+                <p id="wa-modal-subtitle" class="text-white/75 text-sm mt-1">Isi data singkat, tim kami langsung follow up via WhatsApp.</p>
+            </div>
+            <form id="wa-lead-form" class="p-6 space-y-4" onsubmit="submitWaForm(event)">
+                <div>
+                    <label for="wa-parent-name" class="block text-sm font-display font-semibold text-navy mb-1.5">Nama Orang Tua</label>
+                    <input type="text" id="wa-parent-name" required placeholder="Contoh: Bunda Sari" class="input-glow w-full px-4 py-3 rounded-2xl border-2 border-gray-200 text-sm focus:border-sainsyellow transition">
+                </div>
+                <div>
+                    <label for="wa-child-name" class="block text-sm font-display font-semibold text-navy mb-1.5">Nama Anak</label>
+                    <input type="text" id="wa-child-name" required placeholder="Contoh: Aisyah" class="input-glow w-full px-4 py-3 rounded-2xl border-2 border-gray-200 text-sm focus:border-sainsyellow transition">
+                </div>
+                <div>
+                    <label for="wa-child-grade" class="block text-sm font-display font-semibold text-navy mb-1.5">Kelas</label>
+                    <select id="wa-child-grade" required class="input-glow w-full px-4 py-3 rounded-2xl border-2 border-gray-200 text-sm focus:border-sainsyellow transition bg-white">
+                        <option value="" disabled selected>Pilih kelas anak</option>
+                        <option>PAUD</option>
+                        <option>TK A</option>
+                        <option>TK B</option>
+                        <option>SD Kelas 1</option>
+                        <option>SD Kelas 2</option>
+                        <option>SD Kelas 3</option>
+                        <option>SD Kelas 4</option>
+                        <option>SD Kelas 5</option>
+                        <option>SD Kelas 6</option>
+                        <option>Belum Sekolah</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="wa-child-school" class="block text-sm font-display font-semibold text-navy mb-1.5">Sekolah Dimana</label>
+                    <input type="text" id="wa-child-school" required placeholder="Nama sekolah anak" class="input-glow w-full px-4 py-3 rounded-2xl border-2 border-gray-200 text-sm focus:border-sainsyellow transition">
+                </div>
+                <button type="submit" class="wiggle-hover shimmer-btn w-full flex items-center justify-center gap-2 bg-gradient-to-r from-sainsyellow to-sainsyellowhover text-navy font-display font-semibold py-3.5 rounded-2xl shadow-[0_8px_20px_rgba(255,203,61,0.5)] transition active:scale-95">
+                    <i class="fab fa-whatsapp text-xl heartbeat-icon"></i> Kirim ke WhatsApp
+                </button>
+                <p class="text-center text-xs text-gray-400">Data ini hanya dipakai admin untuk menyapa Anda di WhatsApp.</p>
+            </form>
+        </div>
+    </div>
+
     <!-- FLOATING WHATSAPP BUTTON -->
-    <a href="#paket-harga" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-[0_4px_15px_rgba(37,211,102,0.4)] hover:bg-[#128C7E] transition duration-300 z-50 transform hover:scale-110" aria-label="Lihat Harga">
-        <i class="fab fa-whatsapp"></i>
+    <button type="button" onclick="openWaModal('')" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-[0_4px_15px_rgba(37,211,102,0.4)] hover:bg-[#128C7E] transition duration-300 z-50 transform hover:scale-110 active:scale-90 bob" aria-label="Konsultasi via WhatsApp">
+        <i class="fab fa-whatsapp heartbeat-icon"></i>
         <span class="absolute -top-2 -right-2 flex h-4 w-4">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-4 w-4 bg-red-500"></span>
         </span>
-    </a>
+    </button>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const footerYear = document.getElementById('footer-year');
+            if (footerYear) footerYear.textContent = new Date().getFullYear();
+
             const faqButtons = document.querySelectorAll('.faq-button');
             faqButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -646,11 +944,11 @@
             });
 
             const notifications = [
-                { name: "Bunda Linda (Depok)", time: "1 jam yang lalu" },
-                { name: "Papa Rayyan (Jakarta Selatan)", time: "3 jam yang lalu" },
-                { name: "Mama Siska (Bogor)", time: "5 jam yang lalu" },
-                { name: "Bunda Tari (Tangerang)", time: "Kemarin" },
-                { name: "Ibu Maya (Bekasi)", time: "2 hari yang lalu" }
+                { name: "Bunda Linda", time: "1 jam yang lalu" },
+                { name: "Papa Rayyan", time: "3 jam yang lalu" },
+                { name: "Mama Siska", time: "5 jam yang lalu" },
+                { name: "Bunda Tari", time: "Kemarin" },
+                { name: "Ibu Maya", time: "2 hari yang lalu" }
             ];
             const notifElement = document.getElementById('registration-notification');
             const notifText = document.getElementById('notif-text');
@@ -672,6 +970,71 @@
                 showNotification();
                 setInterval(showNotification, 15000);
             }, 3000);
+
+            // Scroll reveal animation (ringan, respects prefers-reduced-motion)
+            const revealEls = document.querySelectorAll('.reveal');
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            revealEls.forEach(el => io.observe(el));
+        });
+
+        // ---------- WhatsApp Consultation Modal ----------
+        const WA_PHONE = '628981677111';
+        let waSelectedPackage = '';
+
+        function openWaModal(packageName) {
+            waSelectedPackage = packageName || '';
+            const modal = document.getElementById('wa-modal');
+            const panel = document.getElementById('wa-modal-panel');
+            const subtitle = document.getElementById('wa-modal-subtitle');
+            subtitle.textContent = waSelectedPackage
+                ? `Konsultasi untuk ${waSelectedPackage} — isi data singkat dulu ya.`
+                : 'Isi data singkat, tim kami langsung follow up via WhatsApp.';
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            panel.classList.remove('modal-pop');
+            void panel.offsetWidth;
+            panel.classList.add('modal-pop');
+            setTimeout(() => document.getElementById('wa-parent-name')?.focus(), 150);
+        }
+
+        function closeWaModal() {
+            const modal = document.getElementById('wa-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        function submitWaForm(e) {
+            e.preventDefault();
+            const parentName = document.getElementById('wa-parent-name').value.trim();
+            const childName = document.getElementById('wa-child-name').value.trim();
+            const grade = document.getElementById('wa-child-grade').value.trim();
+            const school = document.getElementById('wa-child-school').value.trim();
+
+            let message = 'Halo SAINSPIQ, saya ingin konsultasi';
+            message += waSelectedPackage ? ` untuk ${waSelectedPackage}.\n\n` : '.\n\n';
+            message += `Nama Orang Tua: ${parentName}\n`;
+            message += `Nama Anak: ${childName}\n`;
+            message += `Kelas: ${grade}\n`;
+            message += `Sekolah: ${school}`;
+
+            const waUrl = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+            closeWaModal();
+            document.getElementById('wa-lead-form').reset();
+        }
+
+        document.getElementById('wa-modal-backdrop')?.addEventListener('click', closeWaModal);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeWaModal();
         });
     </script>
 </body>
