@@ -239,6 +239,8 @@
         }
     </script>
     <style>
+        html { scroll-behavior: smooth; }
+        section[id] { scroll-margin-top: 80px; }
         body { background-color: #FFFBF0; }
 
         .glass-effect {
@@ -471,6 +473,12 @@
                     <span class="text-2xl">⭐</span>
                     <span class="text-2xl font-display font-semibold text-white">Sains<span class="text-sainsyellow">PIQ</span> <span class="text-base align-middle">Kidz</span></span>
                 </div>
+                <div class="hidden lg:flex items-center gap-6 text-sm font-display font-medium text-white/85">
+                    <a href="#beranda" class="hover:text-sainsyellow transition">Beranda</a>
+                    <a href="#tentang" class="hover:text-sainsyellow transition">Tentang Kami</a>
+                    <a href="/artikel/" class="hover:text-sainsyellow transition">Artikel</a>
+                    <a href="#area" class="hover:text-sainsyellow transition">Area</a>
+                </div>
                 <button type="button" onclick="openWaModal('')" class="hidden md:flex wiggle-hover bg-gradient-to-r from-bubblegumDeep to-grapeDeep text-white font-display font-semibold px-6 py-2.5 rounded-full transition duration-300 shadow-md hover:shadow-lg hover:scale-105 items-center gap-2 active:scale-90">
                     <i class="fab fa-whatsapp text-lg"></i> Konsultasi Gratis
                 </button>
@@ -482,7 +490,7 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gradient-to-br from-[#2B1746] via-[#3B2270] to-[#5B3AA0] gradient-animate overflow-hidden">
+    <section id="beranda" class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gradient-to-br from-[#2B1746] via-[#3B2270] to-[#5B3AA0] gradient-animate overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
             <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-sainsyellow blur-3xl opacity-30"></div>
             <div class="absolute top-1/2 right-0 w-72 h-72 rounded-full bg-bubblegum blur-3xl opacity-30"></div>
@@ -650,7 +658,7 @@
     </section>
 
     <!-- SECTION KEUNGGULAN -->
-    <section class="py-14 bg-cream relative overflow-hidden">
+    <section class="py-14 bg-cream relative overflow-hidden" id="keunggulan">
         <span class="doodle text-3xl top-10 left-[6%] twinkle">✨</span>
         <span class="doodle text-2xl bottom-10 right-[8%] float-fast">☁️</span>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -726,7 +734,7 @@
     </section>
 
     <!-- SECTION TENTANG KAMI (E-E-A-T & GEO) -->
-    <section class="py-14 bg-white border-t-2 border-dashed border-gray-200">
+    <section class="py-14 bg-white border-t-2 border-dashed border-gray-200" id="tentang">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
             <h2 class="text-3xl md:text-4xl font-display font-semibold text-navy mb-4 text-center">Tentang SAINSPIQ KIDZ</h2>
             <div class="w-20 h-1.5 bg-sainsyellow mx-auto rounded-full mb-6"></div>
@@ -743,7 +751,7 @@
     </section>
 
     <!-- SECTION TESTIMONI -->
-    <section class="py-14 bg-gradient-to-br from-[#2B1746] via-[#3B2270] to-[#5B3AA0] gradient-animate relative overflow-hidden border-t-2 border-dashed border-white/15">
+    <section class="py-14 bg-gradient-to-br from-[#2B1746] via-[#3B2270] to-[#5B3AA0] gradient-animate relative overflow-hidden border-t-2 border-dashed border-white/15" id="testimoni">
         <div class="absolute -top-10 -left-16 w-64 h-64 rounded-full bg-grape blur-3xl opacity-25 pointer-events-none"></div>
         <div class="absolute -bottom-10 -right-10 w-72 h-72 rounded-full bg-bubblegum blur-3xl opacity-20 pointer-events-none"></div>
         <span class="doodle text-3xl top-6 right-[10%] float-slow opacity-80">💬</span>
@@ -899,8 +907,44 @@
         </div>
     </section>
 
+    <!-- SECTION AREA LAYANAN -->
+    <section id="area" class="py-14 bg-cream relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <h2 class="text-3xl md:text-4xl font-display font-semibold text-navy mb-3">Area Layanan Kami</h2>
+            <div class="w-20 h-1.5 bg-sainsyellow mx-auto rounded-full mb-4"></div>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-8">
+                Sainspiq Kidz melayani les privat calistung dan mengaji ke rumah di lebih dari 20 kota besar se-Pulau Jawa. Belum lihat kotamu di bawah? Tetap chat admin, kemungkinan besar guru kami tetap bisa menjangkau wilayahmu.
+            </p>
+            <div class="flex flex-wrap justify-center gap-2.5">
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Jakarta</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Bandung</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Surabaya</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Semarang</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Yogyakarta</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Malang</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Bogor</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Depok</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Tangerang</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Bekasi</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Solo</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Cirebon</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Purwokerto</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Tegal</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Pekalongan</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Sidoarjo</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Serang</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Tasikmalaya</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Madiun</span>
+                <span class="bg-white border-2 border-navy/10 text-navy font-display font-medium text-sm px-4 py-2 rounded-full">Kediri</span>
+            </div>
+            <button type="button" onclick="openWaModal('')" class="wiggle-hover mt-8 inline-flex items-center justify-center bg-navy hover:bg-navylight text-white font-display font-semibold px-8 py-3 rounded-full transition duration-300 shadow-lg active:scale-95">
+                <i class="fab fa-whatsapp text-lg mr-2 text-green-400"></i> Cek Ketersediaan di Kotamu
+            </button>
+        </div>
+    </section>
+
     <!-- SECTION FAQ -->
-    <section class="py-14 bg-white border-t-2 border-dashed border-gray-200">
+    <section class="py-14 bg-white border-t-2 border-dashed border-gray-200" id="faq">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10 reveal">
                 <h2 class="text-3xl md:text-4xl font-display font-semibold text-navy mb-3">Pertanyaan yang Sering Ditanyakan</h2>
