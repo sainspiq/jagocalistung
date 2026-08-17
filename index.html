@@ -485,6 +485,15 @@
                 <button type="button" onclick="openWaModal('')" class="md:hidden active:scale-90 bg-gradient-to-r from-bubblegumDeep to-grapeDeep text-white w-11 h-11 rounded-full shadow-md flex items-center justify-center transition duration-200" aria-label="Konsultasi Gratis via WhatsApp">
                     <i class="fab fa-whatsapp text-xl"></i>
                 </button>
+                <button type="button" onclick="toggleMobileMenu()" id="mobile-menu-btn" class="lg:hidden ml-2 active:scale-90 bg-white/10 border border-white/20 text-white w-11 h-11 rounded-full shadow-md flex items-center justify-center transition duration-200" aria-label="Buka menu navigasi" aria-expanded="false">
+                    <i class="fas fa-bars text-lg" id="mobile-menu-icon"></i>
+                </button>
+            </div>
+            <div id="mobile-menu-panel" class="hidden lg:hidden flex-col gap-1 px-4 pb-4 text-white/90 font-display font-medium">
+                <a href="#beranda" onclick="toggleMobileMenu()" class="py-2.5 border-b border-white/10 hover:text-sainsyellow transition">Beranda</a>
+                <a href="#tentang" onclick="toggleMobileMenu()" class="py-2.5 border-b border-white/10 hover:text-sainsyellow transition">Tentang Kami</a>
+                <a href="/artikel/" onclick="toggleMobileMenu()" class="py-2.5 border-b border-white/10 hover:text-sainsyellow transition">Artikel</a>
+                <a href="#area" onclick="toggleMobileMenu()" class="py-2.5 hover:text-sainsyellow transition">Area</a>
             </div>
         </div>
     </nav>
@@ -1237,6 +1246,26 @@
             }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
             revealEls.forEach(el => io.observe(el));
         });
+
+        // ---------- Mobile Nav Menu ----------
+        function toggleMobileMenu() {
+            const panel = document.getElementById('mobile-menu-panel');
+            const btn = document.getElementById('mobile-menu-btn');
+            const icon = document.getElementById('mobile-menu-icon');
+            const isOpen = !panel.classList.contains('hidden');
+            if (isOpen) {
+                panel.classList.add('hidden');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+                btn.setAttribute('aria-expanded', 'false');
+            } else {
+                panel.classList.remove('hidden');
+                panel.classList.add('flex');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        }
 
         // ---------- WhatsApp Consultation Modal ----------
         const WA_PHONE = '628981677111';
