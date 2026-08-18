@@ -350,6 +350,31 @@
             padding: 0.28rem 0.75rem;
             border-radius: 999px;
         }
+        .featured-card { transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease; }
+        .featured-card:hover { transform: translateY(-5px); box-shadow: 0 24px 50px rgba(35,58,102,0.18); }
+        .filter-pill {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.6rem 1.15rem;
+            border-radius: 999px;
+            border: 1.5px solid #E7E1D2;
+            background: #fff;
+            color: #233A66;
+            transition: all .2s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .filter-pill:hover { border-color: rgba(35,58,102,0.35); transform: translateY(-1px); }
+        .filter-pill.active-filter {
+            background: #233A66;
+            border-color: #233A66;
+            color: #fff;
+            box-shadow: 0 8px 18px rgba(35,58,102,0.25);
+        }
+        .artikel-card-item.filtering-hide { display: none; }
+        @keyframes cardPopIn { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .artikel-card-item.filtering-show { animation: cardPopIn .45s cubic-bezier(.22,1,.36,1) both; }
     </style>
 </head>
 <body class="bg-cream text-gray-800 font-sans antialiased overflow-x-hidden">
@@ -412,25 +437,42 @@
     </section>
 
     <!-- GRID ARTIKEL -->
-    <section class="py-14 bg-cream relative overflow-hidden" id="daftar-artikel">
+    <section class="py-14 lg:py-20 bg-cream relative overflow-hidden" id="daftar-artikel">
         <span class="doodle text-3xl top-8 left-[6%] twinkle">✨</span>
         <span class="doodle text-2xl bottom-6 right-[6%] float-slow">🎈</span>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal-stagger reveal">
 
-                <a href="/artikel/tanda-anak-perlu-les-privat-calistung/" class="article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
-                    <div class="aspect-video overflow-hidden">
-                        <img src="/assets/aktivitas-1.webp" alt="Anak belajar membaca bersama guru privat" loading="lazy" width="400" height="225" decoding="async" class="w-full h-full object-cover">
+            <!-- Featured Article -->
+            <a href="/artikel/tanda-anak-perlu-les-privat-calistung/" class="featured-card group block bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden reveal">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="aspect-video lg:aspect-auto overflow-hidden relative">
+                        <img src="/assets/aktivitas-1.webp" alt="Anak belajar membaca bersama guru privat" loading="lazy" width="700" height="394" decoding="async" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                        <span class="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-sainsyellow text-navy font-display font-semibold text-xs uppercase tracking-wide px-3 py-1.5 rounded-full shadow-md">
+                            <i class="fas fa-star text-[10px]"></i> Artikel Pilihan
+                        </span>
                     </div>
-                    <div class="p-6 article-excerpt-wrap flex flex-col flex-grow">
-                        <span class="category-pill bg-skyblue/20 text-navy mb-3 w-fit">Calistung</span>
-                        <h2 class="font-display font-semibold text-navy text-lg leading-snug mb-2">5 Tanda Anak Perlu Les Privat Calistung Sejak Dini</h2>
-                        <p class="text-gray-600 text-sm article-excerpt mb-4">Banyak orang tua baru menyadari anaknya tertinggal saat masuk SD. Kenali tanda-tanda ini lebih awal agar anak tidak kehilangan momentum belajar.</p>
-                        <span class="mt-auto text-bubblegumDeep font-display font-semibold text-sm inline-flex items-center gap-1.5">Baca Selengkapnya <i class="fas fa-arrow-right text-xs"></i></span>
+                    <div class="p-7 sm:p-8 lg:p-10 flex flex-col justify-center">
+                        <span class="category-pill bg-skyblue/20 text-navy mb-4 w-fit">Calistung</span>
+                        <h2 class="font-display font-semibold text-navy text-2xl lg:text-3xl leading-snug mb-3">5 Tanda Anak Perlu Les Privat Calistung Sejak Dini</h2>
+                        <p class="text-gray-600 text-base leading-relaxed mb-6">Banyak orang tua baru menyadari anaknya tertinggal saat masuk SD. Kenali tanda-tanda ini lebih awal agar anak tidak kehilangan momentum belajar dan tetap percaya diri di kelas.</p>
+                        <span class="text-bubblegumDeep font-display font-semibold text-sm inline-flex items-center gap-1.5 w-fit">Baca Selengkapnya <i class="fas fa-arrow-right text-xs transition group-hover:translate-x-1"></i></span>
                     </div>
-                </a>
+                </div>
+            </a>
 
-                <a href="/artikel/cara-mengajari-anak-membaca-di-rumah/" class="article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
+            <!-- Filter Kategori -->
+            <div class="flex flex-wrap items-center gap-2.5 mt-10 mb-8 reveal">
+                <button type="button" class="filter-pill active-filter" data-filter="semua" onclick="filterArtikel('semua', this)">Semua Artikel</button>
+                <button type="button" class="filter-pill" data-filter="calistung" onclick="filterArtikel('calistung', this)">Calistung</button>
+                <button type="button" class="filter-pill" data-filter="tips-belajar" onclick="filterArtikel('tips-belajar', this)">Tips Belajar</button>
+                <button type="button" class="filter-pill" data-filter="mengaji" onclick="filterArtikel('mengaji', this)">Mengaji</button>
+                <button type="button" class="filter-pill" data-filter="panduan-orang-tua" onclick="filterArtikel('panduan-orang-tua', this)">Panduan Orang Tua</button>
+            </div>
+
+            <!-- Grid Artikel -->
+            <div id="artikel-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 reveal-stagger reveal">
+
+                <a href="/artikel/cara-mengajari-anak-membaca-di-rumah/" data-kategori="tips-belajar" class="artikel-card-item article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
                     <div class="aspect-video overflow-hidden">
                         <img src="/assets/aktivitas-2.webp" alt="Orang tua mengajari anak membaca di rumah" loading="lazy" width="400" height="225" decoding="async" class="w-full h-full object-cover">
                     </div>
@@ -442,7 +484,7 @@
                     </div>
                 </a>
 
-                <a href="/artikel/manfaat-les-mengaji-privat-untuk-anak/" class="article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
+                <a href="/artikel/manfaat-les-mengaji-privat-untuk-anak/" data-kategori="mengaji" class="artikel-card-item article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
                     <div class="aspect-video overflow-hidden">
                         <img src="/assets/aktivitas-3.webp" alt="Anak belajar mengaji bersama guru privat" loading="lazy" width="400" height="225" decoding="async" class="w-full h-full object-cover">
                     </div>
@@ -454,7 +496,7 @@
                     </div>
                 </a>
 
-                <a href="/artikel/tips-memilih-guru-les-privat-terpercaya/" class="article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
+                <a href="/artikel/tips-memilih-guru-les-privat-terpercaya/" data-kategori="panduan-orang-tua" class="artikel-card-item article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
                     <div class="aspect-video overflow-hidden">
                         <img src="/assets/aktivitas-4.webp" alt="Guru privat berkualitas mengajar di rumah" loading="lazy" width="400" height="225" decoding="async" class="w-full h-full object-cover">
                     </div>
@@ -466,7 +508,7 @@
                     </div>
                 </a>
 
-                <a href="/artikel/tahapan-belajar-berhitung-anak-tk-sd/" class="article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
+                <a href="/artikel/tahapan-belajar-berhitung-anak-tk-sd/" data-kategori="calistung" class="artikel-card-item article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
                     <div class="aspect-video overflow-hidden">
                         <img src="/assets/aktivitas-5.webp" alt="Anak belajar berhitung dengan alat peraga" loading="lazy" width="400" height="225" decoding="async" class="w-full h-full object-cover">
                     </div>
@@ -478,7 +520,7 @@
                     </div>
                 </a>
 
-                <a href="/artikel/mengatasi-anak-susah-fokus-saat-belajar/" class="article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
+                <a href="/artikel/mengatasi-anak-susah-fokus-saat-belajar/" data-kategori="tips-belajar" class="artikel-card-item article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
                     <div class="aspect-video overflow-hidden">
                         <img src="/assets/aktivitas-6.webp" alt="Anak fokus belajar bersama guru privat" loading="lazy" width="400" height="225" decoding="async" class="w-full h-full object-cover">
                     </div>
@@ -491,8 +533,36 @@
                 </a>
 
             </div>
+
+            <!-- Empty state (muncul jika filter tidak ada hasil) -->
+            <div id="artikel-empty" class="hidden text-center py-16">
+                <span class="text-4xl mb-3 block">🔍</span>
+                <p class="text-gray-500 font-display">Belum ada artikel untuk kategori ini. Coba pilih kategori lain ya.</p>
+            </div>
         </div>
     </section>
+
+    <script>
+        function filterArtikel(kategori, btnEl) {
+            const cards = document.querySelectorAll('#artikel-grid .artikel-card-item');
+            let visibleCount = 0;
+            cards.forEach(card => {
+                const match = kategori === 'semua' || card.dataset.kategori === kategori;
+                if (match) {
+                    card.classList.remove('filtering-hide');
+                    card.classList.add('filtering-show');
+                    visibleCount++;
+                } else {
+                    card.classList.remove('filtering-show');
+                    card.classList.add('filtering-hide');
+                }
+            });
+            document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active-filter'));
+            if (btnEl) btnEl.classList.add('active-filter');
+            const emptyState = document.getElementById('artikel-empty');
+            if (emptyState) emptyState.classList.toggle('hidden', visibleCount > 0);
+        }
+    </script>
 
     <!-- FINAL CTA SECTION -->
     <section class="py-16 relative overflow-hidden gradient-animate" style="background-image: linear-gradient(135deg, #7E22CE 0%, #BE185D 35%, #B45309 68%, #0369A1 100%);">
