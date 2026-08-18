@@ -39,7 +39,7 @@
       "name": "Sainspiq Kidz - Les Privat Calistung & Mengaji",
       "url": "https://lesprivatcalistung.id/",
       "description": "Layanan les privat calistung (baca, tulis, hitung) dan mengaji ke rumah untuk anak TK dan SD di lebih dari 20 kota besar se-Pulau Jawa, termasuk Jakarta, Bandung, Surabaya, Semarang, dan Yogyakarta.",
-      "telephone": "+62-898-1677-111",
+      "telephone": "+62-851-8807-2997",
       "logo": "https://lesprivatcalistung.id/og-image.jpg",
       "image": "https://lesprivatcalistung.id/og-image.jpg",
       "areaServed": [
@@ -96,7 +96,7 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5",
-        "reviewCount": "3",
+        "reviewCount": "6",
         "bestRating": "5",
         "worstRating": "1"
       },
@@ -118,6 +118,24 @@
           "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
           "author": { "@type": "Person", "name": "Papa Syifa" },
           "reviewBody": "Bonus ngajinya itu yang bikin beda dan sangat membantu karena anak bisa belajar dua hal sekaligus."
+        },
+        {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Bunda Tari" },
+          "reviewBody": "Awalnya anak susah fokus kalau belajar hitung-hitungan. Setelah les rutin 3 bulan, sekarang perkalian dasar sudah lancar."
+        },
+        {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Ibu Fitri" },
+          "reviewBody": "Gurunya komunikatif, selalu update perkembangan anak ke orang tua setiap minggu."
+        },
+        {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Papa Rayyan" },
+          "reviewBody": "Jadwalnya fleksibel dan gurunya sabar ngajarin mengaji dari iqro dari nol sampai sekarang lancar."
         }
       ]
     }
@@ -229,6 +247,31 @@
             transition: max-height 0.3s ease-out, padding 0.3s ease;
             max-height: 0;
             overflow: hidden;
+        }
+
+        /* ---------- Testimoni slider (1 baris, scrollable) ---------- */
+        .testi-track {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x proximity;
+            -webkit-overflow-scrolling: touch;
+            padding: 0.75rem 1.25rem 1.5rem;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,255,255,0.35) transparent;
+        }
+        .testi-track::-webkit-scrollbar { height: 8px; }
+        .testi-track::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 999px; }
+        .testi-track::-webkit-scrollbar-track { background: transparent; }
+        .testi-card {
+            scroll-snap-align: start;
+            flex: 0 0 82%;
+        }
+        @media (min-width: 640px) {
+            .testi-card { flex: 0 0 46%; }
+        }
+        @media (min-width: 1024px) {
+            .testi-card { flex: 0 0 30%; }
         }
 
         /* ---------- Playful motion ---------- */
@@ -788,8 +831,8 @@
                 <div class="w-24 h-1.5 bg-sainsyellow mx-auto rounded-full mb-4"></div>
                 <p class="text-white/80">Cerita nyata dari Ayah Bunda yang telah mempercayakan anak-anaknya di SAINSPIQ KIDZ.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-stagger reveal px-4 sm:px-6 lg:px-8">
-                <div class="speech-bubble tilt-hover bg-white p-6 rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 relative mt-5">
+            <div class="testi-track reveal-stagger reveal">
+                <div class="testi-card speech-bubble tilt-hover bg-white p-6 rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 relative mt-5">
                     <div class="absolute -top-5 left-8 bg-sainsyellow w-10 h-10 rounded-full flex items-center justify-center text-navy text-xl shadow-md">
                         <i class="fas fa-quote-left"></i>
                     </div>
@@ -805,7 +848,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="speech-bubble tilt-hover bg-white p-6 rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 relative mt-5">
+                <div class="testi-card speech-bubble tilt-hover bg-white p-6 rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 relative mt-5">
                     <div class="absolute -top-5 left-8 bg-sainsyellow w-10 h-10 rounded-full flex items-center justify-center text-navy text-xl shadow-md">
                         <i class="fas fa-quote-left"></i>
                     </div>
@@ -821,7 +864,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="speech-bubble tilt-hover bg-white p-6 rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 relative mt-5">
+                <div class="testi-card speech-bubble tilt-hover bg-white p-6 rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 relative mt-5">
                     <div class="absolute -top-5 left-8 bg-sainsyellow w-10 h-10 rounded-full flex items-center justify-center text-navy text-xl shadow-md">
                         <i class="fas fa-quote-left"></i>
                     </div>
@@ -834,6 +877,54 @@
                         <div>
                             <p class="font-display font-semibold text-navy text-sm">Papa Syifa</p>
                             <p class="text-xs text-gray-500">Orang tua siswa TK A</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card speech-bubble tilt-hover bg-white p-6 rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 relative mt-5">
+                    <div class="absolute -top-5 left-8 bg-sainsyellow w-10 h-10 rounded-full flex items-center justify-center text-navy text-xl shadow-md">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <div class="flex text-sainsyellow text-sm mb-3 mt-1">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-4 leading-relaxed text-sm">"Awalnya anak susah fokus kalau belajar hitung-hitungan. Setelah les rutin 3 bulan, sekarang perkalian dasar sudah lancar dan mulai suka mengerjakan soal sendiri."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 bg-skyblue/20 rounded-full flex items-center justify-center text-navy font-display font-semibold text-sm">B</div>
+                        <div>
+                            <p class="font-display font-semibold text-navy text-sm">Bunda Tari</p>
+                            <p class="text-xs text-gray-500">Orang tua siswa SD Kelas 2</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card speech-bubble tilt-hover bg-white p-6 rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 relative mt-5">
+                    <div class="absolute -top-5 left-8 bg-sainsyellow w-10 h-10 rounded-full flex items-center justify-center text-navy text-xl shadow-md">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <div class="flex text-sainsyellow text-sm mb-3 mt-1">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-4 leading-relaxed text-sm">"Suka banget karena gurunya komunikatif, selalu update perkembangan anak ke orang tua. Jadi kami tahu progres belajarnya tiap minggu tanpa perlu nanya-nanya duluan."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 bg-bubblegum/20 rounded-full flex items-center justify-center text-bubblegumDeep font-display font-semibold text-sm">I</div>
+                        <div>
+                            <p class="font-display font-semibold text-navy text-sm">Ibu Fitri</p>
+                            <p class="text-xs text-gray-500">Orang tua siswa TK B</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card speech-bubble tilt-hover bg-white p-6 rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 relative mt-5">
+                    <div class="absolute -top-5 left-8 bg-sainsyellow w-10 h-10 rounded-full flex items-center justify-center text-navy text-xl shadow-md">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <div class="flex text-sainsyellow text-sm mb-3 mt-1">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-4 leading-relaxed text-sm">"Jadwalnya fleksibel banget, bisa disesuaikan sama kegiatan anak di sekolah. Gurunya juga sabar ngajarin mengaji dari iqro dari nol sampai sekarang lancar."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 bg-leafy/20 rounded-full flex items-center justify-center text-leafyDeep font-display font-semibold text-sm">P</div>
+                        <div>
+                            <p class="font-display font-semibold text-navy text-sm">Papa Rayyan</p>
+                            <p class="text-xs text-gray-500">Orang tua siswa SD Kelas 1</p>
                         </div>
                     </div>
                 </div>
@@ -1140,7 +1231,7 @@
                 Mulai langkah terbaik untuk masa depan anak hari ini juga. Investasi pendidikan di usia dini akan berdampak besar di masa depan.
             </p>
             <button type="button" onclick="openWaModal('')" class="wiggle-hover shimmer-btn inline-flex items-center justify-center bg-sainsyellow hover:bg-sainsyellowhover text-navy font-display font-semibold text-xl px-10 py-5 rounded-full transition duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.35)] transform hover:scale-105 active:scale-95">
-                <i class="fab fa-whatsapp text-3xl mr-3 text-green-700 heartbeat-icon"></i> Daftar & Konsultasi Gratis Sekarang
+                <i class="fab fa-whatsapp text-3xl mr-3 text-green-700 heartbeat-icon"></i> Tanya Admin
             </button>
             <p class="mt-6 text-white/90 font-display font-medium text-sm">
                 <i class="fas fa-exclamation-circle mr-1.5"></i> Peringatan: Kuota guru terbatas setiap bulannya!
@@ -1158,7 +1249,7 @@
                 <div class="text-2xl font-display font-semibold text-white">Sains<span class="text-sainsyellow">PIQ</span> <span class="text-base align-middle">Kidz</span></div>
                 <div class="text-center md:text-right">
                     <p class="text-gray-300 text-sm">
-                        <i class="fab fa-whatsapp text-sainsyellow mr-1"></i> WhatsApp: <a href="https://wa.me/628981677111" class="hover:text-sainsyellow transition">0898-1677-111</a>
+                        <i class="fab fa-whatsapp text-sainsyellow mr-1"></i> WhatsApp: <a href="https://wa.me/6285188072997" class="hover:text-sainsyellow transition">0851-8807-2997</a>
                     </p>
                     <p class="text-gray-400 text-sm mt-1">
                         Melayani 20+ kota besar se-Pulau Jawa: Jakarta, Bandung, Surabaya, Semarang, Yogyakarta &amp; sekitarnya.
@@ -1342,7 +1433,7 @@
         }
 
         // ---------- WhatsApp Consultation Modal ----------
-        const WA_PHONE = '628981677111';
+        const WA_PHONE = '6285188072997';
         let waSelectedPackage = '';
 
         function openWaModal(packageName) {
