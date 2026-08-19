@@ -353,10 +353,13 @@
         .featured-card { transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease; }
         .featured-card:hover { transform: translateY(-5px); box-shadow: 0 24px 50px rgba(35,58,102,0.18); }
         .filter-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
             font-family: 'Fredoka', sans-serif;
             font-weight: 600;
             font-size: 0.85rem;
-            padding: 0.6rem 1.15rem;
+            padding: 0.62rem 1.2rem;
             border-radius: 999px;
             border: 1.5px solid #E7E1D2;
             background: #fff;
@@ -365,12 +368,14 @@
             cursor: pointer;
             white-space: nowrap;
         }
-        .filter-pill:hover { border-color: rgba(35,58,102,0.35); transform: translateY(-1px); }
+        .filter-pill-icon { font-size: 0.95rem; line-height: 1; }
+        .filter-pill:hover { border-color: rgba(35,58,102,0.35); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(35,58,102,0.08); }
         .filter-pill.active-filter {
             background: #233A66;
             border-color: #233A66;
             color: #fff;
             box-shadow: 0 8px 18px rgba(35,58,102,0.25);
+            transform: translateY(-1px);
         }
         .artikel-card-item.filtering-hide { display: none; }
         @keyframes cardPopIn { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
@@ -415,7 +420,7 @@
     </nav>
 
     <!-- HERO ARTIKEL -->
-    <section class="relative pt-32 pb-14 lg:pt-40 lg:pb-16 bg-gradient-to-br from-[#2B1746] via-[#3B2270] to-[#5B3AA0] gradient-animate overflow-hidden">
+    <section class="relative pt-32 pb-24 lg:pt-40 lg:pb-32 bg-gradient-to-br from-[#2B1746] via-[#3B2270] to-[#5B3AA0] gradient-animate overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
             <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-sainsyellow blur-3xl opacity-30"></div>
             <div class="absolute -bottom-20 -right-10 w-80 h-80 rounded-full bg-grape blur-3xl opacity-25"></div>
@@ -429,8 +434,8 @@
                 <span class="mx-2">/</span>
                 <span class="text-sainsyellow">Artikel</span>
             </nav>
-            <h1 class="text-4xl md:text-5xl font-display font-semibold text-white drop-shadow-[0_2px_10px_rgba(35,58,102,0.35)] mb-4">Artikel & Tips Parenting</h1>
-            <p class="text-lg text-white/80 max-w-2xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-display font-semibold text-white drop-shadow-[0_2px_10px_rgba(35,58,102,0.35)] mb-5">Artikel & Tips Parenting</h1>
+            <p class="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
                 Panduan praktis seputar calistung, membaca, menulis, berhitung, dan mengaji untuk anak TK & SD — ditulis oleh tim guru privat SAINSPIQ KIDZ.
             </p>
         </div>
@@ -461,12 +466,27 @@
             </a>
 
             <!-- Filter Kategori -->
-            <div class="flex flex-wrap items-center gap-2.5 mt-10 mb-8 reveal">
-                <button type="button" class="filter-pill active-filter" data-filter="semua" onclick="filterArtikel('semua', this)">Semua Artikel</button>
-                <button type="button" class="filter-pill" data-filter="calistung" onclick="filterArtikel('calistung', this)">Calistung</button>
-                <button type="button" class="filter-pill" data-filter="tips-belajar" onclick="filterArtikel('tips-belajar', this)">Tips Belajar</button>
-                <button type="button" class="filter-pill" data-filter="mengaji" onclick="filterArtikel('mengaji', this)">Mengaji</button>
-                <button type="button" class="filter-pill" data-filter="panduan-orang-tua" onclick="filterArtikel('panduan-orang-tua', this)">Panduan Orang Tua</button>
+            <div class="mt-16 lg:mt-20 mb-10 reveal">
+                <div class="flex items-center gap-2 mb-3.5 text-xs font-display font-semibold text-navy/50 uppercase tracking-wider">
+                    <i class="fas fa-sliders-h text-[11px]"></i> Filter Kategori
+                </div>
+                <div class="flex flex-wrap gap-2.5">
+                    <button type="button" class="filter-pill active-filter" data-filter="semua" onclick="filterArtikel('semua', this)">
+                        <span class="filter-pill-icon">📚</span> Semua Artikel
+                    </button>
+                    <button type="button" class="filter-pill" data-filter="calistung" onclick="filterArtikel('calistung', this)">
+                        <span class="filter-pill-icon">🔢</span> Calistung
+                    </button>
+                    <button type="button" class="filter-pill" data-filter="tips-belajar" onclick="filterArtikel('tips-belajar', this)">
+                        <span class="filter-pill-icon">💡</span> Tips Belajar
+                    </button>
+                    <button type="button" class="filter-pill" data-filter="mengaji" onclick="filterArtikel('mengaji', this)">
+                        <span class="filter-pill-icon">📖</span> Mengaji
+                    </button>
+                    <button type="button" class="filter-pill" data-filter="panduan-orang-tua" onclick="filterArtikel('panduan-orang-tua', this)">
+                        <span class="filter-pill-icon">👨‍👩‍👧</span> Panduan Orang Tua
+                    </button>
+                </div>
             </div>
 
             <!-- Grid Artikel -->
