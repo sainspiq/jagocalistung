@@ -28,7 +28,9 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70&fm=webp">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <script type="application/ld+json">
@@ -565,6 +567,13 @@
             .sm\:text-sm { font-size: 0.875rem; line-height: 1.25rem; }
             .sm\:text-xl { font-size: 1.25rem; line-height: 1.75rem; }
         }
+        @media (min-width: 640px) {
+            .sm\:gap-5 { gap: 1.25rem; }
+        }
+        @media (min-width: 1024px) {
+            .lg\:border-b-0 { border-bottom-width: 0px; }
+            .lg\:pb-0 { padding-bottom: 0px; }
+        }
     </style>
 </head>
 <body class="bg-cream text-gray-800 font-sans antialiased overflow-x-hidden">
@@ -667,35 +676,35 @@
     <!-- STAT BAR: SOSIAL PROOF -->
     <section class="bg-cream py-10 lg:py-12 relative z-10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-4 gap-2 sm:gap-4 lg:gap-4 reveal-stagger reveal">
-                <div class="text-center border-r border-navy/10 px-1 sm:px-2">
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 mb-1">
-                        <i class="fas fa-child-reaching text-bubblegumDeep text-sm sm:text-lg"></i>
-                        <span class="font-display font-bold text-navy text-xl sm:text-3xl lg:text-4xl">300+</span>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-4 reveal-stagger reveal">
+                <div class="text-center border-r border-navy/10 lg:border-r px-2 pb-4 lg:pb-0 border-b lg:border-b-0">
+                    <div class="flex items-center justify-center gap-2 mb-1">
+                        <i class="fas fa-child-reaching text-bubblegumDeep text-base sm:text-lg"></i>
+                        <span class="font-display font-bold text-navy text-2xl sm:text-3xl lg:text-4xl">300+</span>
                     </div>
-                    <p class="text-gray-500 text-[11px] sm:text-sm font-medium leading-tight">Siswa Aktif Belajar</p>
+                    <p class="text-gray-500 text-xs sm:text-sm font-medium leading-tight">Siswa Aktif Belajar</p>
                 </div>
-                <div class="text-center border-r border-navy/10 px-1 sm:px-2">
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 mb-1">
-                        <i class="fas fa-star text-sainsyellow text-sm sm:text-lg"></i>
-                        <span class="font-display font-bold text-navy text-xl sm:text-3xl lg:text-4xl">4.9<span class="text-xs sm:text-xl text-gray-400">/5</span></span>
+                <div class="text-center px-2 pb-4 lg:pb-0 border-b lg:border-b-0 lg:border-r lg:border-navy/10">
+                    <div class="flex items-center justify-center gap-2 mb-1">
+                        <i class="fas fa-star text-sainsyellow text-base sm:text-lg"></i>
+                        <span class="font-display font-bold text-navy text-2xl sm:text-3xl lg:text-4xl">4.9<span class="text-sm sm:text-xl text-gray-400">/5</span></span>
                     </div>
-                    <p class="text-gray-500 text-[11px] sm:text-sm font-medium leading-tight">Rating dari Orang Tua</p>
+                    <p class="text-gray-500 text-xs sm:text-sm font-medium leading-tight">Rating dari Orang Tua</p>
                 </div>
-                <div class="text-center border-r border-navy/10 px-1 sm:px-2">
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 mb-1">
-                        <i class="fas fa-location-dot text-leafyDeep text-sm sm:text-lg"></i>
-                        <span class="font-display font-bold text-navy text-xl sm:text-3xl lg:text-4xl">20+</span>
+                <div class="text-center border-r border-navy/10 lg:border-r px-2">
+                    <div class="flex items-center justify-center gap-2 mb-1">
+                        <i class="fas fa-location-dot text-leafyDeep text-base sm:text-lg"></i>
+                        <span class="font-display font-bold text-navy text-2xl sm:text-3xl lg:text-4xl">20+</span>
                     </div>
-                    <p class="text-gray-500 text-[11px] sm:text-sm font-medium leading-tight">Kota se-Pulau Jawa</p>
+                    <p class="text-gray-500 text-xs sm:text-sm font-medium leading-tight">Kota se-Pulau Jawa</p>
                 </div>
-                <div class="text-center px-1 sm:px-2">
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 mb-1">
-                        <i class="fas fa-chart-line text-skyblue text-sm sm:text-lg"></i>
-                        <span class="font-display font-bold text-navy text-xl sm:text-3xl lg:text-4xl">3</span>
-                        <span class="font-display font-bold text-navy text-sm sm:text-lg lg:text-xl sm:-ml-1">Bln</span>
+                <div class="text-center px-2">
+                    <div class="flex items-center justify-center gap-2 mb-1">
+                        <i class="fas fa-chart-line text-skyblue text-base sm:text-lg"></i>
+                        <span class="font-display font-bold text-navy text-2xl sm:text-3xl lg:text-4xl">3</span>
+                        <span class="font-display font-bold text-navy text-base sm:text-lg lg:text-xl -ml-1">Bln</span>
                     </div>
-                    <p class="text-gray-500 text-[11px] sm:text-sm font-medium leading-tight">Progress Terlihat</p>
+                    <p class="text-gray-500 text-xs sm:text-sm font-medium leading-tight">Progress Terlihat</p>
                 </div>
             </div>
         </div>
