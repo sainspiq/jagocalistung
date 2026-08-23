@@ -269,6 +269,46 @@
   </div>
 </footer>
 
-<script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+  // ---------- Mobile Nav Menu ----------
+  function toggleMobileMenu() {
+    const panel = document.getElementById('mobile-menu-panel');
+    const btn = document.getElementById('mobile-menu-btn');
+    const icon = document.getElementById('mobile-menu-icon');
+    const isOpen = !panel.classList.contains('hidden');
+    if (isOpen) {
+      panel.classList.add('hidden');
+      panel.classList.remove('flex');
+      icon.classList.remove('fa-xmark');
+      icon.classList.add('fa-bars');
+      btn.setAttribute('aria-expanded', 'false');
+    } else {
+      panel.classList.remove('hidden');
+      panel.classList.add('flex');
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-xmark');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  // Close mobile menu automatically when resizing up to desktop
+  window.addEventListener('resize', () => {
+    const panel = document.getElementById('mobile-menu-panel');
+    if (window.innerWidth >= 1024 && panel && !panel.classList.contains('hidden')) {
+      toggleMobileMenu();
+    }
+  });
+
+  // ---------- WhatsApp Konsultasi ----------
+  const WA_PHONE = '6285188072997';
+  function openWaModal(packageName) {
+    const base = 'Halo SAINSPIQ KIDZ, saya ingin konsultasi';
+    const message = packageName ? `${base} untuk ${packageName}.` : `${base}.`;
+    const waUrl = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, '_blank');
+  }
+</script>
 </body>
 </html>
