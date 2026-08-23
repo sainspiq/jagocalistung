@@ -93,39 +93,41 @@ tailwind = { config: {
 <body class="bg-cream text-gray-800 font-sans antialiased overflow-x-hidden">
 
 <!-- ============================ NAVBAR ============================ -->
-<nav class="fixed w-full z-50 top-0 bg-[#241338]/95 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.25)]">
-  <div class="max-w-[96rem] mx-auto">
-    <div class="flex justify-between items-center h-16 lg:h-20 px-4 sm:px-6 lg:px-10">
-      <a href="/" class="flex-shrink-0 flex items-center gap-1.5">
-        <span class="text-2xl lg:text-3xl">⭐</span>
-        <span class="text-2xl lg:text-3xl font-display font-semibold text-white">Sains<span class="text-sainsyellow">PIQ</span> <span class="text-base lg:text-lg align-middle">Kidz</span></span>
-      </a>
-      <div class="hidden lg:flex items-center gap-10 text-lg font-display font-medium text-white/85">
-        <a href="#kategori" class="hover:text-sainsyellow transition">Worksheet</a>
-        <a href="#preview" class="hover:text-sainsyellow transition">Preview</a>
-        <a href="#artikel" class="hover:text-sainsyellow transition">Artikel</a>
-        <a href="/les-privat-calistung" class="hover:text-sainsyellow transition">Les Privat</a>
-      </div>
-      <a href="https://wa.me/6285188072997?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20les%20privat%20calistung" target="_blank" rel="noopener" class="hidden md:flex wiggle-hover bg-gradient-to-r from-bubblegumDeep to-grapeDeep text-white font-display font-semibold text-lg px-7 py-3 rounded-full transition duration-300 shadow-md hover:shadow-lg hover:scale-105 items-center gap-2 active:scale-90">
-        <i class="fab fa-whatsapp text-xl"></i> Konsultasi Gratis
-      </a>
-      <div class="flex items-center gap-1">
-        <a href="https://wa.me/6285188072997" target="_blank" rel="noopener" class="md:hidden active:scale-90 bg-gradient-to-r from-bubblegumDeep to-grapeDeep text-white w-11 h-11 rounded-full shadow-md flex items-center justify-center transition duration-200" aria-label="Konsultasi via WhatsApp">
-          <i class="fab fa-whatsapp text-xl"></i>
-        </a>
-        <button type="button" onclick="toggleMobileMenu()" id="mobile-menu-btn" class="lg:hidden active:scale-90 bg-white/10 border border-white/20 text-white w-11 h-11 rounded-full shadow-md flex items-center justify-center transition duration-200" aria-label="Buka menu navigasi" aria-expanded="false">
-          <i class="fas fa-bars text-lg" id="mobile-menu-icon"></i>
-        </button>
-      </div>
-    </div>
-    <div id="mobile-menu-panel" class="hidden lg:hidden flex-col gap-1 px-4 pb-4 text-white/90 font-display font-medium">
-      <a href="#kategori" onclick="toggleMobileMenu()" class="py-2.5 border-b border-white/10 hover:text-sainsyellow transition">Worksheet</a>
-      <a href="#preview" onclick="toggleMobileMenu()" class="py-2.5 border-b border-white/10 hover:text-sainsyellow transition">Preview</a>
-      <a href="#artikel" onclick="toggleMobileMenu()" class="py-2.5 border-b border-white/10 hover:text-sainsyellow transition">Artikel</a>
-      <a href="/les-privat-calistung" onclick="toggleMobileMenu()" class="py-2.5 hover:text-sainsyellow transition">Les Privat</a>
-    </div>
-  </div>
-</nav>
+    <nav class="fixed w-full z-50 top-0 bg-[#241338]/95 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.25)]">
+        <div class="max-w-[96rem] mx-auto">
+            <div class="flex justify-between items-center h-16 lg:h-20 px-4 sm:px-6 lg:px-10">
+                <a href="/" class="flex-shrink-0 flex items-center gap-1.5">
+                    <span class="text-2xl lg:text-3xl">⭐</span>
+                    <span class="text-2xl lg:text-3xl font-display font-semibold text-white">Sains<span class="text-sainsyellow">PIQ</span> <span class="text-base lg:text-lg align-middle">Kidz</span></span>
+                </a>
+                <div class="hidden lg:flex items-center gap-10 text-lg font-display font-medium text-white/85">
+                    <a href="/" class="hover:text-sainsyellow transition">Beranda</a>
+                    <a href="/#tentang" class="hover:text-sainsyellow transition">Tentang Kami</a>
+                    <a href="/worksheet-calistung-anak-tk.html" class="text-sainsyellow transition">Worksheet</a>
+                    <a href="/artikel/" class="hover:text-sainsyellow transition">Artikel</a>
+                    <a href="/area/" class="hover:text-sainsyellow transition">Area</a>
+                </div>
+                <button type="button" onclick="openWaModal('')" class="hidden md:flex wiggle-hover bg-gradient-to-r from-bubblegumDeep to-grapeDeep text-white font-display font-semibold text-lg px-7 py-3 rounded-full transition duration-300 shadow-md hover:shadow-lg hover:scale-105 items-center gap-2 active:scale-90">
+                    <i class="fab fa-whatsapp text-xl"></i> Konsultasi Gratis
+                </button>
+                <div class="flex items-center gap-1">
+                    <button type="button" onclick="openWaModal('')" class="md:hidden active:scale-90 bg-gradient-to-r from-bubblegumDeep to-grapeDeep text-white w-11 h-11 rounded-full shadow-md flex items-center justify-center transition duration-200" aria-label="Konsultasi Gratis via WhatsApp">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </button>
+                    <button type="button" onclick="toggleMobileMenu()" id="mobile-menu-btn" class="lg:hidden active:scale-90 bg-white/10 border border-white/20 text-white w-11 h-11 rounded-full shadow-md flex items-center justify-center transition duration-200" aria-label="Buka menu navigasi" aria-expanded="false">
+                        <i class="fas fa-bars text-lg" id="mobile-menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu-panel" class="hidden lg:hidden flex-col gap-1 px-4 pb-4 text-white/90 font-display font-medium">
+                <a href="/" onclick="toggleMobileMenu()" class="py-2.5 border-b border-white/10 hover:text-sainsyellow transition">Beranda</a>
+                <a href="/#tentang" onclick="toggleMobileMenu()" class="py-2.5 border-b border-white/10 hover:text-sainsyellow transition">Tentang Kami</a>
+                <a href="/worksheet-calistung-anak-tk.html" onclick="toggleMobileMenu()" class="py-2.5 border-b border-white/10 text-sainsyellow transition">Worksheet</a>
+                <a href="/artikel/" onclick="toggleMobileMenu()" class="py-2.5 border-b border-white/10 hover:text-sainsyellow transition">Artikel</a>
+                <a href="/area/" onclick="toggleMobileMenu()" class="py-2.5 hover:text-sainsyellow transition">Area</a>
+            </div>
+        </div>
+    </nav>
 
 <!-- ============================ BAGIAN 1 — HERO ============================ -->
 <section class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gradient-to-br from-[#2B1746] via-[#3B2270] to-[#5B3AA0] overflow-hidden">
