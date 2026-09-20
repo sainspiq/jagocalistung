@@ -22,7 +22,9 @@
     <meta name="twitter:description" content="Kumpulan artikel dan tips seputar calistung dan mengaji untuk anak TK & SD dari tim guru privat SAINSPIQ KIDZ.">
     <meta name="twitter:image" content="https://lesprivatcalistung.id/og-image.jpg">
     <meta name="theme-color" content="#233A66">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐</text></svg>">
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" href="/assets/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -418,6 +420,17 @@
             .lg\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
         }
     </style>
+<style id="fix-structure">
+/* navigasi footer situs */
+.fnav{background:#241338;padding:2.25rem 1rem 1.75rem;border-top:1px solid rgba(255,255,255,.1);position:relative;z-index:1}
+.fnav-inner{max-width:80rem;margin:0 auto;display:grid;grid-template-columns:1fr;gap:1.75rem;text-align:left}
+@media(min-width:640px){.fnav-inner{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.fnav-inner{grid-template-columns:repeat(3,1fr)}}
+.fnav-title{font-family:Fredoka,sans-serif;font-weight:600;font-size:1rem;color:#FFCB3D;margin:0 0 .75rem}
+.fnav ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
+.fnav a{color:#d1d5db;font-family:Nunito,sans-serif;font-size:.9rem;text-decoration:none}
+.fnav a:hover{color:#FFCB3D}
+</style>
 </head>
 <body class="bg-cream text-gray-800 font-sans antialiased overflow-x-hidden">
 
@@ -489,7 +502,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Featured Article -->
-            <a href="/artikel/tanda-anak-perlu-les-privat-calistung/" class="featured-card group block bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden reveal">
+            <a href="/artikel/tanda-anak-perlu-les-privat-calistung" class="featured-card group block bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden reveal">
                 <div class="grid grid-cols-1 lg:grid-cols-2">
                     <div class="aspect-video lg:aspect-auto overflow-hidden relative">
                         <img src="/assets/aktivitas-1.webp" alt="Anak belajar membaca bersama guru privat" loading="lazy" width="700" height="394" decoding="async" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
@@ -521,9 +534,11 @@
                     <button type="button" class="filter-pill" data-filter="tips-belajar" onclick="filterArtikel('tips-belajar', this)">
                         <span class="filter-pill-icon">💡</span> Tips Belajar
                     </button>
-                    <button type="button" class="filter-pill" data-filter="mengaji" onclick="filterArtikel('mengaji', this)">
+                    <!-- Kategori Mengaji disembunyikan sampai ada artikelnya
+<button type="button" class="filter-pill" data-filter="mengaji" onclick="filterArtikel('mengaji', this)">
                         <span class="filter-pill-icon">📖</span> Mengaji
                     </button>
+-->
                     <button type="button" class="filter-pill" data-filter="panduan-orang-tua" onclick="filterArtikel('panduan-orang-tua', this)">
                         <span class="filter-pill-icon">👨‍👩‍👧</span> Panduan Orang Tua
                     </button>
@@ -533,7 +548,7 @@
             <!-- Grid Artikel -->
             <div id="artikel-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 reveal-stagger reveal">
 
-                <a href="/artikel/cara-mengajari-anak-membaca-di-rumah/" data-kategori="tips-belajar" class="artikel-card-item article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
+                <a href="/artikel/cara-mengajari-anak-membaca-di-rumah" data-kategori="tips-belajar" class="artikel-card-item article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
                     <div class="aspect-video overflow-hidden">
                         <img src="/assets/aktivitas-2.webp" alt="Orang tua mengajari anak membaca di rumah" loading="lazy" width="400" height="225" decoding="async" class="w-full h-full object-cover">
                     </div>
@@ -545,7 +560,8 @@
                     </div>
                 </a>
 
-                <a href="/artikel/manfaat-les-mengaji-privat-untuk-anak/" data-kategori="mengaji" class="artikel-card-item article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
+                <!-- BELUM DIPUBLISH: aktifkan lagi kartu ini setelah halaman /artikel/manfaat-les-mengaji-privat-untuk-anak dibuat
+<a href="/artikel/manfaat-les-mengaji-privat-untuk-anak/" data-kategori="mengaji" class="artikel-card-item article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
                     <div class="aspect-video overflow-hidden">
                         <img src="/assets/aktivitas-3.webp" alt="Anak belajar mengaji bersama guru privat" loading="lazy" width="400" height="225" decoding="async" class="w-full h-full object-cover">
                     </div>
@@ -556,8 +572,9 @@
                         <span class="mt-auto text-bubblegumDeep font-display font-semibold text-sm inline-flex items-center gap-1.5">Baca Selengkapnya <i class="fas fa-arrow-right text-xs"></i></span>
                     </div>
                 </a>
+-->
 
-                <a href="/artikel/tips-memilih-guru-les-privat-terpercaya/" data-kategori="panduan-orang-tua" class="artikel-card-item article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
+                <a href="/artikel/tips-memilih-guru-les-privat-terpercaya" data-kategori="panduan-orang-tua" class="artikel-card-item article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
                     <div class="aspect-video overflow-hidden">
                         <img src="/assets/aktivitas-4.webp" alt="Guru privat berkualitas mengajar di rumah" loading="lazy" width="400" height="225" decoding="async" class="w-full h-full object-cover">
                     </div>
@@ -569,7 +586,7 @@
                     </div>
                 </a>
 
-                <a href="/artikel/tahapan-belajar-berhitung-anak-tk-sd/" data-kategori="calistung" class="artikel-card-item article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
+                <a href="/artikel/tahapan-belajar-berhitung-anak-tk-sd" data-kategori="calistung" class="artikel-card-item article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
                     <div class="aspect-video overflow-hidden">
                         <img src="/assets/aktivitas-5.webp" alt="Anak belajar berhitung dengan alat peraga" loading="lazy" width="400" height="225" decoding="async" class="w-full h-full object-cover">
                     </div>
@@ -581,7 +598,8 @@
                     </div>
                 </a>
 
-                <a href="/artikel/mengatasi-anak-susah-fokus-saat-belajar/" data-kategori="tips-belajar" class="artikel-card-item article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
+                <!-- BELUM DIPUBLISH: aktifkan lagi kartu ini setelah halaman /artikel/mengatasi-anak-susah-fokus-saat-belajar dibuat
+<a href="/artikel/mengatasi-anak-susah-fokus-saat-belajar/" data-kategori="tips-belajar" class="artikel-card-item article-card tilt-hover bg-white rounded-3xl shadow-[0_8px_24px_rgba(35,58,102,0.08)] border border-gray-100 overflow-hidden">
                     <div class="aspect-video overflow-hidden">
                         <img src="/assets/aktivitas-6.webp" alt="Anak fokus belajar bersama guru privat" loading="lazy" width="400" height="225" decoding="async" class="w-full h-full object-cover">
                     </div>
@@ -592,6 +610,7 @@
                         <span class="mt-auto text-bubblegumDeep font-display font-semibold text-sm inline-flex items-center gap-1.5">Baca Selengkapnya <i class="fas fa-arrow-right text-xs"></i></span>
                     </div>
                 </a>
+-->
 
             </div>
 
@@ -652,7 +671,43 @@
 
 
     <!-- FOOTER -->
-    <footer class="bg-[#241338] py-8 border-t border-white/10 relative overflow-hidden">
+    <nav class="fnav" aria-label="Navigasi footer">
+  <div class="fnav-inner">
+    <div>
+      <p class="fnav-title">SAINSPIQ KIDZ</p>
+      <ul>
+        <li><a href="/">Beranda</a></li>
+        <li><a href="/#tentang">Tentang Kami</a></li>
+        <li><a href="/#paket-harga">Paket &amp; Harga Les Privat</a></li>
+        <li><a href="/#faq">Pertanyaan Umum (FAQ)</a></li>
+        <li><a href="/kontak/">Kontak &amp; Konsultasi Gratis</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="fnav-title">Belajar di Rumah</p>
+      <ul>
+        <li><a href="/worksheet-calistung-anak-tk">Worksheet Calistung Anak TK</a></li>
+        <li><a href="/artikel/">Semua Artikel &amp; Tips Parenting</a></li>
+        <li><a href="/artikel/tanda-anak-perlu-les-privat-calistung">5 Tanda Anak Perlu Les Privat Calistung</a></li>
+        <li><a href="/artikel/cara-mengajari-anak-membaca-di-rumah">Cara Mengajari Anak Membaca di Rumah</a></li>
+        <li><a href="/artikel/tahapan-belajar-berhitung-anak-tk-sd">Tahapan Belajar Berhitung Anak TK &amp; SD</a></li>
+        <li><a href="/artikel/tips-memilih-guru-les-privat-terpercaya">Tips Memilih Guru Les Privat Terpercaya</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="fnav-title">Area Layanan</p>
+      <ul>
+        <li><a href="/area/">Semua Area Layanan</a></li>
+        <li><a href="/area/les-privat-surabaya">Les Privat Calistung Surabaya</a></li>
+        <li><a href="/area/les-privat-semarang">Les Privat Calistung Semarang</a></li>
+        <li><a href="/area/les-privat-sidoarjo">Les Privat Calistung Sidoarjo</a></li>
+        <li><a href="/area/les-privat-purwokerto">Les Privat Calistung Purwokerto</a></li>
+        <li><a href="/area/#jakarta">Les Privat Calistung Jakarta</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<footer class="bg-[#241338] py-8 border-t border-white/10 relative overflow-hidden">
         <span class="doodle text-xl top-3 left-[15%] twinkle opacity-60">✨</span>
         <span class="doodle text-xl bottom-3 right-[15%] twinkle opacity-60">⭐</span>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
