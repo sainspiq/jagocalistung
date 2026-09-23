@@ -30,6 +30,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -1162,7 +1163,7 @@
                 <div class="text-2xl font-display font-semibold text-white">Sains<span class="text-sainsyellow">PIQ</span> <span class="text-base align-middle">Kidz</span></div>
                 <div class="text-center md:text-right">
                     <p class="text-gray-300 text-sm">
-                        <i class="fab fa-whatsapp text-sainsyellow mr-1"></i> WhatsApp Admin Kak Sania: <a href="https://wa.me/6285188072997" class="hover:text-sainsyellow transition">0851-8807-2997</a>
+                        <i class="fab fa-whatsapp text-sainsyellow mr-1"></i> WhatsApp Admin Kak Sania: <a href="https://wa.me/6285188072997?text=Halo%20kak%20sania%2C%20saya%20tertarik%20untuk%20les%20privat%20calistung%20di%20sainspiq%2C%20tolong%20di%20bantu%20bagaimana%20pendaftarannya" class="hover:text-sainsyellow transition">0851-8807-2997</a>
                     </p>
                 </div>
             </div>
@@ -1305,6 +1306,20 @@
                 });
             }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
             revealEls.forEach(el => io.observe(el));
+
+            // ---------- Testimoni auto-slide (tiap 2,5 detik) ----------
+            const testiTrack = document.querySelector('.testi-track');
+            if (testiTrack) {
+                const testiCards = testiTrack.querySelectorAll('.testi-card');
+                let testiIndex = 0;
+                let testiPaused = false;
+                testiTrack.addEventListener('pointerdown', () => { testiPaused = true; });
+                setInterval(() => {
+                    if (testiPaused || !testiCards.length) return;
+                    testiIndex = (testiIndex + 1) % testiCards.length;
+                    testiCards[testiIndex].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+                }, 2500);
+            }
         });
 
         // ---------- WhatsApp Consultation Modal ----------
