@@ -1313,11 +1313,17 @@
                 const testiCards = testiTrack.querySelectorAll('.testi-card');
                 let testiIndex = 0;
                 let testiPaused = false;
+                let testiVisible = false;
                 testiTrack.addEventListener('pointerdown', () => { testiPaused = true; });
+                const testiIo = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => { testiVisible = entry.isIntersecting; });
+                }, { threshold: 0.3 });
+                testiIo.observe(testiTrack);
                 setInterval(() => {
-                    if (testiPaused || !testiCards.length) return;
+                    if (testiPaused || !testiVisible || !testiCards.length) return;
                     testiIndex = (testiIndex + 1) % testiCards.length;
-                    testiCards[testiIndex].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+                    const card = testiCards[testiIndex];
+                    testiTrack.scrollTo({ left: card.offsetLeft - testiTrack.offsetLeft, behavior: 'smooth' });
                 }, 2500);
             }
         });
