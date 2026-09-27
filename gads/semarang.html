@@ -1393,6 +1393,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             message += `Usia: ${age}\n`;
             message += `Alamat: ${address}`;
 
+            // ---- Tracking: kirim event ke dataLayer untuk GTM ----
+            window.dataLayer = window.dataLayer || [];
+            dataLayer.push({
+                'event': 'wa_lead_submit',
+                'lead_package': waSelectedPackage || 'tidak_pilih_paket',
+                'lead_city': 'Semarang'
+            });
+            // -------------------------------------------------------
+
             const waUrl = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(message)}`;
             window.open(waUrl, '_blank');
             closeWaModal();
