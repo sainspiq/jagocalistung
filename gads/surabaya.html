@@ -1379,6 +1379,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             message += `Usia: ${age}\n`;
             message += `Alamat: ${address}`;
 
+            // ---- Tracking: kirim event ke dataLayer untuk GTM ----
+            window.dataLayer = window.dataLayer || [];
+            dataLayer.push({
+                'event': 'wa_lead_submit',
+                'lead_package': waSelectedPackage || 'tidak_pilih_paket',
+                'lead_city': 'Surabaya'
+            });
+            // -------------------------------------------------------
+
             const waUrl = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(message)}`;
             window.open(waUrl, '_blank');
             closeWaModal();
